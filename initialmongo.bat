@@ -1,0 +1,2 @@
+node initialmongo.js
+pause

@@ -1,0 +1,298 @@
+html,
+body {
+    font-size: 1rem;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    
+}
+.oneui {
+    background-color: #fff;
+    background-image: none;
+    color: #383733;
+    font-size: 12px;
+    line-height: 14px;
+}
+.titleContainer {
+    left: 0;
+    float: left;
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+    width: 400px;
+    /*  z-index: 1000; */
+}
+.appTitle {
+    float: left;
+    text-align: center;
+    height: 56px;
+    line-height: 56px;
+    color: white;
+    font-size: 18px;
+    font-weight: bolder;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.commentAvatarDiv {
+    /* padding:2px;  */
+    float: left;
+    margin-right: 20px;
+    margin-left: 10px;
+    width: 56px;
+    height: 56px;
+    background: #ececec;
+    border-radius: 56px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+    -moz-border-radius: 56px;
+    -webkit-border-radius: 56px;
+}
+.commentAvatarImage {
+    width: 56px;
+    height: 56px;
+    line-height: 0; /* remove line-height */
+    display: inline-block; /* circle wraps image */
+    border-radius: 50%; /* relative value */
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    transition: linear 0.25s;
+}
+.commentAvatarDivBig {
+    /* padding:2px;  */
+    float: left;
+    margin-right: 20px;
+    margin-left: 10px;
+    width: 112px;
+    height: 112px;
+    background: #ececec;
+    border-radius: 112px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+    -moz-border-radius: 112px;
+    -webkit-border-radius: 112px;
+}
+.commentAvatarImageBig {
+    width: 112px;
+    height: 112px;
+    line-height: 0; /* remove line-height */
+    display: inline-block; /* circle wraps image */
+    border-radius: 50%; /* relative value */
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    transition: linear 0.25s;
+}
+/* ++++++++++++++++++++++++++++++++++++++++ padding cleaner ++++++++++++++++++++++++++++++++++++++++ */
+.oneui .noPadding {
+    padding: 0 !important;
+}
+
+.oneui .noPaddingTop {
+    padding-top: 0 !important;
+}
+
+.oneui .noPaddingRight {
+    padding-Right: 0 !important;
+}
+
+.oneui .noPaddingBottom {
+    padding-bottom: 0 !important;
+}
+
+.oneui .noPaddingLeft {
+    padding-left: 0 !important;
+}
+
+.oneui .noPaddingTB {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.oneui .noPaddingLR {
+    padding-left: 0 !important;
+    padding-Right: 0 !important;
+}
+
+.oneui .fullPadding {
+    padding: 10px !important;
+}
+
+.oneui .paddingTop {
+    padding-top: 10px !important;
+}
+
+.oneui .paddingRight {
+    padding-Right: 10px !important;
+}
+
+.oneui .paddingBottom {
+    padding-bottom: 10px !important;
+}
+
+.oneui .paddingLeft {
+    padding-left: 10px !important;
+}
+
+.oneui .paddingTB {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.oneui .paddingLR {
+    padding-left: 10px !important;
+    padding-Right: 10px !important;
+}
+
+.oneui .halfFullPadding {
+    padding: 9px !important;
+}
+
+.oneui .halfPaddingTop {
+    padding-top: 9px !important;
+}
+
+.oneui .halfPaddingRight {
+    padding-Right: 9px !important;
+}
+
+.oneui .halfPaddingBottom {
+    padding-bottom: 9px !important;
+}
+
+.oneui .halfPaddingLeft {
+    padding-left: 9px !important;
+}
+
+.oneui .halfPaddingTB {
+    padding-top: 9px !important;
+    padding-bottom: 9px !important;
+}
+
+.oneui .halfPaddingLR {
+    padding-left: 9px !important;
+    padding-Right: 9px !important;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++ margin cleaner ++++++++++++++++++++++++++++++++++++++++ */
+.oneui .noMargin {
+    margin: 0 !important;
+}
+
+.oneui .noMarginTop {
+    margin-top: 0 !important;
+}
+
+.oneui .noMarginRight {
+    margin-Right: 0 !important;
+}
+
+.oneui .noMarginBottom {
+    margin-bottom: 0 !important;
+}
+
+.oneui .noMarginLeft {
+    margin-left: 0 !important;
+}
+
+.oneui .noMarginTB {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.oneui .noMarginLR {
+    margin-left: 0 !important;
+    margin-Right: 0 !important;
+}
+
+.oneui .fullMargin {
+    margin: 010px !important;
+}
+
+.oneui .marginTop {
+    margin-top: 010px !important;
+}
+
+.oneui .marginRight {
+    margin-Right: 010px !important;
+}
+
+.oneui .marginBottom {
+    margin-bottom: 010px !important;
+}
+
+.oneui .marginLeft {
+    margin-left: 010px !important;
+}
+
+.oneui .marginTB {
+    margin-top: 010px !important;
+    margin-bottom: 010px !important;
+}
+
+.oneui .marginLR {
+    margin-left: 010px !important;
+    margin-Right: 010px !important;
+}
+
+.oneui .halfFullMargin {
+    margin: 9px !important;
+}
+
+.oneui .halfMarginTop {
+    margin-top: 9px !important;
+}
+
+.oneui .halfMarginRight {
+    margin-Right: 9px !important;
+}
+
+.oneui .halfMarginBottom {
+    margin-bottom: 9px !important;
+}
+
+.oneui .halfMarginLeft {
+    margin-left: 9px !important;
+}
+
+.oneui .halfMarginTB {
+    margin-top: 9px !important;
+    margin-bottom: 9px !important;
+}
+
+.oneui .halfMarginLR {
+    margin-left: 9px !important;
+    margin-Right: 9px !important;
+}
+/* ++++++++++++++++++++++++++++++++++++++++ links styles ++++++++++++++++++++++++++++++++++++++++ */
+.oneui a:link,
+.oneui a,
+.oneui a:hover,
+.oneui a:visited,
+.oneui .likeLink {
+    color: #2175dd;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.oneui .likeLink:hover,
+.oneui a:hover {
+    text-decoration: underline;
+}
+
+.oneui a:focus {
+    outline: 1px dotted rgba(255, 255, 255, .25);
+}
+
+.oneui .k-state-focused,
+.oneui .k-button:focus,
+.oneui .k-button.k-state-focused,
+.oneui .k-button:focus:active {
+    box-shadow: none;
+}
+
+.textAlignRight{
+ text-align: right;
+}
+

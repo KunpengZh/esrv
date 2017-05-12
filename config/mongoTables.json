@@ -1,0 +1,172 @@
+{
+    "users": {
+        "username": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "password": {
+            "type": "String",
+            "required": true
+        },
+        "role": {
+            "type": "String",
+            "required": false
+        },
+        "fullname": {
+            "type": "String",
+            "required": false
+        },
+        "company": {
+            "type": "String",
+            "required": false
+        }
+    },
+    "configdoc": {
+        "category": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "data": "Mixed"
+    },
+    "workhistory": {
+        "worker": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "requestId": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "company": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "serviceCompany": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "creationtime": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "workitem": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "workhour": {
+            "type": "String",
+            "required": true,
+            "index": false
+        },
+        "workminutes": {
+            "type": "Number",
+            "required": true,
+            "index": false
+        },
+        "returntime": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "perhourwage": {
+            "type": "Number",
+            "required": true,
+            "index": false
+        },
+        "requestwage": {
+            "type": "Number",
+            "required": true,
+            "index": false
+        }
+    },
+    "workform": {
+        "requestId": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "company": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "requester": {
+            "type": "String",
+            "required": true,
+            "index": false
+        },
+        "creationtime": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "workitem": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "workCategory":{
+            "type": "String",
+            "required": false,
+            "index": false
+        },
+        "worklocation": {
+            "type": "String",
+            "required": true,
+            "index": false
+        },
+        "workers": {
+            "type": "Mixed",
+            "required": true,
+            "index": false
+        },
+        "workersnumber": {
+            "type": "String",
+            "required": true,
+            "index": false
+        },
+        "workhour": {
+            "type": "Mixed",
+            "required": false,
+            "index": false
+        },
+        "returntime": {
+            "type": "String",
+            "required": false,
+            "index": false
+        },
+        "workcomments": {
+            "type": "String",
+            "required": false,
+            "index": false
+        },
+        "workdocument": {
+            "type": "Mixed",
+            "required": false,
+            "index": false
+        },
+        "requestStatus": {
+            "type": "String",
+            "required": false,
+            "index": false
+        }
+    },
+    "requestIdIndex": {
+        "curdate": {
+            "type": "String",
+            "required": true
+        },
+        "index": {
+            "type": "Number",
+            "required": true
+        }
+    }
+}

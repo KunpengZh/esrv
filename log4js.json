@@ -1,0 +1,28 @@
+{
+    "appenders": [{
+            "category": "console",
+            "type": "console",
+            "alwaysIncludePattern": true,
+            "pattern": "-yyyy-MM-dd-hh.log"
+        },
+        {
+            "category": "log_file",
+            "type": "console",
+            "filename": "./logs/log_date/date",
+            "alwaysIncludePattern": true,
+            "pattern": "-yyyy-MM-dd-hh.log"
+        },
+        {
+            "category": "log_date",
+            "type": "console",
+            "filename": "./logs/log_date/date",
+            "alwaysIncludePattern": true,
+            "pattern": "-yyyy-MM-dd-hh.log"
+        }
+    ],
+    "replaceConsole": true,
+    "levels": {
+        "log_file": "ALL",
+        "log_date": "ALL"
+    }
+}

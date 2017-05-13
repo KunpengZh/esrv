@@ -11,9 +11,10 @@ router.get('/isAuthenticated', function (req, res, next) {
   if (req.isAuthenticated()) {
     res.json({
       isAuthenticated: true,
-      user: req.user.username,
+      username: req.user.username,
       role: req.user.role,
-      fullname: req.user.fullname
+      fullname: req.user.fullname,
+      company:req.user.company
     });
     res.end();
   } else {

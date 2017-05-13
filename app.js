@@ -30,6 +30,7 @@ var esrvController= require('./routes/esrvapi');
 var loginController= require('./routes/login');
 var esrvAdmin= require('./routes/esrvadmin');
 var workformController=require('./routes/workformapi');
+var queryWorkForm=require('./routes/queryworkform');
 var app = express();
 
 
@@ -90,8 +91,12 @@ app.use('/esrvapi', esrvController);
 app.use('/workformapi',isLoggedIn);
 app.use('/workformapi', workformController);
 
+app.use('/queryWorkForm',isLoggedIn);
+app.use('/queryWorkForm', queryWorkForm);
+
 app.use('/esrvadmin', isAdminLoggedIn);
 app.use('/esrvadmin', esrvAdmin);
+
 
 app.get('/logout', function (req, res) {
   req.logout();

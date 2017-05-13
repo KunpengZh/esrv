@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongodb = require('../utils/mongo-utils')
+var mongodb = require('../utils/mongo-utils');
 var multiparty = require('multiparty');
 var fs = require('fs');
 var filereader = require('../utils/filereader.js');
@@ -15,20 +15,41 @@ var Logger = log4js.getLogger('log_file');
 var tablename = "workform";
 
 router.get('/getr', function (req, res, next) {
-    var WorkForm = mongodb.getConnection(tablename);
-    WorkForm
-        .find({})
-        .sort('-requestId')
-        .limit(50)
-        .exec(function (err, result) {
-            if (err) {
-                res.json(err);
+    var user = req.user;
+    if (user.role === "Admin") {
+        var WorkForm = mongodb.getConnection(tablename);
+        WorkForm
+            .find({})
+            .sort('-requestId')
+            .limit(50)
+            .exec(function (err, result) {
+                if (err) {
+                    res.json(err);
+                    res.end();
+                    return;
+                }
+                res.json(result);
                 res.end();
-                return;
-            }
-            res.json(result);
-            res.end();
-        });
+            });
+    }else{
+        var company=user.company;
+         var WorkForm = mongodb.getConnection(tablename);
+        WorkForm
+            .find({})
+            .where('company').equals(company)
+            .sort('-requestId')
+            .limit(50)
+            .exec(function (err, result) {
+                if (err) {
+                    res.json(err);
+                    res.end();
+                    return;
+                }
+                res.json(result);
+                res.end();
+            });
+    }
+
 
 
     //     Person
@@ -46,7 +67,7 @@ router.get("/all", function (req, res, next) {
     mongodb.find(tablename, {}, null, function (err, result) {
         if (err) {
             Logger.error("to get all request error: " + err);
-            res.json({message:err});
+            res.json({ message: err });
             res.end();
             return;
         }
@@ -102,7 +123,7 @@ router.post("/save", function (req, res, next) {
                     return;
                 } else {
                     if (reqDoc.requestStatus === "Closed") {
-                        workhistory.saveWorkForm(reqDoc,function (indicator) {
+                        workhistory.saveWorkForm(reqDoc, function (indicator) {
                             if (indicator) {
                                 Logger.info("Request Playload: " + JSON.stringify(reqDoc));
                                 res.json(reqDoc);
@@ -182,33 +203,33 @@ router.get("/requestid", function (req, res, next) {
                     mongodb.update(indextable, {
                         _id: doc._id
                     }, {
-                        index: index
-                    }, function (err, result) {
-                        if (err) {
-                            Logger.error("Update Index Table Error: " + err);
-                            res.json({
-                                message: err
-                            });
-                            res.end();
-                            return;
-                        }
-                    })
+                            index: index
+                        }, function (err, result) {
+                            if (err) {
+                                Logger.error("Update Index Table Error: " + err);
+                                res.json({
+                                    message: err
+                                });
+                                res.end();
+                                return;
+                            }
+                        })
                 } else {
                     mongodb.update(indextable, {
                         _id: doc._id
                     }, {
-                        curdate: strnow,
-                        index: index
-                    }, function (err, result) {
-                        if (err) {
-                            Logger.error("Update Index Table Error: " + err);
-                            res.json({
-                                message: err
-                            });
-                            res.end();
-                            return;
-                        }
-                    })
+                            curdate: strnow,
+                            index: index
+                        }, function (err, result) {
+                            if (err) {
+                                Logger.error("Update Index Table Error: " + err);
+                                res.json({
+                                    message: err
+                                });
+                                res.end();
+                                return;
+                            }
+                        })
                 }
             } else {
                 mongodb.save(indextable, {
@@ -361,26 +382,26 @@ var updateWorkDocument = function (requestId, workdocument, callback) {
     mongodb.update(tablename, {
         "requestId": requestId
     }, {
-        "workdocument": workdocument
-    }, function (err, result) {
-        if (err) {
-            Logger.error("workformapi/upload: " + err);
-            callback({
-                "message": err
-            });
-        }
-        mongodb.find(tablename, {
-            "requestId": requestId
-        }, null, function (err, queryres) {
+            "workdocument": workdocument
+        }, function (err, result) {
             if (err) {
                 Logger.error("workformapi/upload: " + err);
                 callback({
                     "message": err
                 });
             }
-            callback(queryres);
+            mongodb.find(tablename, {
+                "requestId": requestId
+            }, null, function (err, queryres) {
+                if (err) {
+                    Logger.error("workformapi/upload: " + err);
+                    callback({
+                        "message": err
+                    });
+                }
+                callback(queryres);
+            })
         })
-    })
 }
 
 

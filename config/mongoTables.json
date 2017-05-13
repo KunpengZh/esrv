@@ -113,10 +113,10 @@
             "required": true,
             "index": true
         },
-        "workCategory":{
+        "workCategory": {
             "type": "String",
             "required": false,
-            "index": false
+            "index": true
         },
         "worklocation": {
             "type": "String",
@@ -134,14 +134,19 @@
             "index": false
         },
         "workhour": {
-            "type": "Mixed",
+            "type": "Number",
+            "required": false,
+            "index": false
+        },
+        "planreturntime": {
+            "type": "String",
             "required": false,
             "index": false
         },
         "returntime": {
             "type": "String",
             "required": false,
-            "index": false
+            "index": true
         },
         "workcomments": {
             "type": "String",
@@ -154,6 +159,31 @@
             "index": false
         },
         "requestStatus": {
+            "type": "String",
+            "required": false,
+            "index": false
+        },
+        "isSecurityTools": {
+            "type": "String",
+            "required": false,
+            "index": false
+        },
+        "securityTools": {
+            "type": "Mixed",
+            "required": false,
+            "index": false
+        },
+        "isSpareParts": {
+            "type": "String",
+            "required": false,
+            "index": false
+        },
+        "spareParts": {
+            "type": "Mixed",
+            "required": false,
+            "index": false
+        },
+        "sanPiaoZhiXing": {
             "type": "String",
             "required": false,
             "index": false

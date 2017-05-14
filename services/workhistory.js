@@ -68,11 +68,11 @@ workhistory.saveWorkForm = function (request, callback) {
                         "serviceCompany": request.company,
                         "creationtime": request.creationtime,
                         "workitem": request.workitem,
-                        "workhour": request.workhour.text?request.workhour.text:'',
-                        "workminutes":request.workhour.minutes?request.workhour.minutes:0,
+                        "workhour": request.workhour,
+                        "workminutes":parseInt(request.workhour?request.workhour:0)*60,
                         "returntime": request.returntime,
                         "perhourwage": parseInt(perhourwage),
-                        "requestwage": parseInt(request.workhour.minutes?request.workhour.minutes:0) * parseInt(perhourwage)
+                        "requestwage": parseInt(request.workhour?request.workhour:0) * parseInt(perhourwage)
                     }
                     mongodb.save(tablename, obj, function (err, saveres) {
                         indicater = indicater + 1;

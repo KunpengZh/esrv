@@ -1548,32 +1548,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         toAddAll: function (source) {
             var haveAll = false;
+            var newsource = [];
             for (var i = 0; i < source.length; i++) {
+                newsource.push(source[i]);
                 if (source[i].name === "All") {
                     haveAll = true;
-                    break;
                 }
             }
+            // var haveAll = false;
+            // for (var i = 0; i < source.length; i++) {
+            //     if (source[i].name === "All") {
+            //         haveAll = true;
+            //         break;
+            //     }
+
+            // }
             if (!haveAll) {
-                source.push({
+                newsource.push({
                     name: "All",
                     attr: ""
                 });
             }
+            return newsource;
         },
         initialstatus: function () {
             var self = this;
             if (this.$store.state.configdoc.companySource.length <= 0) {
                 this.loadConfigData(function () {
-                    self.query.datasource.companySource = self.$store.state.configdoc["companySource"]["data"];
-                    self.toAddAll(self.query.datasource.companySource);
+                    self.query.datasource.companySource = self.toAddAll(self.$store.state.configdoc["companySource"]["data"]);
+                    //self.toAddAll(self.query.datasource.companySource);
                     //self.query.datasource.companySource.push({name:"All",attr:""});
                     // self.request.datasource.companyAdmin = self.$store.state.configdoc["companyAdmin"]["data"];
                     // self.query.datasource.companyEmployee = self.$store.state.configdoc["companyEmployee"]["data"];
                     // self.query.datasource.companyEmployee.push({name:"All",attr:""});
                     // self.request.datasource.workItem = self.$store.state.configdoc["workItem"]["data"];
-                    self.query.datasource.workCategory = self.$store.state.configdoc["workCategory"]["data"];
-                    self.toAddAll(self.query.datasource.workCategory);
+                    self.query.datasource.workCategory = self.toAddAll(self.$store.state.configdoc["workCategory"]["data"]);
+                    //self.toAddAll(self.query.datasource.workCategory);
                     // self.request.datasource.securityTools = self.$store.state.configdoc["securityTools"]["data"];
                     // self.request.datasource.spareParts = self.$store.state.configdoc["spareParts"]["data"];
                     if (self.$store.state.curUser.isAdmin) {
@@ -1585,16 +1595,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             } else {
                 if (this.query.datasource.companySource.length <= 0) {
-                    this.query.datasource.companySource = this.$store.state.configdoc["companySource"]["data"];
-                    self.toAddAll(self.query.datasource.companySource);
+                    this.query.datasource.companySource = self.toAddAll(this.$store.state.configdoc["companySource"]["data"]);
+                    //self.toAddAll(self.query.datasource.companySource);
                     // this.request.datasource.companyAdmin = this.$store.state.configdoc["companyAdmin"]["data"];
                     // this.query.datasource.companyEmployee = this.$store.state.configdoc["companyEmployee"]["data"];
                     // self.query.datasource.companyEmployee.push({name:"All",attr:""});
                     // this.request.datasource.workItem = this.$store.state.configdoc["workItem"]["data"];
                     // self.request.datasource.securityTools = self.$store.state.configdoc["securityTools"]["data"];
                     // self.request.datasource.spareParts = self.$store.state.configdoc["spareParts"]["data"];
-                    this.query.datasource.workCategory = this.$store.state.configdoc["workCategory"]["data"];
-                    self.toAddAll(self.query.datasource.workCategory);
+                    this.query.datasource.workCategory = self.toAddAll(this.$store.state.configdoc["workCategory"]["data"]);
+                    //self.toAddAll(self.query.datasource.workCategory);
                 }
                 if (self.$store.state.curUser.isAdmin) {
                     self.isAdmin = true;
@@ -2522,6 +2532,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (!this.validateRequestForm()) {
                 return;
             }
+            if (this.request.data.workhour === null || this.request.data.workhour === "") {
+                this.$notify.error({
+                    title: 'Error',
+                    message: "工作数量不能为空"
+                });
+                return false;
+            }
             if (this.request.data.returntime === "") {
                 this.$notify.error({
                     title: 'Error',
@@ -2566,8 +2583,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     });
                     self.request.data = {
                         requestId: "",
-                        company: "",
-                        requester: "",
+                        company: self.request.data.company,
+                        requester: self.request.data.requester,
                         creationtime: "",
                         workitem: "",
                         workCategory: "",
@@ -2586,8 +2603,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         isSecurityTools: "",
                         sanPiaoZhiXing: ""
                     };
-                    this.request.datasource.companyAdmin = [];
-                    this.request.datasource.companyEmployee = [];
+                    //this.request.datasource.companyAdmin = [];
+                    //this.request.datasource.companyEmployee = [];
                     this.request.datasource.workItem = [];
                     self.$http.get('/workformapi/requestid').then(function (res) {
                         var strbody = res.body;
@@ -5578,4 +5595,4 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ })
 ]),[64]);
-//# sourceMappingURL=app.323150fcbf78c0eb3634.js.map
+//# sourceMappingURL=app.be1dba19085efe394344.js.map

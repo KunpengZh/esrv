@@ -35,7 +35,7 @@ var app = express();
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'public'));
 app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
 // app.set('view engine', 'ejs');
@@ -83,6 +83,7 @@ app.use(function(req,res,next){
 
 
 app.use('/', index);
+app.use('/printWorkForm', index);
 app.use('/login', loginController);
 
 app.use('/esrvapi', isLoggedIn);

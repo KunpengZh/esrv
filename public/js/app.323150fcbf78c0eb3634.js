@@ -4,11 +4,14 @@ webpackJsonp([1],Array(23).concat([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_HomeLayout__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_HomeLayout__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_HomeLayout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_HomeLayout__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Login__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Login__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Login__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_PrintWorkForm__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_PrintWorkForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_PrintWorkForm__);
+
 
 
 
@@ -29,6 +32,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_1_vue
     path: '/home',
     name: 'HomeLayout',
     component: __WEBPACK_IMPORTED_MODULE_2__components_HomeLayout___default.a
+  }, {
+    path: '/printWorkForm',
+    name: 'printWorkForm',
+    component: __WEBPACK_IMPORTED_MODULE_4__components_PrintWorkForm___default.a
+
   }]
 }));
 
@@ -46,13 +54,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_1_vue
 
 
 /* styles */
-__webpack_require__(88)
+__webpack_require__(91)
 
 var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(52),
   /* template */
-  __webpack_require__(105),
+  __webpack_require__(112),
   /* scopeId */
   null,
   /* cssModules */
@@ -233,6 +241,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'ConfigDocument',
@@ -249,6 +261,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             showlevel2: false,
             showlevel3: false,
             showlevel4: false,
+            showSecurityTools: false,
+            showSpareParts: false,
             companySource: true,
             companyAdmin: false,
             companyEmployee: false,
@@ -285,7 +299,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.createFormVisible = false;
             this.newTextInput = "";
             this.attr = "";
-            this.workCategory = "", this.newTextInputList = [];
+            this.workCategory = "";
+            this.newTextInputList = [];
             this.isCreateModel = false;
             this.isEditModel = false;
             this.originalText = '';
@@ -384,6 +399,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         switchView: function (viewname) {
             switch (viewname) {
                 case "/companySource":
+                    this.showSecurityTools = false;
+                    this.showSpareParts = false;
                     this.companySource = true;
                     this.companyAdmin = false;
                     this.companyEmployee = false;
@@ -399,6 +416,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
                 case "/companyAdmin":
+                    this.showSecurityTools = false;
+                    this.showSpareParts = false;
                     this.companySource = false;
                     this.companyAdmin = true;
                     this.companyEmployee = false;
@@ -414,6 +433,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
                 case "/companyEmployee":
+                    this.showSecurityTools = false;
+                    this.showSpareParts = false;
                     this.companySource = false;
                     this.companyAdmin = false;
                     this.companyEmployee = true;
@@ -429,6 +450,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
                 case "/workItem":
+                    this.showSecurityTools = false;
+                    this.showSpareParts = false;
                     this.companySource = false;
                     this.companyAdmin = false;
                     this.companyEmployee = false;
@@ -445,6 +468,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.workCategoryDataSource = this.buildConfigDataSource(this.$store.state.configdoc['workCategory']['data']);
                     break;
                 case "/showWorkCategory":
+                    this.showSecurityTools = false;
+                    this.showSpareParts = false;
                     this.companySource = false;
                     this.companyAdmin = false;
                     this.companyEmployee = false;
@@ -459,12 +484,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.ConfigDataSource = this.buildConfigDataSource(this.$store.state.configdoc['workCategory']['data']);
                     //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
+                case "/securityTools":
+                    this.companySource = false;
+                    this.companyAdmin = false;
+                    this.companyEmployee = false;
+                    this.workItem = false;
+                    this.showWorkCategory = false;
+                    this.showSecurityTools = true;
+                    this.showSpareParts = false;
+                    this.currentCategory = "securityTools";
+                    this.uplaodDialogTitle = "上传安全工具";
+                    this.collabel = "安全工具";
+                    this.showlevel2 = false;
+                    this.showlevel3 = false;
+                    this.showlevel4 = false;
+                    this.ConfigDataSource = this.buildConfigDataSource(this.$store.state.configdoc['securityTools']['data']);
+                    //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
+                    break;
+                case "/spareParts":
+                    this.companySource = false;
+                    this.companyAdmin = false;
+                    this.companyEmployee = false;
+                    this.workItem = false;
+                    this.showWorkCategory = false;
+                    this.showSecurityTools = false;
+                    this.showSpareParts = true;
+                    this.currentCategory = "spareParts";
+                    this.uplaodDialogTitle = "上传备品备件";
+                    this.collabel = "备品备件";
+                    this.showlevel2 = false;
+                    this.showlevel3 = false;
+                    this.showlevel4 = false;
+                    this.ConfigDataSource = this.buildConfigDataSource(this.$store.state.configdoc['spareParts']['data']);
+                    //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
+                    break;
                 default:
                     this.companySource = true;
                     this.companyAdmin = false;
                     this.companyEmployee = false;
                     this.workItem = false;
                     this.showWorkCategory = false;
+                    this.showSecurityTools = false;
+                    this.showSpareParts = false;
                     this.currentCategory = "companySource";
                     this.uplaodDialogTitle = "上传派工单位";
                     this.collabel = "派工单位";
@@ -661,19 +722,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LeftSideBar__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LeftSideBar__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LeftSideBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_LeftSideBar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Home__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Home__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Home___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Home__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_UserManager__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_UserManager__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_UserManager___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_UserManager__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ConfigDocument__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ConfigDocument__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ConfigDocument___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_ConfigDocument__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_WorkForm__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_WorkForm__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_WorkForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_WorkForm__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_WorkFormDetail__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_WorkFormDetail__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_WorkFormDetail___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_WorkFormDetail__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_QueryWorkForm__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_QueryWorkForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_QueryWorkForm__);
 //
 //
 //
@@ -717,6 +780,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -731,7 +795,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         leftSideBar: __WEBPACK_IMPORTED_MODULE_0__components_LeftSideBar___default.a,
         WorkFormDetail: __WEBPACK_IMPORTED_MODULE_6__components_WorkFormDetail___default.a,
-        WorkForm: __WEBPACK_IMPORTED_MODULE_5__components_WorkForm___default.a
+        WorkForm: __WEBPACK_IMPORTED_MODULE_5__components_WorkForm___default.a,
+        QueryWorkForm: __WEBPACK_IMPORTED_MODULE_7__components_QueryWorkForm___default.a
     },
     data: function () {
         return {
@@ -745,11 +810,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         RightComponentEvent: function (options) {
             this.opt.data = options.data;
+            this.opt.action = options.action;
+            this.opt.previousView = options.previousView;
             this.rightComponentClass = options.class;
-            this.currentView = options.viewName;
             if (options.menuitems) {
                 this.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */][options.menuitems];
             }
+            this.currentView = options.viewName;
         },
         LeftSideBarEvent: function (viewName) {
             var self = this;
@@ -779,6 +846,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 case "workform":
                     this.switchViewEvent({
                         "viewName": "WorkForm"
+                    });
+                    break;
+                case "queryWorkform":
+                    this.switchViewEvent({
+                        "viewName": "QueryWorkForm"
                     });
                     break;
                 default:
@@ -813,6 +885,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     self.fullscreenLoading = false;
                     self.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */].WorkForm;
                     break;
+                case "QueryWorkForm":
+                    self.currentView = __WEBPACK_IMPORTED_MODULE_7__components_QueryWorkForm___default.a;
+                    self.fullscreenLoading = false;
+                    self.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */].queryWorkform;
+                    break;
                 default:
                     self.fullscreenLoading = false;
                     self.menuitems = [];
@@ -846,6 +923,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         logout: function () {
+            this.$store.state.qcriteria = "";
+            this.$store.state.curUser = {
+                username: "",
+                role: "",
+                isAdmin: false,
+                company: "",
+                fullname: "",
+                isAuthenticated: false
+            };
+            this.$store.state.configdoc = {
+                companySource: [],
+                companyAdmin: [],
+                companyEmployee: [],
+                workItem: [],
+                workCategory: [],
+                spareParts: [],
+                securityTools: []
+            };
             this.$http.get("/logout").then(function (res) {
                 this.$router.push({
                     path: '/login'
@@ -904,16 +999,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'left-side-bar',
@@ -936,6 +1021,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     break;
                 case "/workform":
                     this.$emit('LeftSideBarEvent', 'workform');
+                    break;
+                case "/queryWorkform":
+                    this.$emit('LeftSideBarEvent', 'queryWorkform');
                     break;
             }
         }
@@ -1007,9 +1095,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             let options = { emulateJSON: true };
             this.$http.post("/login", { "username": this.username, "password": this.password }, options).then(function (response) {
                 if (response.body && response.body.isAuthenticated) {
-                    this.$store.state.curUser.username = response.body.user;
+                    this.$store.state.curUser.username = response.body.username;
                     this.$store.state.curUser.isAuthenticated = response.body.isAuthenticated;
                     this.$store.state.curUser.role = response.body.role;
+                    this.$store.state.curUser.fullname = response.body.fullname;
+                    this.$store.state.curUser.company = response.body.company;
                     if (response.body.role === "Admin") {
                         this.$store.state.curUser.isAdmin = true;
                     } else {
@@ -1028,6 +1118,561 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'WorkFormPrint',
+    data: function () {
+        var requestData;
+        if (window.sessionStorage) {
+            if (sessionStorage.getItem("ToPrintWorkFormData")) {
+                requestData = JSON.parse(sessionStorage.getItem("ToPrintWorkFormData"));
+                console.log(requestData);
+            } else {
+                requestData = {
+                    label: {
+                        formTitle: "献县供服公司工作派工单",
+                        requestId: "编号:",
+                        company: "派工单位",
+                        requester: "派工人员",
+                        creationtime: "派工时间",
+                        workitem: "工作任务",
+                        workCategory: "任务类别",
+                        worklocation: "工作地点",
+                        workers: "作业人员",
+                        workersnumber: "工作人数",
+                        workhour: "工作数量",
+                        returntime: "实际返回时间",
+                        planreturntime: "计划返回时间",
+                        isSecurityTools: "领取安全工具",
+                        isSpareParts: "领取备品备件",
+                        securityTools: "安全工具",
+                        spareParts: "备品备件",
+                        sanPiaoZhiXing: "三票执行",
+                        workcomments: "工作内容"
+                    },
+                    data: this.options.data,
+                    datasource: {
+                        companySource: [],
+                        companyAdmin: [],
+                        companyEmployee: [],
+                        workItem: [],
+                        workCategory: [],
+                        securityTools: [],
+                        spareParts: []
+                    },
+                    previousValue: {
+                        company: "",
+                        workCategory: ""
+                    }
+                };
+            }
+        } else {
+            this.$notify.error({
+                title: 'Error',
+                message: "你的浏览器不支持此功能，请升级"
+            });
+            return {};
+        };
+        return {
+            request: this.buildRequestData(requestData)
+        };
+    },
+    methods: {
+        buildRequestData: function (data) {
+            var requestData = data;
+            var planreturntime = "";
+            if (data.data.planreturntime) {
+                planreturntime = data.data.planreturntime.replace(/\T/g, " ");
+                planreturntime = planreturntime.slice(0, 19);
+            }
+
+            var workers = "";
+            for (var i = 0; i < data.data.workers.length; i++) {
+                if (i === 0) {
+                    workers = data.data.workers[i];
+                } else {
+                    workers = workers + " , " + data.data.workers[i];
+                }
+            };
+
+            var isSecurityTools = "";
+            if (data.data.isSecurityTools === "Yes") {
+                isSecurityTools = "是";
+            } else {
+                isSecurityTools = "否";
+            }
+
+            var isSpareParts = "";
+            if (data.data.isSpareParts === "Yes") {
+                isSpareParts = "是";
+            } else {
+                isSpareParts = "否";
+            }
+
+            var sanPiaoZhiXing = "";
+            if (data.data.sanPiaoZhiXing === "Yes") {
+                sanPiaoZhiXing = "是";
+            } else {
+                sanPiaoZhiXing = "否";
+            }
+
+            // var securityTools = "";
+            // for (var i = 0; i < data.data.securityTools.length; i++) {
+            //     if (i === 0) {
+            //         securityTools = data.data.securityTools[i];
+            //     } else {
+            //         securityTools =securityTools+ " , " + data.data.securityTools[i];
+            //     }
+            // };
+
+            // var spareParts = "";
+            // for (var i = 0; i < data.data.spareParts.length; i++) {
+            //     if (i === 0) {
+            //         spareParts = data.data.spareParts[i];
+            //     } else {
+            //         spareParts = spareParts+" , " + data.data.spareParts[i];
+            //     }
+            // };
+            var securityTools = [];
+            for (var i = 0; i < data.data.securityTools.length; i++) {
+                securityTools.push(i + 1 + ". " + data.data.securityTools[i]);
+            };
+
+            var spareParts = [];
+            for (var i = 0; i < data.data.spareParts.length; i++) {
+                spareParts.push(i + 1 + ". " + data.data.spareParts[i]);
+            };
+
+            requestData.data.planreturntime = planreturntime;
+            requestData.data.workers = workers;
+            requestData.data.isSecurityTools = isSecurityTools;
+            requestData.data.isSpareParts = isSpareParts;
+            requestData.data.sanPiaoZhiXing = sanPiaoZhiXing;
+            requestData.data.securityTools = securityTools;
+            requestData.data.spareParts = spareParts;
+            return requestData;
+        }
+
+    }
+});
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'QueryWorkHome',
+    data: function () {
+        return {
+            WorkFormDataSource: [],
+            fullscreenLoading: false,
+            isAdmin: false,
+            query: {
+                label: {
+                    formTitle: "综合查询模块:",
+                    requestId: "派工单号:",
+                    company: "派工单位:",
+                    creationtime: "派工时间:",
+                    workers: "工作人员:",
+                    workCategory: "任务类别:",
+                    returntime: "实际返回时间:"
+                },
+                criteria: {
+                    requestId: "",
+                    company: "",
+                    creationtime: "",
+                    workers: [],
+                    workCategory: "",
+                    returntime: ""
+                },
+                datasource: {
+                    companySource: [],
+                    companyAdmin: [],
+                    companyEmployee: [],
+                    workItem: [],
+                    workCategory: [],
+                    securityTools: [],
+                    spareParts: []
+                },
+                previousValue: {
+                    company: ""
+                }
+            }
+        };
+    },
+    mounted: function () {
+        this.$nextTick(function () {
+            var self = this;
+            if (!this.$store.state.curUser.isAuthenticated) {
+                this.getCureUser(this.initialstatus);
+            } else {
+                this.initialstatus();
+            }
+        });
+    },
+    methods: {
+        queryWorkForm: function () {
+            var qcriteria = {};
+            if (this.query.criteria.requestId !== "") {
+                qcriteria.requestId = this.query.criteria.requestId;
+            }
+            if (this.query.criteria.company !== "" && this.query.criteria.company !== "All") {
+                qcriteria.company = this.query.criteria.company;
+            }
+            if (this.query.criteria.creationtime !== "" && this.query.criteria.creationtime[0] !== null && this.query.criteria.creationtime[1] !== null) {
+                qcriteria.creationtime = this.query.criteria.creationtime;
+            }
+            if (this.query.criteria.workers.length > 0) {
+                var needworks = true;
+                var workers = this.query.criteria.workers;
+                for (var i = 0; i < workers.length; i++) {
+                    if (workers[i] === "All") {
+                        needworks = false;
+                        break;
+                    }
+                }
+
+                if (needworks) {
+                    qcriteria.workers = this.query.criteria.workers;
+                }
+            }
+            if (this.query.criteria.workCategory !== "" && this.query.criteria.workCategory !== "All") {
+                qcriteria.workCategory = this.query.criteria.workCategory;
+            }
+            if (this.query.criteria.returntime !== "" && this.query.criteria.returntime[0] !== null && this.query.criteria.returntime[1] !== null) {
+                qcriteria.returntime = this.query.criteria.returntime;
+            }
+
+            this.queryData(qcriteria);
+        },
+        queryData: function (qcriteria) {
+            var self = this;
+            this.$store.state.qcriteria = qcriteria;
+            this.$http.post("/queryWorkForm", { data: qcriteria }).then(function (res) {
+                self.WorkFormDataSource = res.body;
+            });
+        },
+        getCureUser: function (callback) {
+            self.$http.get('/login/isAuthenticated').then(response => {
+                var isAuthenticated = false;
+                if (response.body && response.body.isAuthenticated) {
+                    isAuthenticated = response.body.isAuthenticated;
+                }
+                if (isAuthenticated) {
+                    self.$store.state.curUser.username = response.body.username;
+                    self.$store.state.curUser.isAuthenticated = response.body.isAuthenticated;
+                    self.$store.state.curUser.role = response.body.role;
+                    self.$store.state.curUser.company = response.body.company;
+                    this.$store.state.curUser.fullname = response.body.fullname;
+                    if (response.body.role === "Admin") {
+                        self.$store.state.curUser.isAdmin = true;
+                    } else {
+                        self.$store.state.curUser.isAdmin = false;
+                    }
+                }
+                if (callback) {
+                    callback();
+                }
+            });
+        },
+        toAddAll: function (source) {
+            var haveAll = false;
+            for (var i = 0; i < source.length; i++) {
+                if (source[i].name === "All") {
+                    haveAll = true;
+                    break;
+                }
+            }
+            if (!haveAll) {
+                source.push({
+                    name: "All",
+                    attr: ""
+                });
+            }
+        },
+        initialstatus: function () {
+            var self = this;
+            if (this.$store.state.configdoc.companySource.length <= 0) {
+                this.loadConfigData(function () {
+                    self.query.datasource.companySource = self.$store.state.configdoc["companySource"]["data"];
+                    self.toAddAll(self.query.datasource.companySource);
+                    //self.query.datasource.companySource.push({name:"All",attr:""});
+                    // self.request.datasource.companyAdmin = self.$store.state.configdoc["companyAdmin"]["data"];
+                    // self.query.datasource.companyEmployee = self.$store.state.configdoc["companyEmployee"]["data"];
+                    // self.query.datasource.companyEmployee.push({name:"All",attr:""});
+                    // self.request.datasource.workItem = self.$store.state.configdoc["workItem"]["data"];
+                    self.query.datasource.workCategory = self.$store.state.configdoc["workCategory"]["data"];
+                    self.toAddAll(self.query.datasource.workCategory);
+                    // self.request.datasource.securityTools = self.$store.state.configdoc["securityTools"]["data"];
+                    // self.request.datasource.spareParts = self.$store.state.configdoc["spareParts"]["data"];
+                    if (self.$store.state.curUser.isAdmin) {
+                        self.isAdmin = true;
+                    } else {
+                        self.isAdmin = false;
+                    }
+                    self.initialRequestData();
+                });
+            } else {
+                if (this.query.datasource.companySource.length <= 0) {
+                    this.query.datasource.companySource = this.$store.state.configdoc["companySource"]["data"];
+                    self.toAddAll(self.query.datasource.companySource);
+                    // this.request.datasource.companyAdmin = this.$store.state.configdoc["companyAdmin"]["data"];
+                    // this.query.datasource.companyEmployee = this.$store.state.configdoc["companyEmployee"]["data"];
+                    // self.query.datasource.companyEmployee.push({name:"All",attr:""});
+                    // this.request.datasource.workItem = this.$store.state.configdoc["workItem"]["data"];
+                    // self.request.datasource.securityTools = self.$store.state.configdoc["securityTools"]["data"];
+                    // self.request.datasource.spareParts = self.$store.state.configdoc["spareParts"]["data"];
+                    this.query.datasource.workCategory = this.$store.state.configdoc["workCategory"]["data"];
+                    self.toAddAll(self.query.datasource.workCategory);
+                }
+                if (self.$store.state.curUser.isAdmin) {
+                    self.isAdmin = true;
+                } else {
+                    self.isAdmin = false;
+                }
+
+                self.initialRequestData();
+            }
+        },
+        loadConfigData: function (callback) {
+            this.$http.get('/esrvapi/getallconfigdoc').then(function (res) {
+                var docList = res.body;
+                for (var i = 0; i < docList.length; i++) {
+                    var key = docList[i].category;
+                    this.$store.state.configdoc[key] = docList[i];
+                }
+                if (callback) {
+                    callback();
+                }
+            });
+        },
+        setInitialCriteria: function () {
+            var self = this;
+            var criteria = {
+                requestId: self.$store.state.qcriteria.requestId ? self.$store.state.qcriteria.requestId : "",
+                company: self.$store.state.qcriteria.company ? self.$store.state.qcriteria.company : "",
+                creationtime: self.$store.state.qcriteria.creationtime ? self.$store.state.qcriteria.creationtime : "",
+                workers: self.$store.state.qcriteria.workers ? self.$store.state.qcriteria.workers : [],
+                workCategory: self.$store.state.qcriteria.workCategory ? self.$store.state.qcriteria.workCategory : "",
+                returntime: self.$store.state.qcriteria.returntime ? self.$store.state.qcriteria.returntime : ""
+            };
+            self.query.criteria = criteria;
+            self.queryWorkForm();
+        },
+        initialRequestData: function () {
+            var self = this;
+            self.query.criteria.company = self.$store.state.curUser.company;
+            self.handleCompanyChange(self.query.criteria.company);
+            if (self.$store.state.qcriteria !== "") {
+                self.setInitialCriteria();
+            }
+        },
+        handleCompanyChange: function (value) {
+            var self = this;
+            if (value !== this.query.previousValue.company) {
+                self.updateCompanyEmployee(value);
+                self.query.previousValue.company = value;
+            }
+        },
+        updateCompanyEmployee: function (value) {
+            var source = this.$store.state.configdoc["companyEmployee"]["data"];
+            var companyEmployeeSource = [{
+                name: "All",
+                attr: ""
+            }];
+            for (var i = 0; i < source.length; i++) {
+                if (source[i].attr === value) {
+                    companyEmployeeSource.push(source[i]);
+                }
+            }
+            this.$set(this.query.datasource, "companyEmployee", companyEmployeeSource);
+        },
+        handleEdit: function (index, row) {
+            this.$emit('RightComponentEvent', {
+                data: row,
+                viewName: "WorkFormDetail",
+                class: "animated bounceInRight",
+                menuitems: "WorkFormDetail",
+                action: "Edit",
+                previousView: "QueryWorkForm"
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1335,99 +1980,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 59 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -1460,23 +2017,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ["options"],
     data() {
         return {
-            WorkFormDataSource: [],
-            dialogFormVisible: false,
-            request: {
-                label: {
-                    formTitle: "献县供服公司工作派工单",
-                    requestId: "编号:",
-                    company: "派工单位",
-                    requester: "派工人员",
-                    creationtime: "派工时间",
-                    workitem: "工作任务",
-                    workCategory: "任务类别",
-                    worklocation: "工作地点",
-                    workers: "作业人员",
-                    workersnumber: "工作人数",
-                    workhour: "工时",
-                    returntime: "返回时间"
-                },
+            WorkFormDataSource: []
+        };
+    },
+    mounted: function () {
+        this.$nextTick(function () {
+            if (this.$store.state.curUser.isAuthenticated) {
+                this.getCureUser();
+            }
+            this.$http.get("/workformapi/getr").then(function (res) {
+                this.WorkFormDataSource = res.body;
+            });
+        });
+    },
+    methods: {
+        getCureUser: function () {
+            this.$http.get('/login/isAuthenticated').then(response => {
+                var isAuthenticated = false;
+                if (response.body && response.body.isAuthenticated) {
+                    isAuthenticated = response.body.isAuthenticated;
+                }
+                if (isAuthenticated) {
+                    this.$store.state.curUser.username = response.body.username;
+                    this.$store.state.curUser.isAuthenticated = response.body.isAuthenticated;
+                    this.$store.state.curUser.role = response.body.role;
+                    this.$store.state.curUser.company = response.body.company;
+                    this.$store.state.curUser.fullname = response.body.fullname;
+                    if (response.body.role === "Admin") {
+                        this.$store.state.curUser.isAdmin = true;
+                    } else {
+                        this.$store.state.curUser.isAdmin = false;
+                    }
+                    this.$router.push({
+                        path: '/home'
+                    });
+                } else {
+                    this.$router.push({
+                        path: '/login'
+                    });
+                }
+            });
+        },
+        handleEdit: function (index, row) {
+            this.$emit('RightComponentEvent', {
+                data: row,
+                viewName: "WorkFormDetail",
+                class: "animated bounceInRight",
+                menuitems: "WorkFormDetail",
+                action: "Edit",
+                previousView: "WorkForm"
+            });
+        },
+        switchView: function () {
+            this.$emit('RightComponentEvent', {
                 data: {
                     requestId: "",
                     company: "",
@@ -1487,292 +2080,85 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     worklocation: "",
                     workers: [],
                     workersnumber: "",
-                    workhour: {
-                        text: "",
-                        minutes: 0
-                    },
+                    workhour: "",
+                    planreturntime: "",
                     returntime: "",
                     workcomments: "",
                     workdocument: [],
-                    requestStatus: "New"
+                    requestStatus: "New",
+                    securityTools: [],
+                    spareParts: [],
+                    isSpareParts: "",
+                    isSecurityTools: "",
+                    sanPiaoZhiXing: ""
                 },
-                datasource: {
-                    companySource: [],
-                    companyAdmin: [],
-                    companyEmployee: [],
-                    workItem: [],
-                    workCategory: []
-                },
-                previousValue: {
-                    company: "",
-                    workCategory: ""
-                }
-            }
-        };
-    },
-    mounted: function () {
-        this.$nextTick(function () {
-            this.$http.get("/workformapi/getr").then(function (res) {
-                this.WorkFormDataSource = res.body;
-            });
-        });
-    },
-    computed: {
-        workersnumber: function () {
-            return this.request.data.workers.length;
-        }
-    },
-    methods: {
-        handleCompanyChange: function (value) {
-            if (value !== this.request.previousValue.company) {
-                this.request.data.requester = "";
-                this.request.data.workers = [];
-                this.updateCompanyAdmin(value);
-                this.updateCompanyEmployee(value);
-                this.request.previousValue.company = value;
-            }
-        },
-        updateCompanyAdmin: function (value) {
-            var source = this.$store.state.configdoc["companyAdmin"]["data"];
-            var companyAdminSource = [];
-            for (var i = 0; i < source.length; i++) {
-                if (source[i].attr === value) {
-                    companyAdminSource.push(source[i]);
-                }
-            }
-            this.$set(this.request.datasource, "companyAdmin", companyAdminSource);
-        },
-        updateCompanyEmployee: function (value) {
-            var source = this.$store.state.configdoc["companyEmployee"]["data"];
-            var companyEmployeeSource = [];
-            for (var i = 0; i < source.length; i++) {
-                if (source[i].attr === value) {
-                    companyEmployeeSource.push(source[i]);
-                }
-            }
-            this.$set(this.request.datasource, "companyEmployee", companyEmployeeSource);
-        },
-        handleWorkCategoryChange: function (value) {
-            if (value !== this.request.previousValue.workCategory) {
-                this.request.data.workitem = "";
-                this.updateWorkItems(value);
-                this.request.previousValue.workCategory = value;
-            }
-        },
-        updateWorkItems: function (value) {
-            var source = this.$store.state.configdoc["workItem"]["data"];
-            var workItemSource = [];
-            for (var i = 0; i < source.length; i++) {
-                if (source[i].workCategory === value) {
-                    workItemSource.push(source[i]);
-                }
-            }
-            this.$set(this.request.datasource, "workItem", workItemSource);
-        },
-        handleEdit: function (index, row) {
-            this.$emit('RightComponentEvent', {
-                data: row,
                 viewName: "WorkFormDetail",
                 class: "animated bounceInRight",
-                menuitems: "WorkFormDetail"
+                menuitems: "WorkFormDetail",
+                viewName: "WorkFormDetail",
+                previousView: "WorkForm",
+                action: "Create"
             });
-        },
-        saveAndCreateNew: function (index, row) {
-            var self = this;
-            this.saveRequest(function () {
-                self.restoreRequestStatus();
-                self.$http.get('/workformapi/requestid').then(function (res) {
-                    var strbody = res.body;
-                    if (!strbody.requestId || !strbody.strtime) {
-                        this.$notify.error({
-                            title: 'Error',
-                            message: "未能从服务器取得派工单编号"
-                        });
-                        return;
-                    }
-                    self.request.data.creationtime = strbody.strtime;
-                    self.request.data.requestId = strbody.requestId;
-                });
-            });
-        },
-        saveRequestForm: function () {
-            var self = this;
-            this.saveRequest(function () {
-                self.cancel();
-            });
-        },
-        saveRequest: function (callback) {
-            this.request.data.workersnumber = this.workersnumber;
-            if (!this.validateRequestForm()) {
-                return;
-            }
-            this.$http.post("/workformapi/save", {
-                data: this.request.data
-            }).then(function (res) {
-                if (res.status === 200 && res.body.requestId) {
-                    this.$notify.info({
-                        title: '保存成功',
-                        message: "保存成功"
-                    });
-                    var tsource = this.WorkFormDataSource;
-                    tsource.push(res.body);
-                    this.$set(this.WorkFormDataSource, tsource);
-                    if (callback) {
-                        callback();
-                    }
-                } else {
-                    this.$notify.error({
-                        title: 'Error',
-                        message: res.body
-                    });
-                    return;
-                }
-            });
-        },
-        restoreRequestStatus: function () {
-            for (let key in this.request.data) {
-                this.request.data[key] = '';
-            }
-            this.request.data.requestStatus = "New";
-            this.request.data.workhour = {
-                text: "",
-                minutes: 0
-            };
-            this.request.datasource.companyAdmin = [];
-            this.request.datasource.companyEmployee = [];
-            this.request.datasource.workItem = [];
-        },
-        cancel: function () {
-            this.dialogFormVisible = false;
-            this.restoreRequestStatus();
-        },
-        switchView: function () {
-            this.handleCreate();
-        },
-        handleCreate: function () {
-            var self = this;
-            if (this.$store.state.configdoc.companySource.length <= 0) {
-                this.loadConfigData(function () {
-                    self.$http.get('/workformapi/requestid').then(function (res) {
-                        var strbody = res.body;
-                        if (!strbody.requestId || !strbody.strtime) {
-                            this.$notify.error({
-                                title: 'Error',
-                                message: "未能从服务器取得派工单编号"
-                            });
-                            return;
-                        }
-                        self.request.data.creationtime = strbody.strtime;
-                        self.request.data.requestId = strbody.requestId;
-                        self.dialogFormVisible = true;
-                    });
-                });
-            } else {
-                if (this.request.datasource.companySource.length <= 0) {
-                    this.request.datasource.companySource = this.$store.state.configdoc["companySource"]["data"];
-                    //this.request.datasource.companyAdmin = this.$store.state.configdoc["companyAdmin"]["data"];
-                    //this.request.datasource.companyEmployee = this.$store.state.configdoc["companyEmployee"]["data"];
-                    //this.request.datasource.workItem = this.$store.state.configdoc["workItem"]["data"];
-                    this.request.datasource.workCategory = this.$store.state.configdoc["workCategory"]["data"];
-                }
-                self.$http.get('/workformapi/requestid').then(function (res) {
-                    var strbody = res.body;
-                    if (!strbody.requestId || !strbody.strtime) {
-                        this.$notify.error({
-                            title: 'Error',
-                            message: "未能从服务器取得派工单编号"
-                        });
-                        return;
-                    }
-                    self.request.data.creationtime = strbody.strtime;
-                    self.request.data.requestId = strbody.requestId;
-                    self.dialogFormVisible = true;
-                });
-            }
-        },
-        loadConfigData: function (callback) {
-            this.$http.get('/esrvapi/getallconfigdoc').then(function (res) {
-                var docList = res.body;
-                for (var i = 0; i < docList.length; i++) {
-                    var key = docList[i].category;
-                    this.$store.state.configdoc[key] = docList[i];
-                }
-                this.request.datasource.companySource = this.$store.state.configdoc["companySource"]["data"];
-                //this.request.datasource.companyAdmin = this.$store.state.configdoc["companyAdmin"]["data"];
-                //this.request.datasource.companyEmployee = this.$store.state.configdoc["companyEmployee"]["data"];
-                //this.request.datasource.workItem = this.$store.state.configdoc["workItem"]["data"];
-                this.request.datasource.workCategory = this.$store.state.configdoc["workCategory"]["data"];
-                if (callback) {
-                    callback();
-                }
-            });
-        },
-        validateRequestForm: function () {
-            if (this.request.data.company === "") {
-                this.$notify.error({
-                    title: 'Error',
-                    message: "派工单位不能为空"
-                });
-                return false;
-            }
-            if (this.request.data.requester === "") {
-                this.$notify.error({
-                    title: 'Error',
-                    message: "派工人员不能为空"
-                });
-                return false;
-            }
-            if (this.request.data.workitem === "") {
-                this.$notify.error({
-                    title: 'Error',
-                    message: "工作任务不能为空"
-                });
-                return false;
-            }
-            if (this.request.data.worklocation === "") {
-                this.$notify.error({
-                    title: 'Error',
-                    message: "工作地点不能为空"
-                });
-                return false;
-            }
-            if (this.request.data.workers.length <= 0) {
-                this.$notify.error({
-                    title: 'Error',
-                    message: "作业人员不能为空"
-                });
-                return false;
-            }
-            if (this.request.data.workCategory === "") {
-                this.$notify.error({
-                    title: 'Error',
-                    message: "任务类别不能为空"
-                });
-                return false;
-            }
-            // var returntime = this.request.data.returntime;
-            // if (returntime !== "") {
-            //     var returntimestamp = Date.parse(new Date(returntime)) / 1000 / 60;
-            //     var createtimestamp = Date.parse(new Date(this.request.data.creationtime)) / 1000 / 60;
-            //     if (returntimestamp <= createtimestamp) {
-            //         this.$notify.error({
-            //             title: 'Error',
-            //             message: "返回时间不能早于派工时间"
-            //         });
-            //         return false;
-            //     }
-            // }
-            return true;
         }
     }
 });
 
 /***/ }),
-/* 60 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1906,10 +2292,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ["options"],
     data() {
         return {
+            previousView: this.options.previousView,
             isWorkFormClosed: false,
-            isEdithModel: true,
+            isEdithModel: false,
             dialogFormVisible: false,
+            action: this.options.action,
+            isCreateModel: false,
             uplaodDialogTitle: "上传现场照片",
+            lockSecurityTools: true,
+            lockSpareParts: true,
             request: {
                 label: {
                     formTitle: "献县供服公司工作派工单",
@@ -1922,8 +2313,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     worklocation: "工作地点",
                     workers: "作业人员",
                     workersnumber: "工作人数",
-                    workhour: "工时",
-                    returntime: "返回时间"
+                    workhour: "工作数量",
+                    returntime: "实际返回时间",
+                    planreturntime: "计划返回时间",
+                    isSecurityTools: "领取安全工具",
+                    isSpareParts: "领取备品备件",
+                    securityTools: "安全工具",
+                    spareParts: "备品备件",
+                    sanPiaoZhiXing: "三票执行"
                 },
                 data: this.options.data,
                 datasource: {
@@ -1931,7 +2328,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     companyAdmin: [],
                     companyEmployee: [],
                     workItem: [],
-                    workCategory: []
+                    workCategory: [],
+                    securityTools: [],
+                    spareParts: []
+                },
+                previousValue: {
+                    company: "",
+                    workCategory: ""
                 }
             },
             workdocuments: [],
@@ -1941,32 +2344,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function () {
         this.$nextTick(function () {
             var self = this;
-            if (this.request.data.requestStatus === "Closed") {
-                this.isWorkFormClosed = true;
+            if (!this.$store.state.curUser.isAuthenticated) {
+                this.getCureUser(this.initialstatus);
             } else {
-                this.isWorkFormClosed = false;
+                this.initialstatus();
             }
-            if (this.$store.state.configdoc.companySource.length <= 0) {
-                this.loadConfigData(function () {
-
-                    self.request.datasource.companySource = self.$store.state.configdoc["companySource"]["data"];
-                    self.request.datasource.companyAdmin = self.$store.state.configdoc["companyAdmin"]["data"];
-                    self.request.datasource.companyEmployee = self.$store.state.configdoc["companyEmployee"]["data"];
-                    self.request.datasource.workItem = self.$store.state.configdoc["workItem"]["data"];
-                    self.request.datasource.workCategory = self.$store.state.configdoc["workCategory"]["data"];
-                    self.isEdithModel = true;
-                });
-            } else {
-                if (this.request.datasource.companySource.length <= 0) {
-                    this.request.datasource.companySource = this.$store.state.configdoc["companySource"]["data"];
-                    this.request.datasource.companyAdmin = this.$store.state.configdoc["companyAdmin"]["data"];
-                    this.request.datasource.companyEmployee = this.$store.state.configdoc["companyEmployee"]["data"];
-                    this.request.datasource.workItem = this.$store.state.configdoc["workItem"]["data"];
-                    this.request.datasource.workCategory = this.$store.state.configdoc["workCategory"]["data"];
-                }
-                this.isEdithModel = true;
-            }
-            this.calculateWorkDocuments(this.request.data.workdocument);
         });
     },
     computed: {
@@ -1975,6 +2357,163 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
+        initialstatus: function () {
+            var self = this;
+            if (this.$store.state.configdoc.companySource.length <= 0) {
+                this.loadConfigData(function () {
+                    self.request.datasource.companySource = self.$store.state.configdoc["companySource"]["data"];
+                    // self.request.datasource.companyAdmin = self.$store.state.configdoc["companyAdmin"]["data"];
+                    // self.request.datasource.companyEmployee = self.$store.state.configdoc["companyEmployee"]["data"];
+                    // self.request.datasource.workItem = self.$store.state.configdoc["workItem"]["data"];
+                    self.request.datasource.workCategory = self.$store.state.configdoc["workCategory"]["data"];
+                    self.request.datasource.securityTools = self.$store.state.configdoc["securityTools"]["data"];
+                    self.request.datasource.spareParts = self.$store.state.configdoc["spareParts"]["data"];
+                    self.initialRequestData();
+                });
+            } else {
+                if (this.request.datasource.companySource.length <= 0) {
+                    this.request.datasource.companySource = this.$store.state.configdoc["companySource"]["data"];
+                    // this.request.datasource.companyAdmin = this.$store.state.configdoc["companyAdmin"]["data"];
+                    // this.request.datasource.companyEmployee = this.$store.state.configdoc["companyEmployee"]["data"];
+                    // this.request.datasource.workItem = this.$store.state.configdoc["workItem"]["data"];
+                    self.request.datasource.securityTools = self.$store.state.configdoc["securityTools"]["data"];
+                    self.request.datasource.spareParts = self.$store.state.configdoc["spareParts"]["data"];
+                    this.request.datasource.workCategory = this.$store.state.configdoc["workCategory"]["data"];
+                }
+                self.initialRequestData();
+            }
+        },
+        initialRequestData: function () {
+            var self = this;
+            if (self.action === "Edit") {
+                self.isCreateModel = false;
+                self.isEdithModel = true;
+                if (self.request.data.requestStatus === "Closed") {
+                    self.isWorkFormClosed = true;
+                } else {
+                    self.isWorkFormClosed = false;
+                }
+                self.calculateWorkDocuments(self.request.data.workdocument);
+            } else {
+                self.isCreateModel = true;
+                self.isWorkFormClosed = false;
+                self.isEdithModel = false;
+
+                self.request.data.company = self.$store.state.curUser.company;
+                self.request.data.requester = self.$store.state.curUser.fullname;
+                self.handleCompanyChange(self.request.data.company);
+            }
+
+            if (self.isCreateModel) {
+                self.$http.get('/workformapi/requestid').then(function (res) {
+                    var strbody = res.body;
+                    if (!strbody.requestId || !strbody.strtime) {
+                        self.$notify.error({
+                            title: 'Error',
+                            message: "未能从服务器取得派工单编号"
+                        });
+                        return;
+                    }
+                    self.request.data.creationtime = strbody.strtime;
+                    self.request.data.requestId = strbody.requestId;
+                });
+            }
+        },
+        getCureUser: function (callback) {
+            self.$http.get('/login/isAuthenticated').then(response => {
+                var isAuthenticated = false;
+                if (response.body && response.body.isAuthenticated) {
+                    isAuthenticated = response.body.isAuthenticated;
+                }
+                if (isAuthenticated) {
+                    self.$store.state.curUser.username = response.body.username;
+                    self.$store.state.curUser.isAuthenticated = response.body.isAuthenticated;
+                    self.$store.state.curUser.role = response.body.role;
+                    self.$store.state.curUser.company = response.body.company;
+                    this.$store.state.curUser.fullname = response.body.fullname;
+                    if (response.body.role === "Admin") {
+                        self.$store.state.curUser.isAdmin = true;
+                    } else {
+                        self.$store.state.curUser.isAdmin = false;
+                    }
+                }
+                if (callback) {
+                    callback();
+                }
+            });
+        },
+        handleSecurityToolsChange: function (value) {
+            if (value === "Yes") {
+                this.lockSecurityTools = false;
+            } else {
+                this.lockSecurityTools = true;
+                this.request.data.securityTools = [];
+            }
+        },
+        handleSparePartsChange: function (value) {
+            if (value === "Yes") {
+                this.lockSpareParts = false;
+            } else {
+                this.lockSpareParts = true;
+                this.request.data.spareParts = [];
+            }
+        },
+        handleWorkhourInput: function (value) {
+            if (isNaN(value)) {
+                this.$notify.error({
+                    title: 'Error',
+                    message: "只能输入数字"
+                });
+            }
+        },
+        handleCompanyChange: function (value) {
+            var self = this;
+            if (value !== this.request.previousValue.company) {
+                //this.request.data.requester = "";
+                self.request.data.requester = self.$store.state.curUser.fullname;
+                self.request.data.workers = [];
+                self.updateCompanyAdmin(value);
+                self.updateCompanyEmployee(value);
+                self.request.previousValue.company = value;
+            }
+        },
+        updateCompanyAdmin: function (value) {
+            var source = this.$store.state.configdoc["companyAdmin"]["data"];
+            var companyAdminSource = [];
+            for (var i = 0; i < source.length; i++) {
+                if (source[i].attr === value) {
+                    companyAdminSource.push(source[i]);
+                }
+            }
+            this.$set(this.request.datasource, "companyAdmin", companyAdminSource);
+        },
+        updateCompanyEmployee: function (value) {
+            var source = this.$store.state.configdoc["companyEmployee"]["data"];
+            var companyEmployeeSource = [];
+            for (var i = 0; i < source.length; i++) {
+                if (source[i].attr === value) {
+                    companyEmployeeSource.push(source[i]);
+                }
+            }
+            this.$set(this.request.datasource, "companyEmployee", companyEmployeeSource);
+        },
+        handleWorkCategoryChange: function (value) {
+            if (value !== this.request.previousValue.workCategory) {
+                this.request.data.workitem = "";
+                this.updateWorkItems(value);
+                this.request.previousValue.workCategory = value;
+            }
+        },
+        updateWorkItems: function (value) {
+            var source = this.$store.state.configdoc["workItem"]["data"];
+            var workItemSource = [];
+            for (var i = 0; i < source.length; i++) {
+                if (source[i].workCategory === value) {
+                    workItemSource.push(source[i]);
+                }
+            }
+            this.$set(this.request.datasource, "workItem", workItemSource);
+        },
         showUploadDialog: function () {
             this.dialogFormVisible = true;
         },
@@ -2006,10 +2545,70 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return;
                 } else {
                     //this.request.data.workhour = Math.ceil((returntimestamp - createtimestamp) / 60);
-                    this.request.data.workhour.text = Math.floor((returntimestamp - createtimestamp) / 60) + "小时 " + (returntimestamp - createtimestamp) % 60 + "分钟";
-                    this.request.data.workhour.minutes = returntimestamp - createtimestamp;
+                    // this.request.data.workhour.text = Math.floor((returntimestamp - createtimestamp) / 60) + "小时 " + ((returntimestamp - createtimestamp) % 60) + "分钟";
+                    // this.request.data.workhour.minutes = returntimestamp - createtimestamp;
                 }
             }
+        },
+        saveAndCreateNew: function () {
+            var self = this;
+            this.request.data.workersnumber = this.workersnumber;
+            if (!this.validateRequestForm()) {
+                return;
+            }
+            this.$http.post("/workformapi/save", {
+                data: this.request.data
+            }).then(function (res) {
+                if (res.status === 200 && res.body.requestId) {
+                    this.$notify.info({
+                        title: '保存成功',
+                        message: "保存成功"
+                    });
+                    self.request.data = {
+                        requestId: "",
+                        company: "",
+                        requester: "",
+                        creationtime: "",
+                        workitem: "",
+                        workCategory: "",
+                        worklocation: "",
+                        workers: [],
+                        workersnumber: "",
+                        workhour: "",
+                        planreturntime: "",
+                        returntime: "",
+                        workcomments: "",
+                        workdocument: [],
+                        requestStatus: "New",
+                        securityTools: [],
+                        spareParts: [],
+                        isSpareParts: "",
+                        isSecurityTools: "",
+                        sanPiaoZhiXing: ""
+                    };
+                    this.request.datasource.companyAdmin = [];
+                    this.request.datasource.companyEmployee = [];
+                    this.request.datasource.workItem = [];
+                    self.$http.get('/workformapi/requestid').then(function (res) {
+                        var strbody = res.body;
+                        if (!strbody.requestId || !strbody.strtime) {
+                            this.$notify.error({
+                                title: 'Error',
+                                message: "未能从服务器取得派工单编号"
+                            });
+                            return;
+                        }
+                        self.request.data.creationtime = strbody.strtime;
+                        self.request.data.requestId = strbody.requestId;
+                    });
+                } else {
+                    this.$notify.error({
+                        title: 'Error',
+                        message: res.body
+                    });
+                    return;
+                }
+            });
         },
         saveRequest: function () {
             var self = this;
@@ -2036,12 +2635,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         returnData: function (data) {
-            this.$emit('RightComponentEvent', {
+            var returnOpt = {
                 data: data,
-                viewName: "WorkForm",
+                viewName: this.previousView,
                 class: "animated bounceInLeft",
-                menuitems: "WorkForm"
-            });
+                menuitems: "WorkForm",
+                previousView: "WorkFormDetail"
+            };
+            this.$emit('RightComponentEvent', returnOpt);
         },
         loadConfigData: function (callback) {
             this.$http.get('/esrvapi/getallconfigdoc').then(function (res) {
@@ -2101,16 +2702,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
                 return false;
             }
-            var returntime = this.request.data.returntime;
-            if (returntime !== "") {
-                var returntimestamp = Date.parse(new Date(returntime)) / 1000 / 60;
+            if (this.request.data.planreturntime === "") {
+                this.$notify.error({
+                    title: 'Error',
+                    message: "计划返回时间不能为空"
+                });
+                return false;
+            }
+            if (this.isCreateModel) {
+                var planreturntime = this.request.data.planreturntime;
+                var planreturntimestamp = Date.parse(new Date(planreturntime)) / 1000 / 60;
                 var createtimestamp = Date.parse(new Date(this.request.data.creationtime)) / 1000 / 60;
-                if (returntimestamp <= createtimestamp) {
+                if (planreturntimestamp <= createtimestamp) {
                     this.$notify.error({
                         title: 'Error',
-                        message: "返回时间不能早于派工时间"
+                        message: "计划返回时间不能早于派工时间"
                     });
                     return false;
+                }
+            }
+            if (this.isEdithModel) {
+                var returntime = this.request.data.returntime;
+                if (returntime !== "") {
+                    var returntimestamp = Date.parse(new Date(returntime)) / 1000 / 60;
+                    var createtimestamp = Date.parse(new Date(this.request.data.creationtime)) / 1000 / 60;
+                    if (returntimestamp <= createtimestamp) {
+                        this.$notify.error({
+                            title: 'Error',
+                            message: "返回时间不能早于派工时间"
+                        });
+                        return false;
+                    }
                 }
             }
             return true;
@@ -2173,12 +2795,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 requestId: this.request.data.requestId,
                 description: this.picdescription
             };
+        },
+        pringWorkForm: function () {
+            if (window.sessionStorage) {
+                sessionStorage.setItem("ToPrintWorkFormData", JSON.stringify(this.request));
+                var path = window.location.protocol + "//" + window.location.host + "/printWorkForm";
+                window.open(path);
+            } else {
+                this.$notify.error({
+                    title: 'Error',
+                    message: "你的浏览器不支持此功能，请升级"
+                });
+                return;
+            }
         }
     }
 });
 
 /***/ }),
-/* 61 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2214,6 +2849,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     "pathname": "/workItem",
     "menu": "工作任务",
     "event": "switchView"
+  }, {
+    "id": "0006",
+    "pathname": "/securityTools",
+    "menu": "安全工具",
+    "event": "switchView"
+  }, {
+    "id": "0007",
+    "pathname": "/spareParts",
+    "menu": "备品备件",
+    "event": "switchView"
   }],
   "WorkForm": [{
     "id": "0001",
@@ -2226,11 +2871,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     "pathname": "/goback",
     "menu": "  返回前页",
     "event": "switchView"
-  }]
+  }],
+  "queryWorkform": []
 });
 
 /***/ }),
-/* 62 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2274,24 +2920,24 @@ const vuex_store = new __WEBPACK_IMPORTED_MODULE_7_vuex__["a" /* default */].Sto
       username: "",
       role: "",
       isAdmin: false,
-      company: ""
+      company: "",
+      fullname: "",
+      isAuthenticated: false
     },
     configdoc: {
       companySource: [],
       companyAdmin: [],
       companyEmployee: [],
       workItem: [],
-      workCategory: []
-    }
+      workCategory: [],
+      spareParts: [],
+      securityTools: []
+    },
+    qcriteria: ""
   },
-  mutations: {
-    //   isAdmin:function(){
-    //   return state.curUser.role==="Admin"
-    // }
-  }
+  mutations: {}
 });
 
-/* eslint-disable no-new */
 new __WEBPACK_IMPORTED_MODULE_0_vue__["default"]({
   el: '#app',
   router: __WEBPACK_IMPORTED_MODULE_3__router__["a" /* default */],
@@ -2303,24 +2949,31 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["default"]({
   data: function () {
     this.$http.get('/login/isAuthenticated').then(response => {
       // success callback
-      console.log(response.body);
       var isAuthenticated = false;
       if (response.body && response.body.isAuthenticated) {
         isAuthenticated = response.body.isAuthenticated;
       }
       if (isAuthenticated) {
-        this.$store.state.curUser.username = response.body.user;
+        this.$store.state.curUser.username = response.body.username;
         this.$store.state.curUser.isAuthenticated = response.body.isAuthenticated;
         this.$store.state.curUser.role = response.body.role;
         this.$store.state.curUser.company = response.body.company;
+        this.$store.state.curUser.fullname = response.body.fullname;
         if (response.body.role === "Admin") {
           this.$store.state.curUser.isAdmin = true;
         } else {
           this.$store.state.curUser.isAdmin = false;
         }
-        this.$router.push({
-          path: '/home'
-        });
+        var path = window.location.pathname;
+        if (path === "/") {
+          this.$router.push({
+            path: '/home'
+          });
+        } else {
+          this.$router.push({
+            path: path
+          });
+        }
       } else {
         this.$router.push({
           path: '/login'
@@ -2335,8 +2988,6 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["default"]({
 });
 
 /***/ }),
-/* 63 */,
-/* 64 */,
 /* 65 */,
 /* 66 */,
 /* 67 */,
@@ -2352,18 +3003,8 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["default"]({
 /* 77 */,
 /* 78 */,
 /* 79 */,
-/* 80 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
+/* 80 */,
+/* 81 */,
 /* 82 */
 /***/ (function(module, exports) {
 
@@ -2407,91 +3048,27 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["default"]({
 
 /***/ }),
 /* 89 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-
-/* styles */
-__webpack_require__(86)
-
-var Component = __webpack_require__(3)(
-  /* script */
-  __webpack_require__(53),
-  /* template */
-  __webpack_require__(103),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 90 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-
-/* styles */
-__webpack_require__(82)
-
-var Component = __webpack_require__(3)(
-  /* script */
-  __webpack_require__(54),
-  /* template */
-  __webpack_require__(99),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 91 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-
-/* styles */
-__webpack_require__(84)
-
-var Component = __webpack_require__(3)(
-  /* script */
-  __webpack_require__(55),
-  /* template */
-  __webpack_require__(101),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 92 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-
-/* styles */
-__webpack_require__(80)
-
-var Component = __webpack_require__(3)(
-  /* script */
-  __webpack_require__(56),
-  /* template */
-  __webpack_require__(97),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 93 */
@@ -2499,13 +3076,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(83)
+__webpack_require__(89)
 
 var Component = __webpack_require__(3)(
   /* script */
-  __webpack_require__(57),
+  __webpack_require__(53),
   /* template */
-  __webpack_require__(100),
+  __webpack_require__(110),
   /* scopeId */
   null,
   /* cssModules */
@@ -2521,13 +3098,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(85)
+__webpack_require__(84)
 
 var Component = __webpack_require__(3)(
   /* script */
-  __webpack_require__(58),
+  __webpack_require__(54),
   /* template */
-  __webpack_require__(102),
+  __webpack_require__(105),
   /* scopeId */
   null,
   /* cssModules */
@@ -2543,13 +3120,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(81)
+__webpack_require__(86)
 
 var Component = __webpack_require__(3)(
   /* script */
-  __webpack_require__(59),
+  __webpack_require__(55),
   /* template */
-  __webpack_require__(98),
+  __webpack_require__(107),
   /* scopeId */
   null,
   /* cssModules */
@@ -2565,11 +3142,121 @@ module.exports = Component.exports
 
 
 /* styles */
+__webpack_require__(82)
+
+var Component = __webpack_require__(3)(
+  /* script */
+  __webpack_require__(56),
+  /* template */
+  __webpack_require__(103),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(85)
+
+var Component = __webpack_require__(3)(
+  /* script */
+  __webpack_require__(57),
+  /* template */
+  __webpack_require__(106),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(92)
+
+var Component = __webpack_require__(3)(
+  /* script */
+  __webpack_require__(58),
+  /* template */
+  __webpack_require__(113),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
 __webpack_require__(87)
 
 var Component = __webpack_require__(3)(
   /* script */
+  __webpack_require__(59),
+  /* template */
+  __webpack_require__(108),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(88)
+
+var Component = __webpack_require__(3)(
+  /* script */
   __webpack_require__(60),
+  /* template */
+  __webpack_require__(109),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(83)
+
+var Component = __webpack_require__(3)(
+  /* script */
+  __webpack_require__(61),
   /* template */
   __webpack_require__(104),
   /* scopeId */
@@ -2582,7 +3269,29 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 97 */
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(90)
+
+var Component = __webpack_require__(3)(
+  /* script */
+  __webpack_require__(62),
+  /* template */
+  __webpack_require__(111),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 103 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2601,11 +3310,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.triggerEvent
     }
-  }, [_vm._v("\b工单派工")])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('h3', {
+  }, [_vm._v("\b工单派工")])])]), _vm._v(" "), _c('h3', {
     staticClass: "paddingBottom"
-  }, [_vm._v("汇总查询")]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('h3', {
+  }, [_vm._v("汇总查询")]), _vm._v(" "), _c('ul', {
+    staticClass: "marginBottom"
+  }, [_c('li', {
+    staticClass: "paddingBottom",
+    attrs: {
+      "id": "bom-upload"
+    }
+  }, [_c('a', {
+    attrs: {
+      "href": "/queryWorkform"
+    },
+    on: {
+      "click": _vm.triggerEvent
+    }
+  }, [_vm._v("工单查询")])])]), _vm._v(" "), _c('h3', {
     staticClass: "paddingBottom"
-  }, [_vm._v("汇总打印")]), _vm._v(" "), _vm._m(3), _vm._v(" "), (_vm.isAdmin) ? _c('h3', {
+  }, [_vm._v("汇总打印")]), _vm._v(" "), _vm._m(0), _vm._v(" "), (_vm.isAdmin) ? _c('h3', {
     staticClass: "paddingBottom"
   }, [_vm._v("管理员工具")]) : _vm._e(), _vm._v(" "), (_vm.isAdmin) ? _c('ul', {
     staticClass: "marginBottom"
@@ -2635,62 +3358,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("用户管理")])])]) : _vm._e()])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "paddingBottom"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("完成工单")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "paddingBottom"
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("工时计算")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
-    staticClass: "marginBottom"
-  }, [_c('li', {
-    staticClass: "paddingBottom",
-    attrs: {
-      "id": "bom-upload"
-    }
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("工单编号查询")])]), _vm._v(" "), _c('li', {
-    staticClass: "paddingBottom",
-    attrs: {
-      "id": "bom-show"
-    }
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("派工单位查询")])]), _vm._v(" "), _c('li', {
-    staticClass: "paddingBottom",
-    attrs: {
-      "id": "bom-show"
-    }
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("工作人员查询")])]), _vm._v(" "), _c('li', {
-    staticClass: "paddingBottom",
-    attrs: {
-      "id": "bom-show"
-    }
-  }, [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("县公司汇总查询")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('ul', {
     staticClass: "marginBottom"
   }, [_c('li', {
@@ -2733,7 +3400,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 98 */
+/* 104 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2805,282 +3472,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }, [_vm._v("编辑")])]
       }]
     ])
-  })], 1)], 1), _vm._v(" "), _c('div', [_c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.dialogFormVisible),
-      expression: "dialogFormVisible"
-    }],
-    staticClass: "v-modal",
-    staticStyle: {
-      "z-index": "2000"
-    }
-  }), _vm._v(" "), _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.dialogFormVisible),
-      expression: "dialogFormVisible"
-    }],
-    staticClass: "el-dialog__wrapper",
-    staticStyle: {
-      "z-index": "2001"
-    }
-  }, [_c('div', {
-    staticClass: "el-dialog",
-    staticStyle: {
-      "padding": "25px",
-      "padding-top": "40px"
-    },
-    attrs: {
-      "id": "formdialog"
-    }
-  }, [_c('el-row', [_c('el-col', {
-    staticStyle: {
-      "text-align": "center",
-      "padding-bottom": "5px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('span', {
-    staticClass: "requestFormTitle"
-  }, [_vm._v(_vm._s(_vm.request.label.formTitle))])])], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
-    staticStyle: {
-      "text-align": "right",
-      "padding": "10px"
-    },
-    attrs: {
-      "span": 24
-    }
-  }, [_c('span', [_vm._v(_vm._s(_vm.request.label.requestId))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.request.data.requestId))])])], 1), _vm._v(" "), _c('el-form', {
-    attrs: {
-      "model": _vm.request
-    }
-  }, [_c('table', {
-    staticClass: "bordered",
-    attrs: {
-      "width": "100%"
-    }
-  }, [_c('tr', [_c('td', {
-    attrs: {
-      "width": "10%"
-    }
-  }, [_vm._v(_vm._s(_vm.request.label.company))]), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "23%"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "filterable": ""
-    },
-    on: {
-      "change": _vm.handleCompanyChange
-    },
-    model: {
-      value: (_vm.request.data.company),
-      callback: function($$v) {
-        _vm.request.data.company = $$v
-      },
-      expression: "request.data.company"
-    }
-  }, _vm._l((_vm.request.datasource.companySource), function(company) {
-    return _c('el-option', {
-      key: company.name,
-      attrs: {
-        "label": company.name,
-        "value": company.name
-      }
-    })
-  }))], 1), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "10%"
-    }
-  }, [_vm._v(_vm._s(_vm.request.label.requester))]), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "22%"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "filterable": ""
-    },
-    model: {
-      value: (_vm.request.data.requester),
-      callback: function($$v) {
-        _vm.request.data.requester = $$v
-      },
-      expression: "request.data.requester"
-    }
-  }, _vm._l((_vm.request.datasource.companyAdmin), function(requester) {
-    return _c('el-option', {
-      key: requester.name,
-      attrs: {
-        "label": requester.name,
-        "value": requester.name
-      }
-    })
-  }))], 1), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "10%"
-    }
-  }, [_vm._v(_vm._s(_vm.request.label.creationtime))]), _vm._v(" "), _c('td', {
-    attrs: {
-      "width": "25%"
-    }
-  }, [_vm._v(_vm._s(_vm.request.data.creationtime))])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workers))]), _vm._v(" "), _c('td', {
-    staticStyle: {
-      "text-align": "left"
-    },
-    attrs: {
-      "colspan": "3"
-    }
-  }, [_c('el-select', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "filterable": "",
-      "multiple": ""
-    },
-    model: {
-      value: (_vm.request.data.workers),
-      callback: function($$v) {
-        _vm.request.data.workers = $$v
-      },
-      expression: "request.data.workers"
-    }
-  }, _vm._l((_vm.request.datasource.companyEmployee), function(workers) {
-    return _c('el-option', {
-      key: workers.name,
-      attrs: {
-        "label": workers.name,
-        "value": workers.name
-      }
-    })
-  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workhour))]), _vm._v(" "), _c('td', [_vm._v("\n                    " + _vm._s(_vm.request.data.workhour.text) + "\n                ")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workCategory))]), _vm._v(" "), _c('td', [_c('el-select', {
-    on: {
-      "change": _vm.handleWorkCategoryChange
-    },
-    model: {
-      value: (_vm.request.data.workCategory),
-      callback: function($$v) {
-        _vm.request.data.workCategory = $$v
-      },
-      expression: "request.data.workCategory"
-    }
-  }, _vm._l((_vm.request.datasource.workCategory), function(workcategory) {
-    return _c('el-option', {
-      key: workcategory.name,
-      attrs: {
-        "label": workcategory.name,
-        "value": workcategory.name
-      }
-    })
-  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workitem))]), _vm._v(" "), _c('td', [_c('el-select', {
-    model: {
-      value: (_vm.request.data.workitem),
-      callback: function($$v) {
-        _vm.request.data.workitem = $$v
-      },
-      expression: "request.data.workitem"
-    }
-  }, _vm._l((_vm.request.datasource.workItem), function(workitem) {
-    return _c('el-option', {
-      key: workitem.name,
-      attrs: {
-        "label": workitem.name,
-        "value": workitem.name
-      }
-    })
-  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workersnumber))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.workersnumber))])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.worklocation))]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "3"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "请输入工作地点"
-    },
-    model: {
-      value: (_vm.request.data.worklocation),
-      callback: function($$v) {
-        _vm.request.data.worklocation = $$v
-      },
-      expression: "request.data.worklocation"
-    }
-  })], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.returntime))]), _vm._v(" "), _c('td', [_c('el-date-picker', {
-    attrs: {
-      "disabled": true,
-      "format": "yyyy-MM-dd HH:mm:ss",
-      "align": "right",
-      "type": "datetime",
-      "placeholder": "选择返回时间"
-    },
-    model: {
-      value: (_vm.request.data.returntime),
-      callback: function($$v) {
-        _vm.request.data.returntime = $$v
-      },
-      expression: "request.data.returntime"
-    }
-  })], 1)]), _vm._v(" "), _c('tr', [_c('td', {
-    attrs: {
-      "colspan": "6"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "textarea",
-      "rows": 2,
-      "placeholder": "工作主要内容"
-    },
-    model: {
-      value: (_vm.request.data.workcomments),
-      callback: function($$v) {
-        _vm.request.data.workcomments = $$v
-      },
-      expression: "request.data.workcomments"
-    }
-  })], 1)])])]), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer textAlignRight",
-    slot: "footer"
-  }, [_c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        _vm.saveAndCreateNew()
-      }
-    }
-  }, [_vm._v("保存并创建新单")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": function($event) {
-        _vm.saveRequestForm()
-      }
-    }
-  }, [_vm._v("保存退出")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "warning"
-    },
-    on: {
-      "click": function($event) {
-        _vm.cancel()
-      }
-    }
-  }, [_vm._v("取 消")])], 1)], 1)])])])
+  })], 1)], 1)])
 },staticRenderFns: []}
 
 /***/ }),
-/* 99 */
+/* 105 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "homediv"
-  }, [_c('h1', [_vm._v("Welcome to Smart Supply Management")]), _vm._v(" "), _c('el-select', {
+  }, [_c('h1', [_vm._v("Welcome111 to Smart Supply Management")]), _vm._v(" "), _c('el-select', {
     attrs: {
       "placeholder": "请选择"
     },
@@ -3103,7 +3505,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 100 */
+/* 106 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3219,7 +3621,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 101 */
+/* 107 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3348,7 +3750,240 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 102 */
+/* 108 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      "padding": "25px",
+      "height": "700px"
+    }
+  }, [_c('el-row', [_c('el-col', {
+    staticStyle: {
+      "text-align": "center",
+      "padding-bottom": "25px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('span', {
+    staticClass: "requestFormTitle"
+  }, [_vm._v(_vm._s(_vm.query.label.formTitle))])])], 1), _vm._v(" "), _c('div', {
+    staticClass: "boxdiv"
+  }, [_c('el-form', {
+    ref: "form",
+    attrs: {
+      "model": _vm.query,
+      "label-width": "150px"
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": _vm.query.label.requestId
+    }
+  }, [_c('el-input', {
+    staticStyle: {
+      "width": "200px"
+    },
+    model: {
+      value: (_vm.query.criteria.requestId),
+      callback: function($$v) {
+        _vm.query.criteria.requestId = $$v
+      },
+      expression: "query.criteria.requestId"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": _vm.query.label.company
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "disabled": !_vm.isAdmin,
+      "filterable": ""
+    },
+    on: {
+      "change": _vm.handleCompanyChange
+    },
+    model: {
+      value: (_vm.query.criteria.company),
+      callback: function($$v) {
+        _vm.query.criteria.company = $$v
+      },
+      expression: "query.criteria.company"
+    }
+  }, _vm._l((_vm.query.datasource.companySource), function(company) {
+    return _c('el-option', {
+      key: company.name,
+      attrs: {
+        "label": company.name,
+        "value": company.name
+      }
+    })
+  }))], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": _vm.query.label.creationtime
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "daterange",
+      "placeholder": "选择日期范围"
+    },
+    model: {
+      value: (_vm.query.criteria.creationtime),
+      callback: function($$v) {
+        _vm.query.criteria.creationtime = $$v
+      },
+      expression: "query.criteria.creationtime"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": _vm.query.label.workers
+    }
+  }, [_c('el-select', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "filterable": "",
+      "multiple": ""
+    },
+    model: {
+      value: (_vm.query.criteria.workers),
+      callback: function($$v) {
+        _vm.query.criteria.workers = $$v
+      },
+      expression: "query.criteria.workers"
+    }
+  }, _vm._l((_vm.query.datasource.companyEmployee), function(workers) {
+    return _c('el-option', {
+      key: workers.name,
+      attrs: {
+        "label": workers.name,
+        "value": workers.name
+      }
+    })
+  }))], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": _vm.query.label.workCategory
+    }
+  }, [_c('el-select', {
+    model: {
+      value: (_vm.query.criteria.workCategory),
+      callback: function($$v) {
+        _vm.query.criteria.workCategory = $$v
+      },
+      expression: "query.criteria.workCategory"
+    }
+  }, _vm._l((_vm.query.datasource.workCategory), function(workcategory) {
+    return _c('el-option', {
+      key: workcategory.name,
+      attrs: {
+        "label": workcategory.name,
+        "value": workcategory.name
+      }
+    })
+  }))], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": _vm.query.label.returntime
+    }
+  }, [_c('el-date-picker', {
+    attrs: {
+      "type": "daterange",
+      "placeholder": "选择实际返回日期范围"
+    },
+    model: {
+      value: (_vm.query.criteria.returntime),
+      callback: function($$v) {
+        _vm.query.criteria.returntime = $$v
+      },
+      expression: "query.criteria.returntime"
+    }
+  })], 1)], 1), _vm._v(" "), _c('el-row', {
+    staticClass: "textAlignRight"
+  }, [_c('el-col', {
+    attrs: {
+      "span": 24
+    }
+  }, [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": _vm.queryWorkForm
+    }
+  }, [_vm._v("按所选条件查询")])], 1)], 1)], 1), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "height": "700px",
+      "padding": "20px"
+    }
+  }, [_c('el-table', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "data": _vm.WorkFormDataSource,
+      "border": "",
+      "max-height": "650"
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "prop": "requestId",
+      "label": "工单编号",
+      "label-class-name": "forcastHeader"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "company",
+      "label": "派工单位",
+      "label-class-name": "forcastHeader"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "requester",
+      "label": "派工人员",
+      "label-class-name": "forcastHeader"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "creationtime",
+      "label": "派工时间",
+      "label-class-name": "forcastHeader"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "returntime",
+      "label": "返回时间",
+      "label-class-name": "forcastHeader"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "workitem",
+      "label": "工作任务",
+      "label-class-name": "forcastHeader"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作"
+    },
+    scopedSlots: _vm._u([
+      ["default", function(scope) {
+        return [_c('el-button', {
+          attrs: {
+            "size": "small"
+          },
+          on: {
+            "click": function($event) {
+              _vm.handleEdit(scope.$index, scope.row)
+            }
+          }
+        }, [_vm._v("编辑")])]
+      }]
+    ])
+  })], 1)], 1)], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 109 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3610,7 +4245,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 103 */
+/* 110 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3768,7 +4403,67 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.handleImport()
       }
     }
-  }, [_vm._v("导入工作类别")])], 1)], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("导入工作类别")]), _vm._v(" "), _c('el-menu-item', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.showSecurityTools),
+      expression: "showSecurityTools"
+    }],
+    attrs: {
+      "index": "1"
+    },
+    on: {
+      "click": function($event) {
+        _vm.handleCreate()
+      }
+    }
+  }, [_vm._v("新建安全工具")]), _vm._v(" "), _c('el-menu-item', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.showSecurityTools),
+      expression: "showSecurityTools"
+    }],
+    attrs: {
+      "index": "2"
+    },
+    on: {
+      "click": function($event) {
+        _vm.handleImport()
+      }
+    }
+  }, [_vm._v("导入安全工具")]), _vm._v(" "), _c('el-menu-item', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.showSpareParts),
+      expression: "showSpareParts"
+    }],
+    attrs: {
+      "index": "1"
+    },
+    on: {
+      "click": function($event) {
+        _vm.handleCreate()
+      }
+    }
+  }, [_vm._v("新建备品备件")]), _vm._v(" "), _c('el-menu-item', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.showSpareParts),
+      expression: "showSpareParts"
+    }],
+    attrs: {
+      "index": "2"
+    },
+    on: {
+      "click": function($event) {
+        _vm.handleImport()
+      }
+    }
+  }, [_vm._v("导入备品备件")])], 1)], 1), _vm._v(" "), _c('div', {
     staticStyle: {
       "height": "700px",
       "padding": "20px"
@@ -4166,7 +4861,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 104 */
+/* 111 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4212,8 +4907,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-select', {
     attrs: {
-      "disabled": _vm.isEdithModel,
+      "disabled": _vm.isEdithModel || _vm.isCreateModel,
       "filterable": ""
+    },
+    on: {
+      "change": _vm.handleCompanyChange
     },
     model: {
       value: (_vm.request.data.company),
@@ -4269,9 +4967,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.request.data.creationtime))])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workers))]), _vm._v(" "), _c('td', {
     staticStyle: {
       "text-align": "left"
-    },
-    attrs: {
-      "colspan": "3"
     }
   }, [_c('el-select', {
     staticStyle: {
@@ -4297,9 +4992,45 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": workers.name
       }
     })
-  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workhour))]), _vm._v(" "), _c('td', [_vm._v("\n                    " + _vm._s(_vm.request.data.workhour.text) + "\n                ")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workCategory))]), _vm._v(" "), _c('td', [_c('el-select', {
+  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workhour))]), _vm._v(" "), _c('td', [_c('el-input', {
+    staticStyle: {
+      "width": "80%"
+    },
+    attrs: {
+      "disabled": _vm.isCreateModel,
+      "placeholder": "请输入工作小时数"
+    },
+    on: {
+      "change": _vm.handleWorkhourInput
+    },
+    model: {
+      value: (_vm.request.data.workhour),
+      callback: function($$v) {
+        _vm.request.data.workhour = $$v
+      },
+      expression: "request.data.workhour"
+    }
+  })], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.planreturntime))]), _vm._v(" "), _c('td', [_c('el-date-picker', {
+    attrs: {
+      "disabled": _vm.isEdithModel,
+      "format": "yyyy-MM-dd HH:mm:ss",
+      "align": "right",
+      "type": "datetime",
+      "placeholder": "选择实际返回时间"
+    },
+    model: {
+      value: (_vm.request.data.planreturntime),
+      callback: function($$v) {
+        _vm.request.data.planreturntime = $$v
+      },
+      expression: "request.data.planreturntime"
+    }
+  })], 1)]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workCategory))]), _vm._v(" "), _c('td', [_c('el-select', {
     attrs: {
       "disabled": _vm.isEdithModel
+    },
+    on: {
+      "change": _vm.handleWorkCategoryChange
     },
     model: {
       value: (_vm.request.data.workCategory),
@@ -4335,7 +5066,131 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": workitem.name
       }
     })
-  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workersnumber))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.workersnumber))])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.worklocation))]), _vm._v(" "), _c('td', {
+  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workersnumber))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.workersnumber))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.isSecurityTools))]), _vm._v(" "), _c('td', [
+    [_c('el-radio-group', {
+      on: {
+        "change": _vm.handleSecurityToolsChange
+      },
+      model: {
+        value: (_vm.request.data.isSecurityTools),
+        callback: function($$v) {
+          _vm.request.data.isSecurityTools = $$v
+        },
+        expression: "request.data.isSecurityTools"
+      }
+    }, [_c('el-radio', {
+      staticClass: "radio",
+      attrs: {
+        "disabled": _vm.isEdithModel,
+        "label": "Yes"
+      }
+    }, [_vm._v("是")]), _vm._v(" "), _c('el-radio', {
+      staticClass: "radio",
+      attrs: {
+        "disabled": _vm.isEdithModel,
+        "label": "No"
+      }
+    }, [_vm._v("否")])], 1)]
+  ], 2), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.isSpareParts))]), _vm._v(" "), _c('td', [
+    [_c('el-radio-group', {
+      on: {
+        "change": _vm.handleSparePartsChange
+      },
+      model: {
+        value: (_vm.request.data.isSpareParts),
+        callback: function($$v) {
+          _vm.request.data.isSpareParts = $$v
+        },
+        expression: "request.data.isSpareParts"
+      }
+    }, [_c('el-radio', {
+      staticClass: "radio",
+      attrs: {
+        "disabled": _vm.isEdithModel,
+        "label": "Yes"
+      }
+    }, [_vm._v("是")]), _vm._v(" "), _c('el-radio', {
+      staticClass: "radio",
+      attrs: {
+        "disabled": _vm.isEdithModel,
+        "label": "No"
+      }
+    }, [_vm._v("否")])], 1)]
+  ], 2), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.sanPiaoZhiXing))]), _vm._v(" "), _c('td', [
+    [_c('el-radio-group', {
+      model: {
+        value: (_vm.request.data.sanPiaoZhiXing),
+        callback: function($$v) {
+          _vm.request.data.sanPiaoZhiXing = $$v
+        },
+        expression: "request.data.sanPiaoZhiXing"
+      }
+    }, [_c('el-radio', {
+      staticClass: "radio",
+      attrs: {
+        "disabled": _vm.isEdithModel,
+        "label": "Yes"
+      }
+    }, [_vm._v("是")]), _vm._v(" "), _c('el-radio', {
+      staticClass: "radio",
+      attrs: {
+        "disabled": _vm.isEdithModel,
+        "label": "No"
+      }
+    }, [_vm._v("否")])], 1)]
+  ], 2), _vm._v(" "), _c('tr'), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.securityTools))]), _vm._v(" "), _c('td', [_c('el-select', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "disabled": _vm.isEdithModel || _vm.lockSecurityTools,
+      "filterable": "",
+      "multiple": ""
+    },
+    model: {
+      value: (_vm.request.data.securityTools),
+      callback: function($$v) {
+        _vm.request.data.securityTools = $$v
+      },
+      expression: "request.data.securityTools"
+    }
+  }, _vm._l((_vm.request.datasource.securityTools), function(tool) {
+    return _c('el-option', {
+      key: tool.name,
+      attrs: {
+        "label": tool.name,
+        "value": tool.name
+      }
+    })
+  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.spareParts))]), _vm._v(" "), _c('td', {
+    attrs: {
+      "colspan": "3"
+    }
+  }, [_c('el-select', {
+    staticStyle: {
+      "width": "100%"
+    },
+    attrs: {
+      "disabled": _vm.isEdithModel || _vm.lockSpareParts,
+      "filterable": "",
+      "multiple": ""
+    },
+    model: {
+      value: (_vm.request.data.spareParts),
+      callback: function($$v) {
+        _vm.request.data.spareParts = $$v
+      },
+      expression: "request.data.spareParts"
+    }
+  }, _vm._l((_vm.request.datasource.spareParts), function(part) {
+    return _c('el-option', {
+      key: part.name,
+      attrs: {
+        "label": part.name,
+        "value": part.name
+      }
+    })
+  }))], 1)]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.worklocation))]), _vm._v(" "), _c('td', {
     attrs: {
       "colspan": "3"
     }
@@ -4394,11 +5249,35 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "span": 24
     }
   }, [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        _vm.pringWorkForm()
+      }
+    }
+  }, [_vm._v("打印预览")]), _vm._v(" "), _c('el-button', {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (!_vm.isWorkFormClosed),
-      expression: "!isWorkFormClosed"
+      value: (_vm.isCreateModel),
+      expression: "isCreateModel"
+    }],
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        _vm.saveAndCreateNew()
+      }
+    }
+  }, [_vm._v("保存并创建新单")]), _vm._v(" "), _c('el-button', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.isEdithModel && !_vm.isWorkFormClosed),
+      expression: "isEdithModel && !isWorkFormClosed"
     }],
     attrs: {
       "type": "primary"
@@ -4412,8 +5291,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (!_vm.isWorkFormClosed),
-      expression: "!isWorkFormClosed"
+      value: (_vm.isCreateModel || (_vm.isEdithModel && !_vm.isWorkFormClosed)),
+      expression: "isCreateModel || (isEdithModel && !isWorkFormClosed)"
     }],
     attrs: {
       "type": "primary"
@@ -4442,8 +5321,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (!_vm.isWorkFormClosed),
-      expression: "!isWorkFormClosed"
+      value: (_vm.isCreateModel || (_vm.isEdithModel && !_vm.isWorkFormClosed)),
+      expression: "isCreateModel || (isEdithModel && !isWorkFormClosed)"
     }],
     attrs: {
       "type": "warning"
@@ -4584,7 +5463,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 105 */
+/* 112 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4604,14 +5483,99 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 106 */,
-/* 107 */,
-/* 108 */,
-/* 109 */
+/* 113 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticStyle: {
+      "padding": "25px",
+      "height": "700px"
+    }
+  }, [_c('el-row', [_c('el-col', {
+    staticStyle: {
+      "text-align": "center",
+      "padding-bottom": "5px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('span', {
+    staticClass: "requestFormTitle"
+  }, [_vm._v(_vm._s(_vm.request.label.formTitle))])])], 1), _vm._v(" "), _c('el-row', [_c('el-col', {
+    staticStyle: {
+      "text-align": "right",
+      "padding": "10px",
+      "padding-right": "30px"
+    },
+    attrs: {
+      "span": 24
+    }
+  }, [_c('span', [_vm._v(_vm._s(_vm.request.label.requestId))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.request.data.requestId))])])], 1), _vm._v(" "), _c('el-form', {
+    attrs: {
+      "model": _vm.request
+    }
+  }, [_c('table', {
+    staticClass: "bordered",
+    attrs: {
+      "width": "100%"
+    }
+  }, [_c('tr', [_c('td', {
+    attrs: {
+      "width": "10%"
+    }
+  }, [_vm._v(_vm._s(_vm.request.label.company))]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "23%"
+    }
+  }, [_c('span', [_vm._v(_vm._s(_vm.request.data.company))])]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "10%"
+    }
+  }, [_vm._v(_vm._s(_vm.request.label.requester))]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "22%"
+    }
+  }, [_c('span', [_vm._v(_vm._s(_vm.request.data.requester))])]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "10%"
+    }
+  }, [_vm._v(_vm._s(_vm.request.label.creationtime))]), _vm._v(" "), _c('td', {
+    attrs: {
+      "width": "25%"
+    }
+  }, [_vm._v(_vm._s(_vm.request.data.creationtime))])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workers))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.workers))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workhour))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.workhour))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.planreturntime))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.planreturntime))])])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workCategory))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.workCategory))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workitem))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.workitem))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workersnumber))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.data.workersnumber))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.isSecurityTools))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.isSecurityTools))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.isSpareParts))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.isSpareParts))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.sanPiaoZhiXing))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.sanPiaoZhiXing))])]), _vm._v(" "), _c('tr'), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.securityTools))]), _vm._v(" "), _c('td', _vm._l((_vm.request.data.securityTools), function(tool) {
+    return _c('p', {
+      key: tool
+    }, [_vm._v(_vm._s(tool))])
+  })), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.spareParts))]), _vm._v(" "), _c('td', {
+    attrs: {
+      "colspan": "3"
+    }
+  }, _vm._l((_vm.request.data.spareParts), function(part) {
+    return _c('p', {
+      key: part
+    }, [_vm._v(_vm._s(part))])
+  }))]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.worklocation))]), _vm._v(" "), _c('td', {
+    attrs: {
+      "colspan": "3"
+    }
+  }, [_c('span', [_vm._v(_vm._s(_vm.request.data.worklocation))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.returntime))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.returntime))])])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("工作内容")]), _vm._v(" "), _c('td', {
+    attrs: {
+      "colspan": "5"
+    }
+  }, [_c('span', [_vm._v(_vm._s(_vm.request.data.workcomments))])])])])])], 1)
+},staticRenderFns: []}
+
+/***/ }),
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ })
-]),[62]);
-//# sourceMappingURL=app.9ea68000fa45b56d1e02.js.map
+]),[64]);
+//# sourceMappingURL=app.323150fcbf78c0eb3634.js.map

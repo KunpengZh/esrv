@@ -31,7 +31,6 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                console.log(result);
                 res.json(result);
                 res.end();
             });
@@ -48,7 +47,7 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                console.log(result);
+                
                 res.json(result);
                 res.end();
             });
@@ -66,7 +65,7 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                console.log(result);
+               
                 res.json(result);
                 res.end();
             });
@@ -84,7 +83,7 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                console.log(result);
+               
                 res.json(result);
                 res.end();
             });
@@ -101,7 +100,7 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                console.log(result);
+                
                 res.json(result);
                 res.end();
             });
@@ -118,7 +117,7 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                console.log(result);
+                
                 res.json(result);
                 res.end();
             });
@@ -135,13 +134,12 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                console.log(result);
+                
                 res.json(result);
                 res.end();
             });
 
     } else {
-        console.log(criteria);
         var WorkForm = mongodb.getConnection(tablename);
         WorkForm
             .find(criteria)
@@ -152,7 +150,7 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                console.log(result);
+                
                 res.json(result);
                 res.end();
             });

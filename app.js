@@ -84,6 +84,8 @@ app.use(function(req,res,next){
 
 app.use('/', index);
 app.use('/printWorkForm', index);
+app.use('/printMonthlyReport', index);
+app.use('/printAnnuallyReport', index);
 app.use('/login', loginController);
 
 app.use('/esrvapi', isLoggedIn);

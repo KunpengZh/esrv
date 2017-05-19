@@ -41,15 +41,20 @@
             "required": true,
             "index": true
         },
+        "requester": {
+            "type": "String",
+            "required": false,
+            "index": false
+        },
         "company": {
             "type": "String",
             "required": true,
             "index": true
         },
-        "serviceCompany": {
+        "workCategory": {
             "type": "String",
-            "required": true,
-            "index": true
+            "required": false,
+            "index": false
         },
         "creationtime": {
             "type": "String",
@@ -62,7 +67,7 @@
             "index": true
         },
         "workhour": {
-            "type": "String",
+            "type": "Number",
             "required": true,
             "index": false
         },
@@ -101,7 +106,7 @@
         "requester": {
             "type": "String",
             "required": true,
-            "index": false
+            "index": true
         },
         "creationtime": {
             "type": "String",
@@ -185,6 +190,16 @@
         },
         "sanPiaoZhiXing": {
             "type": "String",
+            "required": false,
+            "index": false
+        },
+        "perhourwage": {
+            "type": "Number",
+            "required": false,
+            "index": false
+        },
+        "requestwage": {
+            "type": "Number",
             "required": false,
             "index": false
         }

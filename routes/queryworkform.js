@@ -2,12 +2,33 @@ var express = require('express');
 var router = express.Router();
 var mongodb = require('../utils/mongo-utils');
 
-var tablename = "workform";
 
-router.post('/', function (req, res, next) {
+router.post('/worker', function (req, res, next) {
+    var tablename = "workhistory";
+     var criteria = {};
+    queryfun(tablename, req, res,criteria);
+});
+
+router.post('/workform', function (req, res, next) {
+    var tablename = "workform";
+     var criteria = {"requestStatus":"Closed"};
+    queryfun(tablename, req, res,criteria);
+});
+
+var queryfun = function (tablename, req, res,criteria) {
     console.log(req.body.data);
+    /**
+     * The fireld name between workform and workhistory is different
+     */
+    var worker='';
+    if(tablename==="workhistory"){
+        worker="worker";
+    }else if(tablename==="workform") {
+        worker="workers";
+    }
+
     var qData = req.body.data;
-    var criteria = {};
+   
     if (qData.requestId) {
         criteria.requestId = qData.requestId;
     };
@@ -17,11 +38,14 @@ router.post('/', function (req, res, next) {
     if (qData.workCategory) {
         criteria.workCategory = qData.workCategory;
     }
+    if (qData.requester) {
+        criteria.requester = qData.requester;
+    }
     if (qData.creationtime && qData.returntime && qData.workers) {
         var WorkForm = mongodb.getConnection(tablename);
         WorkForm
             .find(criteria)
-            .where('workers').in(qData.workers)
+            .where(worker).in(qData.workers)
             .where('returntime').gt(qData.returntime[0]).lt(qData.returntime[1])
             .where('creationtime').gt(qData.creationtime[0]).lt(qData.creationtime[1])
             .exec(function (err, result) {
@@ -47,7 +71,7 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                
+
                 res.json(result);
                 res.end();
             });
@@ -56,7 +80,7 @@ router.post('/', function (req, res, next) {
         var WorkForm = mongodb.getConnection(tablename);
         WorkForm
             .find(criteria)
-            .where('workers').in(qData.workers)
+            .where(worker).in(qData.workers)
             .where('creationtime').gt(qData.creationtime[0]).lt(qData.creationtime[1])
             .exec(function (err, result) {
                 if (err) {
@@ -65,7 +89,7 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-               
+
                 res.json(result);
                 res.end();
             });
@@ -74,7 +98,7 @@ router.post('/', function (req, res, next) {
         var WorkForm = mongodb.getConnection(tablename);
         WorkForm
             .find(criteria)
-            .where('workers').in(qData.workers)
+            .where(worker).in(qData.workers)
             .where('returntime').gt(qData.returntime[0]).lt(qData.returntime[1])
             .exec(function (err, result) {
                 if (err) {
@@ -83,7 +107,7 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-               
+
                 res.json(result);
                 res.end();
             });
@@ -100,7 +124,7 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                
+
                 res.json(result);
                 res.end();
             });
@@ -109,7 +133,7 @@ router.post('/', function (req, res, next) {
         var WorkForm = mongodb.getConnection(tablename);
         WorkForm
             .find(criteria)
-            .where('workers').in(qData.workers)
+            .where(worker).in(qData.workers)
             .exec(function (err, result) {
                 if (err) {
                     console.log(err);
@@ -117,7 +141,7 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                
+
                 res.json(result);
                 res.end();
             });
@@ -134,7 +158,7 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                
+
                 res.json(result);
                 res.end();
             });
@@ -150,46 +174,13 @@ router.post('/', function (req, res, next) {
                     res.end();
                     return;
                 }
-                
+
                 res.json(result);
                 res.end();
             });
     }
 
-    // if (qData.creationtime) {
-    //     WorkForm.where('creationtime').gt(qData.creationtime[0]).lt(qData.creationtime[1]);
-    // }
-    // if (qData.returntime) {
-    //     WorkForm
-    // }
-    // if (qData.workers) {
-    //     WorkForm.where('workers').in(qData.workers);
-    // }
-    // WorkForm.exec(function (err, result) {
-    //     if (err) {
-    //         console.log(err);
-    //         res.json(err);
-    //         res.end();
-    //         return;
-    //     }
-    //     console.log(result);
-    //     res.json(result);
-    //     res.end();
-    // });
 
-
-
-
-
-    //     Person
-    // .find({ occupation: /host/ })
-    // .where('name.last').equals('Ghost')
-    // .where('age').gt(17).lt(66)
-    // .where('likes').in(['vaporizing', 'talking'])
-    // .limit(10)
-    // .sort('-occupation')
-    // .select('name occupation')
-    // .exec(callback);
-});
+}
 
 module.exports = router;

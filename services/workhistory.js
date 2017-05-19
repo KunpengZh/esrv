@@ -17,87 +17,48 @@ workhistory.saveWorkForm = function (request, callback) {
         Logger.error("No workers find from the request");
         callback(false);
     }
-    /**
-     * To get all Config Docs
-     */
-    mongodb.find("configdoc", {}, null, function (err, resdoc) {
-        if (err) {
-            Logger.error("Query for companyEmployee config document error:" + err);
-            callback(false);
-            return
-        }
-        
-        if (!resdoc || resdoc.length <= 0) {
-            Logger.error("Invalidate companyEmployee config document format");
-            callback(false);
-            return;
-        }
 
-        /**
-         * config the 3 config docs which required when generate workhistory
-         */
-
-        var dbworkitems, dbworkers, dbcompanies;
-
-        for (var i = 0; i < resdoc.length; i++) {
-            if (resdoc[i]["category"] === "workItem") {
-                dbworkitems = resdoc[i]["data"];
-            }
-            if (resdoc[i]["category"] === "companyEmployee") {
-                dbworkers = resdoc[i]["data"];
-            }
-            if (resdoc[i]["category"] === "companySource") {
-                dbcompanies = resdoc[i]["data"];
-            }
+    var indicater = 0;
+    for (var i = 0; i < workers.length; i++) {
+        worker = workers[i];
+        var workhour=request.workhour?parseInt(request.workhour):0;
+        var perhourwage=request.perhourwage?parseInt(request.perhourwage):0;
+        var obj = {
+            "worker": worker,
+            "requestId": request.requestId,
+            "requester":request.requester,
+            "company": request.company,
+            "workCategory": request.workCategory,
+            "creationtime": request.creationtime,
+            "workitem": request.workitem,
+            "workhour": request.workhour,
+            "workminutes": parseInt(request.workhour ? request.workhour : 0) * 60,
+            "returntime": request.returntime,
+            "perhourwage": request.perhourwage,
+            "requestwage": workhour*perhourwage
         }
-        var indicater = 0;
-        for (var i = 0; i < workers.length; i++) {
-            worker = workers[i];
-            for (var k = 0; k < dbworkers.length; k++) {
-                if (dbworkers[k]["name"] === worker) {
-                    var perhourwage = 0;
-                    for (var l = 0; l < dbworkitems.length; l++) {
-                        if (dbworkitems[l]["name"] === request.workitem) {
-                            perhourwage = dbworkitems[l]["attr"];
-                        }
-                    }
-                    var obj = {
-                        "worker": worker,
-                        "requestId": request.requestId,
-                        "company": dbworkers[k]["attr"],
-                        "serviceCompany": request.company,
-                        "creationtime": request.creationtime,
-                        "workitem": request.workitem,
-                        "workhour": request.workhour,
-                        "workminutes":parseInt(request.workhour?request.workhour:0)*60,
-                        "returntime": request.returntime,
-                        "perhourwage": parseInt(perhourwage),
-                        "requestwage": parseInt(request.workhour?request.workhour:0) * parseInt(perhourwage)
-                    }
-                    mongodb.save(tablename, obj, function (err, saveres) {
-                        indicater = indicater + 1;
-                        /**
-                         * if indicater===workers.length, then this is the last file
-                         * then will return
-                         */
-                        if (err) {
-                            Logger.error("Query for companyEmployee config document error:" + err);
-                            if (indicater === workers.length) {
-                                callback(true);
-                                return;
-                            }
-                        } else {
-                            Logger.info("WorkHistory Saved, result:" + JSON.stringify(saveres));
-                            if (indicater === workers.length) {
-                                callback(true);
-                                return;
-                            }
-                        }
-                    })
+        mongodb.save(tablename, obj, function (err, saveres) {
+            indicater = indicater + 1;
+            /**
+             * if indicater===workers.length, then this is the last file
+             * then will return
+             */
+            if (err) {
+                Logger.error("Query for companyEmployee config document error:" + err);
+                if (indicater === workers.length) {
+                    callback(true);
+                    return;
+                }
+            } else {
+                Logger.info("WorkHistory Saved, result:" + JSON.stringify(saveres));
+                if (indicater === workers.length) {
+                    callback(true);
+                    return;
                 }
             }
+        })
 
-        }
-    })
+    }
+
 };
 module.exports = workhistory;

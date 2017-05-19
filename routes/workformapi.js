@@ -16,12 +16,12 @@ var tablename = "workform";
 
 router.get('/getr', function (req, res, next) {
     var user = req.user;
-    if (user.role === "Admin") {
+    if (user.role === "Admin" || user.role === "AdminOffice") {
         var WorkForm = mongodb.getConnection(tablename);
         WorkForm
-            .find({})
+            .find({"requestStatus":"New"})
             .sort('-requestId')
-            .limit(50)
+            .limit(250)
             .exec(function (err, result) {
                 if (err) {
                     res.json(err);
@@ -31,14 +31,14 @@ router.get('/getr', function (req, res, next) {
                 res.json(result);
                 res.end();
             });
-    }else{
-        var company=user.company;
-         var WorkForm = mongodb.getConnection(tablename);
+    } else {
+        var company = user.company;
+        var WorkForm = mongodb.getConnection(tablename);
         WorkForm
-            .find({})
+            .find({"requestStatus":"New"})
             .where('company').equals(company)
             .sort('-requestId')
-            .limit(50)
+            .limit(250)
             .exec(function (err, result) {
                 if (err) {
                     res.json(err);
@@ -113,40 +113,38 @@ router.post("/save", function (req, res, next) {
             return;
         }
         if (result.length > 0) {
-            mongodb.update(tablename, condition, reqDoc, function (err, updateres) {
-                if (err) {
-                    Logger.error("update document error:" + JSON.stringify(err));
-                    res.json({
-                        message: err
-                    });
-                    res.end();
-                    return;
-                } else {
-                    if (reqDoc.requestStatus === "Closed") {
-                        workhistory.saveWorkForm(reqDoc, function (indicator) {
-                            if (indicator) {
-                                Logger.info("Request Playload: " + JSON.stringify(reqDoc));
-                                res.json(reqDoc);
-                                res.end();
-                                return;
-                            } else {
-                                Logger.error("Save data into workhistory table error");
-                                res.json({
-                                    message: err
-                                });
-                                res.end();
-                                return;
-                            }
-
-                        })
-                    } else {
-                        Logger.info("Request Playload: " + JSON.stringify(reqDoc));
-                        res.json(reqDoc);
+            if (reqDoc.requestStatus === "Closed") {
+                
+                mongodb.find("configdoc", { 'category': 'workItem' }, null, function (err, workItemDoc) {
+                    if (err) {
+                        Logger.error("Load WorkItem error:" + JSON.stringify(err));
+                        res.json({
+                            message: err
+                        });
                         res.end();
                         return;
+                    } else {
+                        if (workItemDoc.length > 0) {
+                            var workItems = workItemDoc[0].data;
+                            var reqWorkItem = reqDoc.workitem;
+                            var reqWorkCategory = reqDoc.workCategory;
+                            var find = false;
+                            for (var i = 0; i < workItems.length && !find; i++) {
+                                workItem = workItems[i];
+                                if (workItem.workCategory === reqWorkCategory && workItem.name === reqWorkItem) {
+                                    reqDoc.perhourwage = parseInt(workItem.attr);
+                                    reqDoc.requestwage=parseInt(reqDoc.workhour)*parseInt(workItem.attr)*parseInt(reqDoc.workersnumber);
+                                    find = true;
+                                }
+                            }
+                        }
+                        
+                        updateWorkFormDoc(condition, reqDoc, res);
                     }
-                }
-            })
+                })
+            } else {
+                updateWorkFormDoc(condition, reqDoc, res);
+            }
         } else {
             mongodb.save(tablename, reqDoc, function (err, saveres) {
                 if (err) {
@@ -165,9 +163,39 @@ router.post("/save", function (req, res, next) {
             })
         }
     })
-
-
 });
+
+var updateWorkFormDoc = function (condition, reqDoc, res) {
+    mongodb.update(tablename, condition, reqDoc, function (err, updateres) {
+        if (err) {
+            Logger.error("update document error:" + JSON.stringify(err));
+            res.json({
+                message: err
+            });
+            res.end();
+        } else {
+            if (reqDoc.requestStatus === "Closed") {
+                workhistory.saveWorkForm(reqDoc, function (indicator) {
+                    if (indicator) {
+                        Logger.info("Request Playload: " + JSON.stringify(reqDoc));
+                        res.json(reqDoc);
+                        res.end();
+                    } else {
+                        Logger.error("Save data into workhistory table error");
+                        res.json({
+                            message: err
+                        });
+                        res.end();
+                    }
+                })
+            } else {
+                Logger.info("Request Playload: " + JSON.stringify(reqDoc));
+                res.json(reqDoc);
+                res.end();
+            }
+        }
+    });
+}
 
 router.get('/now', function (req, res, next) {
     var strnow = moment().format("YYYY-MM-DD HH:mm");

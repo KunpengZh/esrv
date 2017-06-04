@@ -148,28 +148,69 @@ router.post('/uploadconfigdoc', function (req, res, next) {
         } else {
           fs.exists(dstPath, function (isFileExist) {
             if (isFileExist) {
-              filereader.txtReader(dstPath, category).then(function (data) {
-                var condition = {
-                  "category": category
-                };
-                updateDoc("configdoc", condition, data, function (err, result) {
-                  if (err) {
-                    res.json({
-                      message: err
-                    });
-                    res.end();
-                    return;
-                  } else {
-                    res.json(result);
-                    res.end();
-                  }
-                })
+              if (category === "uploadExcel") {
+                filereader.excelReader(dstPath).then(function (data) {
+                  var processedUpdate = 0;
+                  var totalUpdated = 0;
+                  var successStatus = true;
+                  var errMsg = "";
+                  for (var key in data) {
+                    totalUpdated++;
+                    var obj = data[key];
+                    var condition = {
+                      "category": obj.category
+                    };
+                    updateDoc("configdoc", condition, obj, function (err, result) {
+                      processedUpdate++;
+                      if (err) {
+                        successStatus = false
+                        errMsg = errMsg + "processedUpdate:" + JSON.stringify(err) + "  ,  ";
 
-              }).catch(function (err) {
-                console.log(err.message);
-                res.json(err);
-                res.end();
-              })
+                      }
+                      if (processedUpdate === totalUpdated) {
+                        if (successStatus) {
+                          res.json({ "status": "successed" })
+                          res.end();
+                          return;
+                        } else {
+                          console.log("failed:" + errMsg);
+                          res.json({ message: errMsg });
+                          res.end();
+                          return;
+                        }
+                      }
+                    })
+                  }
+
+                }).catch(function (err) {
+                  console.log(err.message);
+                  res.json(err);
+                  res.end();
+                })
+              } else {
+                filereader.txtReader(dstPath, category).then(function (data) {
+                  var condition = {
+                    "category": category
+                  };
+                  updateDoc("configdoc", condition, data, function (err, result) {
+                    if (err) {
+                      res.json({
+                        message: err
+                      });
+                      res.end();
+                      return;
+                    } else {
+                      res.json(result);
+                      res.end();
+                    }
+                  })
+
+                }).catch(function (err) {
+                  console.log(err.message);
+                  res.json(err);
+                  res.end();
+                })
+              }
             } else {
               res.json({
                 message: "file does not exit"

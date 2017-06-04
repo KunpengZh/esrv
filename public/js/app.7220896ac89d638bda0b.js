@@ -258,6 +258,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'ConfigDocument',
@@ -274,6 +275,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             showlevel2: false,
             showlevel3: false,
             showlevel4: false,
+            showExcelUpload: false,
             showSecurityTools: false,
             showSpareParts: false,
             companySource: true,
@@ -412,6 +414,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         switchView: function (viewname) {
             switch (viewname) {
                 case "/companySource":
+                    this.showExcelUpload = false;
                     this.showSecurityTools = false;
                     this.showSpareParts = false;
                     this.companySource = true;
@@ -429,6 +432,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
                 case "/companyAdmin":
+                    this.showExcelUpload = false;
                     this.showSecurityTools = false;
                     this.showSpareParts = false;
                     this.companySource = false;
@@ -446,6 +450,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
                 case "/companyEmployee":
+                    this.showExcelUpload = false;
                     this.showSecurityTools = false;
                     this.showSpareParts = false;
                     this.companySource = false;
@@ -463,6 +468,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
                 case "/workItem":
+                    this.showExcelUpload = false;
                     this.showSecurityTools = false;
                     this.showSpareParts = false;
                     this.companySource = false;
@@ -481,6 +487,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.workCategoryDataSource = this.buildConfigDataSource(this.$store.state.configdoc['workCategory']['data']);
                     break;
                 case "/showWorkCategory":
+                    this.showExcelUpload = false;
                     this.showSecurityTools = false;
                     this.showSpareParts = false;
                     this.companySource = false;
@@ -498,6 +505,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
                 case "/securityTools":
+                    this.showExcelUpload = false;
                     this.companySource = false;
                     this.companyAdmin = false;
                     this.companyEmployee = false;
@@ -515,6 +523,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
                 case "/spareParts":
+                    this.showExcelUpload = false;
                     this.companySource = false;
                     this.companyAdmin = false;
                     this.companyEmployee = false;
@@ -531,7 +540,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.ConfigDataSource = this.buildConfigDataSource(this.$store.state.configdoc['spareParts']['data']);
                     //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
+                case "/uploadExcel":
+                    this.showExcelUpload = true;
+                    this.companySource = false;
+                    this.companyAdmin = false;
+                    this.companyEmployee = false;
+                    this.workItem = false;
+                    this.showWorkCategory = false;
+                    this.showSecurityTools = false;
+                    this.showSpareParts = false;
+                    this.currentCategory = "uploadExcel";
+                    this.uplaodDialogTitle = "上传Excel文件";
+                    this.collabel = "Excel文件";
+                    this.showlevel2 = false;
+                    this.showlevel3 = false;
+                    this.showlevel4 = false;
+                    this.ConfigDataSource = this.buildConfigDataSource();
+                    this.handleImport();
+                    //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
+                    break;
                 default:
+                    this.showExcelUpload = false;
                     this.companySource = true;
                     this.companyAdmin = false;
                     this.companyEmployee = false;
@@ -553,10 +582,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.fullscreenLoading = true;
         },
         onSuccess: function (response) {
+            console.log("Hi, the response" + response);
+            // console.log("right event")
             this.fullscreenLoading = false;
-            this.$emit('switchViewEvent', {
-                data: response,
-                "viewName": "ForcastTableView"
+            // this.$emit('switchViewEvent', {
+            //     data: response,
+            //     "viewName": "ForcastTableView"
+            // });
+            if (response.message) {
+                this.$notify.error({
+                    title: 'Error',
+                    message: '上传更新配置文件错误:' + response.message
+                });
+            } else {
+                this.$notify.info({
+                    title: 'Info',
+                    message: '上传更新配置文件成功'
+                });
+                this.dialogFormVisible = false;
+                this.loadConfigData();
+            }
+        },
+        loadConfigData: function (callback) {
+            this.$http.get('/esrvapi/getallconfigdoc').then(function (res) {
+                var docList = res.body;
+                for (var i = 0; i < docList.length; i++) {
+                    var key = docList[i].category;
+                    this.$store.state.configdoc[key] = docList[i];
+                }
+                if (callback) {
+                    callback();
+                }
             });
         },
         handleEditSave: function () {
@@ -834,6 +890,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         RightComponentEvent: function (options) {
+            console.log("right event");
             this.opt.data = options.data;
             this.opt.action = options.action;
             this.opt.previousView = options.previousView;
@@ -4938,6 +4995,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     "pathname": "/spareParts",
     "menu": "备品备件",
     "event": "switchView"
+  }, {
+    "id": "0008",
+    "pathname": "/uploadExcel",
+    "menu": "上传Excel文件",
+    "event": "switchView"
   }],
   "WorkForm": [{
     "id": "0001",
@@ -6427,7 +6489,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])]), _vm._v(" "), _c('el-col', {
     attrs: {
-      "span": 4
+      "span": 3
     }
   }, [_c('div', {
     staticClass: "appTitle"
@@ -6436,7 +6498,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "height": "60px"
     },
     attrs: {
-      "span": 16
+      "span": 18
     }
   }, [_c('ul', {
     staticClass: "headerPrimaryActionsTrailing"
@@ -6462,7 +6524,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "height": "60px"
     },
     attrs: {
-      "span": 2
+      "span": 1
     }
   }, [_c('div', {
     attrs: {
@@ -8196,7 +8258,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.handleImport()
       }
     }
-  }, [_vm._v("导入备品备件")])], 1)], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("导入备品备件")]), _vm._v(" "), _c('el-menu-item', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.showExcelUpload),
+      expression: "showExcelUpload"
+    }],
+    attrs: {
+      "index": "2"
+    },
+    on: {
+      "click": function($event) {
+        _vm.handleImport()
+      }
+    }
+  }, [_vm._v("上传Excel文件")])], 1)], 1), _vm._v(" "), _c('div', {
     staticStyle: {
       "height": "700px",
       "padding": "20px"
@@ -9376,4 +9453,4 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ })
 ]),[69]);
-//# sourceMappingURL=app.ab8882bab00036685a1c.js.map
+//# sourceMappingURL=app.7220896ac89d638bda0b.js.map

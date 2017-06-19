@@ -8,14 +8,14 @@ var logger = require('pomelo-logger').getLogger('mongodb-log');
 var tabConf =require('./table-config');
 
 var options = {
-    db_user: "",
-    db_pwd: "",
+    db_user: "esrvadmin",
+    db_pwd: "cde32wsx",
     db_host: "localhost",
     db_port: 27017,
     db_name: "esrv"
 };
 
-var dbURL = "mongodb://" + options.db_user + ":" + options.db_pwd + "@" + options.db_host + ":" + options.db_port + "/" + options.db_name;
+var dbURL = "mongodb://" + options.db_user + ":" + options.db_pwd + "@" + options.db_host + ":" + options.db_port + "/" + options.db_name+"?authSource=admin";
 mongoose.connect(dbURL);
 
 mongoose.connection.on('connected', function (err) {

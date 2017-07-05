@@ -13,12 +13,38 @@ router.get('/getallconfigdoc', function (req, res, next) {
       res.end();
       return;
     } else {
+      response = removeDuplicateData(response)
       res.json(response);
       res.end();
     }
   })
 })
-
+var removeDuplicateData = function (source) {
+  source.forEach(function (obj, index) {
+    let newData = [];
+    let keyArray = [];
+    if (obj.category === 'workItem') {
+      obj.data.forEach(function (itemObj, itemIndex) {
+        let curKey = itemObj.name + itemObj.workCategory;
+        if (keyArray.indexOf(curKey) < 0) {
+          keyArray.push(curKey);
+          newData.push(itemObj);
+        }
+      })
+      source[index]['data'] = newData;
+    } else {
+      obj.data.forEach(function (itemObj, itemIndex) {
+        let curKey = itemObj.name + itemObj.attr;
+        if (keyArray.indexOf(curKey) < 0) {
+          keyArray.push(curKey);
+          newData.push(itemObj);
+        }
+      })
+      source[index]['data'] = newData;
+    }
+  });
+  return source;
+}
 router.get('/getconfigdoc', function (req, res, next) {
   if (!req.query.category) {
     res.json({

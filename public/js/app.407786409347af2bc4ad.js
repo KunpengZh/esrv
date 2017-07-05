@@ -294,7 +294,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             attr: '',
             workCategory: '',
             newTextInputList: [],
-            originalText: ''
+            originalText: '',
+            originalworkCategory: '',
+            originalAttr: ''
         };
     },
     mounted: function () {
@@ -319,6 +321,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.isCreateModel = false;
             this.isEditModel = false;
             this.originalText = '';
+            this.originalworkCategory = '';
+            this.originalAttr = '';
             // this.showlevel2 = false;
             // this.showlevel3 = false;
         },
@@ -642,14 +646,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var curSource = this.$store.state.configdoc[this.currentCategory]['data'];
             var needupdate = false;
             for (let i = 0; i < curSource.length; i++) {
-                if (curSource[i]["name"] === this.originalText) {
-                    curSource[i]['name'] = this.newTextInput;
-                    curSource[i]['attr'] = this.attr;
-                    if (this.showlevel4) {
-                        curSource[i]['workCategory'] = this.workCategory;
+                if (this.currentCategory === "workItem") {
+                    if (curSource[i]["name"] === this.originalText && curSource[i]["workCategory"] === this.originalworkCategory) {
+                        curSource[i]['name'] = this.newTextInput;
+                        curSource[i]['attr'] = this.attr;
+                        if (this.showlevel4) {
+                            curSource[i]['workCategory'] = this.workCategory;
+                        }
+                        needupdate = true;
+                        break;
                     }
-                    needupdate = true;
-                    break;
+                } else if (this.currentCategory === "companyEmployee") {
+                    if (curSource[i]["name"] === this.originalText && curSource[i]["attr"] === this.originalAttr) {
+                        curSource[i]['name'] = this.newTextInput;
+                        curSource[i]['attr'] = this.attr;
+                        if (this.showlevel4) {
+                            curSource[i]['workCategory'] = this.workCategory;
+                        }
+                        needupdate = true;
+                        break;
+                    }
+                } else {
+                    if (curSource[i]["name"] === this.originalText) {
+                        curSource[i]['name'] = this.newTextInput;
+                        curSource[i]['attr'] = this.attr;
+                        if (this.showlevel4) {
+                            curSource[i]['workCategory'] = this.workCategory;
+                        }
+                        needupdate = true;
+                        break;
+                    }
                 }
             }
             if (!needupdate) {
@@ -693,6 +719,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.newCreateDialogTitle = "编辑" + this.collabel;
             this.newTextInput = row.name;
             this.originalText = row.name;
+            this.originalworkCategory = row.workCategory;
+            this.originalAttr = row.attr;
             this.attr = row.attr;
             this.workCategory = row.workCategory;
             this.isCreateModel = false;
@@ -703,10 +731,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var curSource = this.$store.state.configdoc[this.currentCategory]['data'];
             var needupdate = false;
             for (let i = 0; i < curSource.length; i++) {
-                if (curSource[i]["name"] === row.name) {
-                    curSource.splice(i, 1);
-                    needupdate = true;
-                    break;
+                if (this.currentCategory === "workItem") {
+                    if (curSource[i]["name"] === this.originalText && curSource[i]["workCategory"] === this.originalworkCategory) {
+                        curSource.splice(i, 1);
+                        needupdate = true;
+                        break;
+                    }
+                } else if (this.currentCategory === "companyEmployee") {
+                    if (curSource[i]["name"] === this.originalText && curSource[i]["attr"] === this.originalAttr) {
+                        curSource.splice(i, 1);
+                        needupdate = true;
+                        break;
+                    }
+                } else {
+                    if (curSource[i]["name"] === row.name) {
+                        curSource.splice(i, 1);
+                        needupdate = true;
+                        break;
+                    }
                 }
             }
             if (!needupdate) {
@@ -8290,17 +8332,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-table-column', {
     attrs: {
       "prop": "id",
+      "sortable": "",
       "label": "行序号",
       "label-class-name": "forcastHeader"
     }
   }), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "prop": "name",
+      "sortable": "",
       "label": _vm.collabel,
       "label-class-name": "forcastHeader"
     }
   }), _vm._v(" "), (_vm.showlevel2) ? _c('el-table-column', {
     attrs: {
+      "sortable": "",
       "prop": "attr",
       "label": _vm.col2label,
       "label-class-name": "forcastHeader"
@@ -8313,6 +8358,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }) : _vm._e(), _vm._v(" "), (_vm.showlevel4) ? _c('el-table-column', {
     attrs: {
+      "sortable": "",
       "prop": "workCategory",
       "label": _vm.col4label,
       "label-class-name": "forcastHeader"
@@ -9453,4 +9499,4 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ })
 ]),[69]);
-//# sourceMappingURL=app.7220896ac89d638bda0b.js.map
+//# sourceMappingURL=app.407786409347af2bc4ad.js.map

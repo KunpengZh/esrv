@@ -932,7 +932,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         RightComponentEvent: function (options) {
-            console.log("right event");
+
             this.opt.data = options.data;
             this.opt.action = options.action;
             this.opt.previousView = options.previousView;
@@ -940,6 +940,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (options.menuitems) {
                 this.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */][options.menuitems];
             }
+            if (options.isEmergency) {
+                this.opt.isEmergency = options.isEmergency;
+            } else {
+                this.opt.isEmergency = false;
+            }
+
             this.currentView = options.viewName;
         },
         LeftSideBarEvent: function (viewName) {
@@ -970,6 +976,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 case "workform":
                     this.switchViewEvent({
                         "viewName": "WorkForm"
+                    });
+                    break;
+                case "emergencyworkform":
+                    this.switchViewEvent({
+                        "viewName": "EmerencyWorkForm"
                     });
                     break;
                 case "queryWorkform":
@@ -4231,7 +4242,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 previousView: "WorkForm"
             });
         },
-        switchView: function () {
+        switchView: function (viewname) {
+            var isEmergency = false;
+
+            if (viewname === "/createemergencyrequest") {
+                isEmergency = true;
+            }
+
             this.$emit('RightComponentEvent', {
                 data: {
                     requestId: "",
@@ -4255,12 +4272,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     isSecurityTools: "",
                     sanPiaoZhiXing: ""
                 },
-                viewName: "WorkFormDetail",
                 class: "animated bounceInRight",
                 menuitems: "WorkFormDetail",
                 viewName: "WorkFormDetail",
                 previousView: "WorkForm",
-                action: "Create"
+                action: "Create",
+                isEmergency: isEmergency
             });
         }
     }
@@ -4449,12 +4466,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'WorkFormDetail',
     props: ["options"],
     data() {
+
         return {
+            isEmergency: this.options.isEmergency,
             previousView: this.options.previousView,
             isWorkFormClosed: false,
             isEdithModel: false,
@@ -5046,7 +5068,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   "WorkForm": [{
     "id": "0001",
     "pathname": "/createrequest",
-    "menu": "新建派工单",
+    "menu": "新建日常派工单",
+    "event": "switchView"
+  }, {
+    "id": "0002",
+    "pathname": "/createemergencyrequest",
+    "menu": "新建紧急派工单",
     "event": "switchView"
   }],
   "WorkFormDetail": [{
@@ -8820,7 +8847,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "width": "25%"
     }
-  }, [_vm._v(_vm._s(_vm.request.data.creationtime))])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workers))]), _vm._v(" "), _c('td', {
+  }, [_c('el-date-picker', {
+    attrs: {
+      "disabled": !_vm.isEmergency,
+      "format": "yyyy-MM-dd HH:mm:ss",
+      "align": "right",
+      "type": "datetime"
+    },
+    model: {
+      value: (_vm.request.data.creationtime),
+      callback: function($$v) {
+        _vm.request.data.creationtime = $$v
+      },
+      expression: "request.data.creationtime"
+    }
+  })], 1)]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workers))]), _vm._v(" "), _c('td', {
     staticStyle: {
       "text-align": "left"
     }
@@ -9499,4 +9540,4 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ })
 ]),[69]);
-//# sourceMappingURL=app.407786409347af2bc4ad.js.map
+//# sourceMappingURL=app.101a46487fbdc66ef5bf.js.map

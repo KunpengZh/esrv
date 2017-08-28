@@ -14,7 +14,7 @@ router.get('/isAuthenticated', function (req, res, next) {
       username: req.user.username,
       role: req.user.role,
       fullname: req.user.fullname,
-      company:req.user.company
+      company: req.user.company
     });
     res.end();
   } else {
@@ -44,9 +44,9 @@ router.post('/', function (req, res, next) {
         res.json({
           "username": user.username,
           "isAuthenticated": true,
-          "role": user.role?user.role:"User",
-          "fullname":user.fullname?user.fullname:user.username,
-          "company":user.company?user.company:""
+          "role": user.role ? user.role : "User",
+          "fullname": user.fullname ? user.fullname : user.username,
+          "company": user.company ? user.company : ""
         });
         res.end();
       });
@@ -62,7 +62,7 @@ router.post('/signup', function (req, res, next) {
     }
     if (!user) {
       console.log("/login/singup, no user:" + info);
-      res.json({"message":"create user fialed"});
+      res.json({ "message": info.message ? info.message : "create user fialed" });
       res.status(500);
       res.end();
     } else {

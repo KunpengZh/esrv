@@ -202,6 +202,16 @@
             "type": "Number",
             "required": false,
             "index": false
+        },
+        "chargerName":{
+            "type": "String",
+            "required": true,
+            "index": false
+        },
+        "chargerID":{
+            "type": "String",
+            "required": true,
+            "index": false
         }
     },
     "requestIdIndex": {

@@ -18,7 +18,6 @@ router.get('/allusers', function (req, res, next) {
 });
 
 router.post('/queryuser', function (req, res, next) {
-
     if (!req.body.condition) {
         console.log("/esrvadmin/queryuser:" +"condition is mandatory required")
         res.json({

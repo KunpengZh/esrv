@@ -19,7 +19,7 @@ router.get('/getr', function (req, res, next) {
     if (user.role === "Admin" || user.role === "AdminOffice") {
         var WorkForm = mongodb.getConnection(tablename);
         WorkForm
-            .find({"requestStatus":"New"})
+            .find({ "requestStatus": "New" })
             .sort('-requestId')
             .limit(250)
             .exec(function (err, result) {
@@ -28,6 +28,7 @@ router.get('/getr', function (req, res, next) {
                     res.end();
                     return;
                 }
+                result = updateHistoryRecord(result);
                 res.json(result);
                 res.end();
             });
@@ -35,7 +36,7 @@ router.get('/getr', function (req, res, next) {
         var company = user.company;
         var WorkForm = mongodb.getConnection(tablename);
         WorkForm
-            .find({"requestStatus":"New"})
+            .find({ "requestStatus": "New" })
             .where('company').equals(company)
             .sort('-requestId')
             .limit(250)
@@ -45,6 +46,7 @@ router.get('/getr', function (req, res, next) {
                     res.end();
                     return;
                 }
+                result = updateHistoryRecord(result);
                 res.json(result);
                 res.end();
             });
@@ -62,6 +64,16 @@ router.get('/getr', function (req, res, next) {
     // .select('name occupation')
     // .exec(callback);
 })
+
+var updateHistoryRecord = function (records) {
+    for (var i = 0; i < records.length; i++) {
+        if (!records[i].chargerID) {
+            records[i].chargerID = '';
+            records[i].chargerName = '';
+        }
+    }
+    return records;
+}
 
 router.get("/all", function (req, res, next) {
     mongodb.find(tablename, {}, null, function (err, result) {
@@ -114,7 +126,7 @@ router.post("/save", function (req, res, next) {
         }
         if (result.length > 0) {
             if (reqDoc.requestStatus === "Closed") {
-                
+
                 mongodb.find("configdoc", { 'category': 'workItem' }, null, function (err, workItemDoc) {
                     if (err) {
                         Logger.error("Load WorkItem error:" + JSON.stringify(err));
@@ -133,12 +145,12 @@ router.post("/save", function (req, res, next) {
                                 workItem = workItems[i];
                                 if (workItem.workCategory === reqWorkCategory && workItem.name === reqWorkItem) {
                                     reqDoc.perhourwage = parseInt(workItem.attr);
-                                    reqDoc.requestwage=parseInt(reqDoc.workhour)*parseInt(workItem.attr)*parseInt(reqDoc.workersnumber);
+                                    reqDoc.requestwage = parseInt(reqDoc.workhour) * parseInt(workItem.attr) * parseInt(reqDoc.workersnumber);
                                     find = true;
                                 }
                             }
                         }
-                        
+
                         updateWorkFormDoc(condition, reqDoc, res);
                     }
                 })

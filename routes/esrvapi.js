@@ -6,6 +6,44 @@ var fs = require('fs');
 var filereader = require('../utils/filereader.js');
 /* GET users listing. */
 
+router.post('/queryuser', function (req, res, next) {
+  if (!req.body.condition) {
+    console.log("/esrvapi/queryuser:" + "condition is mandatory required")
+    res.json({
+      errorMsg: "condition is mandatory required",
+      status: false
+    });
+    res.end();
+    return;
+  }
+  var condition = req.body.condition;
+  mongodb.findOne("users", condition, function (err, respons) {
+    if (err) {
+      console.log("/esrvapi/queryuser:" + err)
+      res.json({ status: 500, message: err, data: '' });
+      res.end();
+      return;
+    } else {
+      if (respons === null || JSON.stringify(respons) === "{}") {
+        res.json({ status: 800, message: "用户不存在", data: '' });
+      } else {
+        res.json({
+          status: 200,
+          message: "",
+          data: {
+            "company": respons.company ? respons.company : '',
+            "fullname": respons.fullname ? respons.fullname : '',
+            "role": respons.role ? respons.role : '',
+            "username": respons.username ? respons.username : '',
+          }
+        });
+        res.end();
+      }
+    }
+  })
+
+});
+
 router.get('/getallconfigdoc', function (req, res, next) {
   mongodb.find("configdoc", {}, null, function (err, response) {
     if (err) {

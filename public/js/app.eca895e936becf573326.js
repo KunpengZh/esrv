@@ -1,19 +1,114 @@
-webpackJsonp([1],Array(23).concat([
-/* 23 */
+webpackJsonp([1],[
+/* 0 */,
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  "UserManager": [{
+    "id": "0001",
+    "pathname": "/createNewUser",
+    "menu": "注册新用户",
+    "event": "handleCreateNewUser"
+  }],
+  "ConfigDocument": [{
+    "id": "0001",
+    "pathname": "/serviceCompany",
+    "menu": "派工单位",
+    "event": "switchView"
+  }, {
+    "id": "0002",
+    "pathname": "/companyAdmin",
+    "menu": "派工人员",
+    "event": "switchView"
+  }, {
+    "id": "0003",
+    "pathname": "/companyEmployee",
+    "menu": "工作人员",
+    "event": "switchView"
+  }, {
+    "id": "0004",
+    "pathname": "/showWorkCategory",
+    "menu": "工作类别",
+    "event": "switchView"
+  }, {
+    "id": "0005",
+    "pathname": "/workItem",
+    "menu": "工作任务",
+    "event": "switchView"
+  }, {
+    "id": "0006",
+    "pathname": "/securityTools",
+    "menu": "安全工具",
+    "event": "switchView"
+  }, {
+    "id": "0007",
+    "pathname": "/spareParts",
+    "menu": "备品备件",
+    "event": "switchView"
+  }, {
+    "id": "0008",
+    "pathname": "/uploadExcel",
+    "menu": "上传Excel文件",
+    "event": "switchView"
+  }],
+  "WorkForm": [{
+    "id": "0001",
+    "pathname": "/createrequest",
+    "menu": "新建日常派工单",
+    "event": "switchView"
+  }],
+  "WorkFormDetail": [{
+    "id": "0001",
+    "pathname": "/goback",
+    "menu": "  返回前页",
+    "event": "switchView"
+  }],
+  "queryWorkform": [],
+  "queryWorker": [],
+  "queryMonthly": [],
+  "queryAnnually": [],
+  "AdminRolesName": ['Admin', 'CompanyAdmin', 'AdminOffice']
+});
+
+/***/ }),
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_HomeLayout__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_HomeLayout__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_HomeLayout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_HomeLayout__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Login__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Login__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Login__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_PrintWorkForm__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_PrintWorkForm__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_PrintWorkForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_PrintWorkForm__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_PrintMonthlyReport__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_PrintMonthlyReport__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_PrintMonthlyReport___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_PrintMonthlyReport__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_PrintAnnuallyReport__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_PrintAnnuallyReport__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_PrintAnnuallyReport___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_PrintAnnuallyReport__);
 
 
@@ -54,26 +149,26 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_1_vue
 }));
 
 /***/ }),
-/* 24 */,
 /* 25 */,
-/* 26 */
+/* 26 */,
+/* 27 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(100)
+__webpack_require__(98)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(52),
+  __webpack_require__(53),
   /* template */
-  __webpack_require__(131),
+  __webpack_require__(127),
   /* scopeId */
   null,
   /* cssModules */
@@ -84,7 +179,6 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 28 */,
 /* 29 */,
 /* 30 */,
 /* 31 */,
@@ -108,7 +202,8 @@ module.exports = Component.exports
 /* 49 */,
 /* 50 */,
 /* 51 */,
-/* 52 */
+/* 52 */,
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -127,7 +222,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -586,13 +681,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.fullscreenLoading = true;
         },
         onSuccess: function (response) {
-            console.log("Hi, the response" + response);
-            // console.log("right event")
             this.fullscreenLoading = false;
-            // this.$emit('switchViewEvent', {
-            //     data: response,
-            //     "viewName": "ForcastTableView"
-            // });
             if (response.message) {
                 this.$notify.error({
                     title: 'Error',
@@ -772,88 +861,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 54 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'home',
-    data: function () {
-        return {
-            options: [{
-                value: '选项1',
-                label: '黄金糕',
-                id: "0001"
-            }, {
-                value: '选项2',
-                label: '双皮奶',
-                id: "0002"
-            }, {
-                value: '选项3',
-                label: '蚵仔煎',
-                id: "0003"
-            }, {
-                value: '选项4',
-                label: '龙须面',
-                id: "0004"
-            }, {
-                value: '选项5',
-                label: '北京烤鸭',
-                id: "0005"
-            }],
-            value: "value1",
-            brand: '',
-            releaseDate: '',
-            datePickerOptions: {},
-            fullscreenLoading: false
-        };
-    },
-    methods: {
-        onselectchange: function (value) {
-            console.log(value);
-        }
-    }
-});
-
-/***/ }),
 /* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LeftSideBar__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LeftSideBar__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_LeftSideBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_LeftSideBar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Home__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Home___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Home__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_UserManager__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_UserManager___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_UserManager__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ConfigDocument__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ConfigDocument___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_ConfigDocument__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_WorkForm__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_WorkForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_WorkForm__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_WorkFormDetail__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_WorkFormDetail___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_WorkFormDetail__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_QueryWorkForm__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_QueryWorkForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_QueryWorkForm__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_QueryWorker__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_QueryWorker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_QueryWorker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_QueryMonthly__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_QueryMonthly___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_QueryMonthly__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_QueryAnnually__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_QueryAnnually___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_QueryAnnually__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_UserManager__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_UserManager___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_UserManager__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_ConfigDocument__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_ConfigDocument___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_ConfigDocument__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_commondatasources__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_WorkForm__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_WorkForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_WorkForm__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_WorkFormDetail__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_WorkFormDetail___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_WorkFormDetail__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_QueryWorkForm__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_QueryWorkForm___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_QueryWorkForm__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_QueryWorker__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_QueryWorker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_QueryWorker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_QueryMonthly__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_QueryMonthly___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_QueryMonthly__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_QueryAnnually__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_QueryAnnually___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_QueryAnnually__);
 //
 //
 //
@@ -897,7 +928,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
 
 
 
@@ -914,31 +944,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'homelayout',
     components: {
         leftSideBar: __WEBPACK_IMPORTED_MODULE_0__components_LeftSideBar___default.a,
-        WorkFormDetail: __WEBPACK_IMPORTED_MODULE_6__components_WorkFormDetail___default.a,
-        WorkForm: __WEBPACK_IMPORTED_MODULE_5__components_WorkForm___default.a,
-        QueryWorkForm: __WEBPACK_IMPORTED_MODULE_7__components_QueryWorkForm___default.a,
-        QueryWorker: __WEBPACK_IMPORTED_MODULE_8__components_QueryWorker___default.a,
-        QueryMonthly: __WEBPACK_IMPORTED_MODULE_9__components_QueryMonthly___default.a,
-        QueryAnnually: __WEBPACK_IMPORTED_MODULE_10__components_QueryAnnually___default.a
+        WorkFormDetail: __WEBPACK_IMPORTED_MODULE_5__components_WorkFormDetail___default.a,
+        WorkForm: __WEBPACK_IMPORTED_MODULE_4__components_WorkForm___default.a,
+        QueryWorkForm: __WEBPACK_IMPORTED_MODULE_6__components_QueryWorkForm___default.a,
+        QueryWorker: __WEBPACK_IMPORTED_MODULE_7__components_QueryWorker___default.a,
+        QueryMonthly: __WEBPACK_IMPORTED_MODULE_8__components_QueryMonthly___default.a,
+        QueryAnnually: __WEBPACK_IMPORTED_MODULE_9__components_QueryAnnually___default.a
     },
     data: function () {
         return {
             fullscreenLoading: false,
-            currentView: __WEBPACK_IMPORTED_MODULE_5__components_WorkForm___default.a,
+            currentView: __WEBPACK_IMPORTED_MODULE_4__components_WorkForm___default.a,
             opt: {},
-            menuitems: __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */].WorkForm,
+            menuitems: __WEBPACK_IMPORTED_MODULE_3__components_commondatasources__["a" /* default */].AdminRolesName.indexOf(this.$store.state.curUser.role) >= 0 ? __WEBPACK_IMPORTED_MODULE_3__components_commondatasources__["a" /* default */].WorkForm : [],
             rightComponentClass: "animated bounceInDown"
         };
     },
     methods: {
         RightComponentEvent: function (options) {
-
             this.opt.data = options.data;
             this.opt.action = options.action;
             this.opt.previousView = options.previousView;
             this.rightComponentClass = options.class;
             if (options.menuitems) {
-                this.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */][options.menuitems];
+                this.menuitems = __WEBPACK_IMPORTED_MODULE_3__components_commondatasources__["a" /* default */][options.menuitems];
+            } else {
+                this.menuitems = [];
             }
             if (options.isEmergency) {
                 this.opt.isEmergency = options.isEmergency;
@@ -1004,7 +1035,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     });
                     break;
                 default:
-                    this.currentView = __WEBPACK_IMPORTED_MODULE_1__components_Home___default.a;
+                    this.currentView = Home;
             }
         },
         switchViewEvent: function (options) {
@@ -1014,51 +1045,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     if (!self.$store.state.configdoc.companySource || self.$store.state.configdoc.companySource.length <= 0) {
                         self.loadConfigData(function () {
                             self.opt.data = options.data;
-                            self.currentView = __WEBPACK_IMPORTED_MODULE_2__components_UserManager___default.a;
+                            self.currentView = __WEBPACK_IMPORTED_MODULE_1__components_UserManager___default.a;
                             self.fullscreenLoading = false;
-                            self.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */].UserManager;
+                            self.menuitems = __WEBPACK_IMPORTED_MODULE_3__components_commondatasources__["a" /* default */].UserManager;
                         });
                     } else {
                         self.opt.data = options.data;
-                        self.currentView = __WEBPACK_IMPORTED_MODULE_2__components_UserManager___default.a;
+                        self.currentView = __WEBPACK_IMPORTED_MODULE_1__components_UserManager___default.a;
                         self.fullscreenLoading = false;
-                        self.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */].UserManager;
+                        self.menuitems = __WEBPACK_IMPORTED_MODULE_3__components_commondatasources__["a" /* default */].UserManager;
                     }
                     break;
                 case "ConfigDocument":
-                    self.currentView = __WEBPACK_IMPORTED_MODULE_3__components_ConfigDocument___default.a;
+                    self.currentView = __WEBPACK_IMPORTED_MODULE_2__components_ConfigDocument___default.a;
                     self.fullscreenLoading = false;
-                    self.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */].ConfigDocument;
+                    self.menuitems = __WEBPACK_IMPORTED_MODULE_3__components_commondatasources__["a" /* default */].ConfigDocument;
                     break;
                 case "WorkForm":
-                    self.currentView = __WEBPACK_IMPORTED_MODULE_5__components_WorkForm___default.a;
+                    self.currentView = __WEBPACK_IMPORTED_MODULE_4__components_WorkForm___default.a;
                     self.fullscreenLoading = false;
-                    self.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */].WorkForm;
+                    self.menuitems = __WEBPACK_IMPORTED_MODULE_3__components_commondatasources__["a" /* default */].WorkForm;
                     break;
                 case "QueryWorkForm":
-                    self.currentView = __WEBPACK_IMPORTED_MODULE_7__components_QueryWorkForm___default.a;
+                    self.currentView = __WEBPACK_IMPORTED_MODULE_6__components_QueryWorkForm___default.a;
                     self.fullscreenLoading = false;
-                    self.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */].queryWorkform;
+                    self.menuitems = __WEBPACK_IMPORTED_MODULE_3__components_commondatasources__["a" /* default */].queryWorkform;
                     break;
                 case "QueryWorker":
-                    self.currentView = __WEBPACK_IMPORTED_MODULE_8__components_QueryWorker___default.a;
+                    self.currentView = __WEBPACK_IMPORTED_MODULE_7__components_QueryWorker___default.a;
                     self.fullscreenLoading = false;
-                    self.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */].queryWorker;
+                    self.menuitems = __WEBPACK_IMPORTED_MODULE_3__components_commondatasources__["a" /* default */].queryWorker;
                     break;
                 case "QueryMonthly":
-                    self.currentView = __WEBPACK_IMPORTED_MODULE_9__components_QueryMonthly___default.a;
+                    self.currentView = __WEBPACK_IMPORTED_MODULE_8__components_QueryMonthly___default.a;
                     self.fullscreenLoading = false;
-                    self.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */].queryMonthly;
+                    self.menuitems = __WEBPACK_IMPORTED_MODULE_3__components_commondatasources__["a" /* default */].queryMonthly;
                     break;
                 case "QueryAnnually":
-                    self.currentView = __WEBPACK_IMPORTED_MODULE_10__components_QueryAnnually___default.a;
+                    self.currentView = __WEBPACK_IMPORTED_MODULE_9__components_QueryAnnually___default.a;
                     self.fullscreenLoading = false;
-                    self.menuitems = __WEBPACK_IMPORTED_MODULE_4__components_commondatasources__["a" /* default */].queryAnnually;
+                    self.menuitems = __WEBPACK_IMPORTED_MODULE_3__components_commondatasources__["a" /* default */].queryAnnually;
                     break;
                 default:
                     self.fullscreenLoading = false;
                     self.menuitems = [];
-                    self.currentView = __WEBPACK_IMPORTED_MODULE_1__components_Home___default.a;
+                    self.currentView = Home;
             }
         },
         buildConfigDataSource: function (obj) {
@@ -1263,8 +1294,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         onSubmit: function () {
-            let options = { emulateJSON: true };
-            this.$http.post("/login", { "username": this.username, "password": this.password }, options).then(function (response) {
+            let options = {
+                emulateJSON: true
+            };
+            this.$http.post("/login", {
+                "username": this.username,
+                "password": this.password
+            }, options).then(function (response) {
                 if (response.body && response.body.isAuthenticated) {
                     this.$store.state.curUser.username = response.body.username;
                     this.$store.state.curUser.isAuthenticated = response.body.isAuthenticated;
@@ -1273,11 +1309,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.$store.state.curUser.company = response.body.company;
                     this.$store.state.curUser.isAdmin = response.body.role === "Admin" ? true : false;
                     this.$store.state.curUser.isAdminOffice = response.body.role === "AdminOffice" ? true : false;
-                    // if(response.body.role==="Admin"){
-                    //     this.$store.state.curUser.isAdmin=true;
-                    // }else{
-                    //     this.$store.state.curUser.isAdmin=false;
-                    // }
+                    this.$store.state.curUser.isCompanyAdmin = response.body.role === "CompanyAdmin" ? true : false;
                     this.$router.push({
                         path: '/home'
                     });
@@ -3007,13 +3039,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } else {
                     curObj.requestNum = 1;
                 }
+
+                if (source[i].requestwage == null || source[i].requestwage === '') {
+                    source[i].requestwage = 0;
+                }
+
                 summary.wageNum = summary.wageNum + source[i].requestwage;
                 if (curObj.wageNum) {
                     curObj.wageNum = curObj.wageNum + source[i].requestwage;
                 } else {
                     curObj.wageNum = source[i].requestwage;
                 }
-
+                if (source[i].workhour == null || source[i].workhour === '') {
+                    source[i].workhour = 0;
+                }
                 summary.workhourNum = summary.workhourNum + source[i].workhour;
                 if (curObj.workhourNum) {
                     curObj.workhourNum = curObj.workhourNum + source[i].workhour;
@@ -3895,6 +3934,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ["options"],
@@ -3919,6 +3961,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
             formLabelWidth: '120px',
             companySource: companySource,
+            previousCompanyValue: '',
+            employeeSource: [],
             originUser: {
                 username: '',
                 fullname: '',
@@ -3929,6 +3973,65 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     methods: {
+        handleUserIDChange: function (value) {
+            if (!this.validateOnlyAllowedCharts(value)) {
+                this.$notify.error({
+                    title: 'Error',
+                    message: "用户ID只能是字母和数字和组合,不能有中文字符"
+                });
+                this.$set(this.user, 'username', "");
+            }
+        },
+        validateOnlyAllowedCharts(text) {
+            let numbers = '0123456789abcdefghijklmnopqrstuvwxyz@.ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let validate = true;
+            for (var i = 0; i < text.length && validate; i++) {
+                if (numbers.indexOf(text[i]) < 0) {
+                    validate = false;
+                    break;
+                }
+            }
+            return validate;
+        },
+        handleCompanyChange: function (value) {
+            var self = this;
+            if (value !== this.previousCompanyValue) {
+                self.updateEmployeeSource(value);
+                self.previousCompanyValue = value;
+            }
+        },
+        updateEmployeeSource: function (value) {
+            var companyAdmin = this.$store.state.configdoc["companyAdmin"]["data"];
+            var companyEmployee = this.$store.state.configdoc["companyEmployee"]["data"];
+            var employeeSource = [];
+            for (var i = 0; i < companyAdmin.length; i++) {
+                if (companyAdmin[i].attr === value) {
+                    let duplicate = false;
+                    for (var k = 0; k < employeeSource.length && !duplicate; k++) {
+                        if (employeeSource[k].name === companyAdmin[i].name) {
+                            duplicate = true;
+                        }
+                    }
+                    if (!duplicate) {
+                        employeeSource.push(companyAdmin[i]);
+                    }
+                }
+            }
+            for (var i = 0; i < companyEmployee.length; i++) {
+                if (companyEmployee[i].attr === value) {
+                    let duplicate = false;
+                    for (var k = 0; k < employeeSource.length && !duplicate; k++) {
+                        if (employeeSource[k].name === companyEmployee[i].name) {
+                            duplicate = true;
+                        }
+                    }
+                    if (!duplicate) {
+                        employeeSource.push(companyEmployee[i]);
+                    }
+                }
+            }
+            this.$set(this, 'employeeSource', employeeSource);
+        },
         handleEdit: function (index, row) {
             this.isCreateModel = false, this.isEditModel = true, this.dialogFormVisible = true;
             this.showResetPssword = false;
@@ -4021,7 +4124,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 "role": this.user.role,
                 "password": this.user.password
             };
-            let options = { emulateJSON: true };
+            let options = {
+                emulateJSON: true
+            };
             this.$http.post("/login/signup", newUser, options).then(function (res) {
                 var result = res.body;
                 if (!result._id && result.message) {
@@ -4186,7 +4291,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function () {
         var self = this;
         this.$nextTick(function () {
-            if (this.$store.state.curUser.isAuthenticated) {
+            if (!this.$store.state.curUser.isAuthenticated) {
                 this.getCureUser(function () {
                     self.$http.get("/workformapi/getr").then(function (res) {
                         self.WorkFormDataSource = res.body;
@@ -4214,14 +4319,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.$store.state.curUser.fullname = response.body.fullname;
                     this.$store.state.curUser.isAdmin = response.body.role === "Admin" ? true : false;
                     this.$store.state.curUser.isAdminOffice = response.body.role === "AdminOffice" ? true : false;
-                    // if (response.body.role === "Admin") {
-                    //     this.$store.state.curUser.isAdmin = true;
-                    // } else {
-                    //     this.$store.state.curUser.isAdmin = false;
-                    // }
-                    // this.$router.push({
-                    //     path: '/home'
-                    // })
                     if (callback) {
                         callback();
                     }
@@ -4270,7 +4367,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     spareParts: [],
                     isSpareParts: "",
                     isSecurityTools: "",
-                    sanPiaoZhiXing: ""
+                    sanPiaoZhiXing: "",
+                    chargerName: "",
+                    chargerID: ""
                 },
                 class: "animated bounceInRight",
                 menuitems: "WorkFormDetail",
@@ -4289,6 +4388,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_commondatasources__ = __webpack_require__(16);
 //
 //
 //
@@ -4469,17 +4569,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'WorkFormDetail',
     props: ["options"],
     data() {
-
         return {
             isEmergency: this.options.isEmergency,
             previousView: this.options.previousView,
             isWorkFormClosed: false,
             isEdithModel: false,
+            isChargePerson: true,
+            isHistoryRecord: false,
             dialogFormVisible: false,
             action: this.options.action,
             isCreateModel: false,
@@ -4506,7 +4615,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     isSpareParts: "领取备品备件",
                     securityTools: "安全工具",
                     spareParts: "备品备件",
-                    sanPiaoZhiXing: "三票执行"
+                    sanPiaoZhiXing: "三票执行",
+                    chargerName: "主负责人"
                 },
                 data: this.options.data,
                 datasource: {
@@ -4574,6 +4684,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (self.action === "Edit") {
                 self.isCreateModel = false;
                 self.isEdithModel = true;
+
+                if (!self.request.data.chargerID || self.request.data.chargerID === '') {
+                    self.isChargePerson = true;
+                    self.isHistoryRecord = true;
+                    self.updateCompanyEmployee(self.request.data.company);
+                } else if (self.request.data.chargerID !== self.$store.state.curUser.username) {
+                    self.isChargePerson = false;
+                }
+
+                if (self.$store.state.curUser.isAdminOffice || self.$store.state.curUser.isAdmin || self.$store.state.curUser.isCompanyAdmin) {
+                    self.isChargePerson = true;
+                }
+
                 if (self.request.data.requestStatus === "Closed") {
                     self.isWorkFormClosed = true;
                 } else {
@@ -4584,7 +4707,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 self.isCreateModel = true;
                 self.isWorkFormClosed = false;
                 self.isEdithModel = false;
-                if (self.$store.state.curUser.isAdminOffice || self.$store.state.curUser.isAdmin) {
+                if (self.$store.state.curUser.isAdminOffice || self.$store.state.curUser.isAdmin || self.$store.state.curUserisCompanyAdmin) {
                     self.isAdmin = true;
                 } else {
                     self.isAdmin = false;
@@ -4756,53 +4879,96 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (!this.validateRequestForm()) {
                 return;
             }
-            this.$http.post("/workformapi/save", {
-                data: this.request.data
+            this.validateChargePerson(function () {
+
+                self.$http.post("/workformapi/save", {
+                    data: self.request.data
+                }).then(function (res) {
+                    if (res.status === 200 && res.body.requestId) {
+                        self.$notify.info({
+                            title: '保存成功',
+                            message: "保存成功"
+                        });
+                        self.request.data = {
+                            requestId: "",
+                            company: self.request.data.company,
+                            requester: self.request.data.requester,
+                            creationtime: "",
+                            workitem: "",
+                            workCategory: "",
+                            worklocation: "",
+                            workers: [],
+                            workersnumber: "",
+                            workhour: "",
+                            planreturntime: "",
+                            returntime: "",
+                            workcomments: "",
+                            workdocument: [],
+                            requestStatus: "New",
+                            securityTools: [],
+                            spareParts: [],
+                            isSpareParts: "",
+                            isSecurityTools: "",
+                            sanPiaoZhiXing: "",
+                            chargerName: "",
+                            chargerID: ""
+                        };
+                        //this.request.datasource.companyAdmin = [];
+                        //this.request.datasource.companyEmployee = [];
+                        self.request.datasource.workItem = [];
+                        self.$http.get('/workformapi/requestid').then(function (res) {
+                            var strbody = res.body;
+                            if (!strbody.requestId || !strbody.strtime) {
+                                self.$notify.error({
+                                    title: 'Error',
+                                    message: "未能从服务器取得派工单编号"
+                                });
+                                return;
+                            }
+                            self.request.data.creationtime = strbody.strtime;
+                            self.request.data.requestId = strbody.requestId;
+                        });
+                    } else {
+                        self.$notify.error({
+                            title: 'Error',
+                            message: res.body
+                        });
+                        return;
+                    }
+                });
+            });
+        },
+        validateChargePerson: function (callback) {
+            var self = this;
+            var condition = {
+                "fullname": this.request.data.chargerName,
+                "company": this.request.data.company
+            };
+            this.$http.post("/esrvapi/queryuser", {
+                condition: condition
             }).then(function (res) {
-                if (res.status === 200 && res.body.requestId) {
-                    this.$notify.info({
-                        title: '保存成功',
-                        message: "保存成功"
-                    });
-                    self.request.data = {
-                        requestId: "",
-                        company: self.request.data.company,
-                        requester: self.request.data.requester,
-                        creationtime: "",
-                        workitem: "",
-                        workCategory: "",
-                        worklocation: "",
-                        workers: [],
-                        workersnumber: "",
-                        workhour: "",
-                        planreturntime: "",
-                        returntime: "",
-                        workcomments: "",
-                        workdocument: [],
-                        requestStatus: "New",
-                        securityTools: [],
-                        spareParts: [],
-                        isSpareParts: "",
-                        isSecurityTools: "",
-                        sanPiaoZhiXing: ""
-                    };
-                    //this.request.datasource.companyAdmin = [];
-                    //this.request.datasource.companyEmployee = [];
-                    this.request.datasource.workItem = [];
-                    self.$http.get('/workformapi/requestid').then(function (res) {
-                        var strbody = res.body;
-                        if (!strbody.requestId || !strbody.strtime) {
-                            this.$notify.error({
-                                title: 'Error',
-                                message: "未能从服务器取得派工单编号"
-                            });
-                            return;
-                        }
-                        self.request.data.creationtime = strbody.strtime;
-                        self.request.data.requestId = strbody.requestId;
-                    });
+                if (res.status === 200) {
+
+                    res = res.body;
+
+                    if (res.status === 800) {
+                        self.$notify.error({
+                            title: 'Error',
+                            message: "你所选的工单主负责人，没有一个有效的登陆ID,所以不能做为主负责人，请更换"
+                        });
+                        return;
+                    } else if (res.status === 500) {
+                        self.$notify.error({
+                            title: 'Error',
+                            message: res.message
+                        });
+                    } else if (res.status === 200) {
+
+                        self.request.data.chargerID = res.data.username;
+                        callback();
+                    }
                 } else {
-                    this.$notify.error({
+                    self.$notify.error({
                         title: 'Error',
                         message: res.body
                     });
@@ -4816,22 +4982,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (!this.validateRequestForm()) {
                 return;
             }
-            this.$http.post("/workformapi/save", {
-                data: this.request.data
-            }).then(function (res) {
-                if (res.status === 200 && res.body.requestId) {
-                    this.$notify.info({
-                        title: '保存成功',
-                        message: "保存成功"
-                    });
-                    this.returnData(res.body);
-                } else {
-                    this.$notify.error({
-                        title: 'Error',
-                        message: res.body
-                    });
-                    return;
-                }
+            this.validateChargePerson(function () {
+                self.$http.post("/workformapi/save", {
+                    data: self.request.data
+                }).then(function (res) {
+                    if (res.status === 200 && res.body.requestId) {
+                        self.$notify.info({
+                            title: '保存成功',
+                            message: "保存成功"
+                        });
+                        self.returnData(res.body);
+                    } else {
+                        self.$notify.error({
+                            title: 'Error',
+                            message: res.body
+                        });
+                        return;
+                    }
+                });
             });
         },
         returnData: function (data) {
@@ -4839,7 +5007,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 data: data,
                 viewName: this.previousView,
                 class: "animated bounceInLeft",
-                menuitems: "WorkForm",
+                menuitems: __WEBPACK_IMPORTED_MODULE_0__components_commondatasources__["a" /* default */].AdminRolesName.indexOf(this.$store.state.curUser.role) >= 0 ? "WorkForm" : false,
                 previousView: "WorkFormDetail"
             };
             this.$emit('RightComponentEvent', returnOpt);
@@ -4864,6 +5032,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.$notify.error({
                     title: 'Error',
                     message: "派工单位不能为空"
+                });
+                return false;
+            }
+
+            if (!this.request.data.chargerName || this.request.data.chargerName === "") {
+                this.$notify.error({
+                    title: 'Error',
+                    message: "主负责人不能为空"
                 });
                 return false;
             }
@@ -5017,95 +5193,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-  "UserManager": [{
-    "id": "0001",
-    "pathname": "/createNewUser",
-    "menu": "新建用户",
-    "event": "handleCreateNewUser"
-  }],
-  "ConfigDocument": [{
-    "id": "0001",
-    "pathname": "/serviceCompany",
-    "menu": "派工单位",
-    "event": "switchView"
-  }, {
-    "id": "0002",
-    "pathname": "/companyAdmin",
-    "menu": "派工人员",
-    "event": "switchView"
-  }, {
-    "id": "0003",
-    "pathname": "/companyEmployee",
-    "menu": "工作人员",
-    "event": "switchView"
-  }, {
-    "id": "0004",
-    "pathname": "/showWorkCategory",
-    "menu": "工作类别",
-    "event": "switchView"
-  }, {
-    "id": "0005",
-    "pathname": "/workItem",
-    "menu": "工作任务",
-    "event": "switchView"
-  }, {
-    "id": "0006",
-    "pathname": "/securityTools",
-    "menu": "安全工具",
-    "event": "switchView"
-  }, {
-    "id": "0007",
-    "pathname": "/spareParts",
-    "menu": "备品备件",
-    "event": "switchView"
-  }, {
-    "id": "0008",
-    "pathname": "/uploadExcel",
-    "menu": "上传Excel文件",
-    "event": "switchView"
-  }],
-  "WorkForm": [{
-    "id": "0001",
-    "pathname": "/createrequest",
-    "menu": "新建日常派工单",
-    "event": "switchView"
-  }, {
-    "id": "0002",
-    "pathname": "/createemergencyrequest",
-    "menu": "新建紧急派工单",
-    "event": "switchView"
-  }],
-  "WorkFormDetail": [{
-    "id": "0001",
-    "pathname": "/goback",
-    "menu": "  返回前页",
-    "event": "switchView"
-  }],
-  "queryWorkform": [],
-  "queryWorker": [],
-  "queryMonthly": [],
-  "queryAnnually": []
-});
-
-/***/ }),
-/* 69 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_resource__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_resource__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__App__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_element_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_element_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_element_ui_lib_theme_default_index_css__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_element_ui_lib_theme_default_index_css__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_element_ui_lib_theme_default_index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_element_ui_lib_theme_default_index_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_element_ui_lib_locale_lang_en__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_element_ui_lib_locale_lang_en__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_element_ui_lib_locale_lang_en___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_element_ui_lib_locale_lang_en__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuex__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuex__ = __webpack_require__(30);
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
@@ -5135,7 +5235,9 @@ const vuex_store = new __WEBPACK_IMPORTED_MODULE_7_vuex__["a" /* default */].Sto
       isAdmin: false,
       company: "",
       fullname: "",
-      isAuthenticated: false
+      isAuthenticated: false,
+      isCompanyAdmin: false,
+      isAdminOffice: false
     },
     configdoc: {
       companySource: [],
@@ -5175,11 +5277,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["default"]({
         this.$store.state.curUser.fullname = response.body.fullname;
         this.$store.state.curUser.isAdmin = response.body.role === "Admin" ? true : false;
         this.$store.state.curUser.isAdminOffice = response.body.role === "AdminOffice" ? true : false;
-        // if (response.body.role === "Admin") {
-        //   this.$store.state.curUser.isAdmin = true;
-        // } else {
-        //   this.$store.state.curUser.isAdmin = false;
-        // }
+        this.$store.state.curUser.isCompanyAdmin = response.body.role === "CompanyAdmin" ? true : false;
         var path = window.location.pathname;
         if (path === "/") {
           this.$router.push({
@@ -5204,6 +5302,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["default"]({
 });
 
 /***/ }),
+/* 69 */,
 /* 70 */,
 /* 71 */,
 /* 72 */,
@@ -5220,7 +5319,12 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["default"]({
 /* 83 */,
 /* 84 */,
 /* 85 */,
-/* 86 */,
+/* 86 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 87 */
 /***/ (function(module, exports) {
 
@@ -5306,15 +5410,47 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["default"]({
 
 /***/ }),
 /* 101 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+
+/* styles */
+__webpack_require__(96)
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(54),
+  /* template */
+  __webpack_require__(125),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
 
 /***/ }),
 /* 102 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+
+/* styles */
+__webpack_require__(91)
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(55),
+  /* template */
+  __webpack_require__(120),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
 
 /***/ }),
 /* 103 */
@@ -5322,13 +5458,13 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["default"]({
 
 
 /* styles */
-__webpack_require__(98)
+__webpack_require__(86)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(53),
+  __webpack_require__(56),
   /* template */
-  __webpack_require__(129),
+  __webpack_require__(115),
   /* scopeId */
   null,
   /* cssModules */
@@ -5344,13 +5480,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(90)
+__webpack_require__(89)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(54),
+  __webpack_require__(57),
   /* template */
-  __webpack_require__(121),
+  __webpack_require__(118),
   /* scopeId */
   null,
   /* cssModules */
@@ -5366,13 +5502,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(93)
+__webpack_require__(87)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(55),
+  __webpack_require__(58),
   /* template */
-  __webpack_require__(124),
+  __webpack_require__(116),
   /* scopeId */
   null,
   /* cssModules */
@@ -5388,13 +5524,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(87)
+__webpack_require__(99)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(56),
+  __webpack_require__(59),
   /* template */
-  __webpack_require__(118),
+  __webpack_require__(128),
   /* scopeId */
   null,
   /* cssModules */
@@ -5410,13 +5546,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(91)
+__webpack_require__(100)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(57),
+  __webpack_require__(60),
   /* template */
-  __webpack_require__(122),
+  __webpack_require__(129),
   /* scopeId */
   null,
   /* cssModules */
@@ -5432,13 +5568,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(88)
+__webpack_require__(94)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(58),
+  __webpack_require__(61),
   /* template */
-  __webpack_require__(119),
+  __webpack_require__(123),
   /* scopeId */
   null,
   /* cssModules */
@@ -5454,13 +5590,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(101)
+__webpack_require__(95)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(59),
+  __webpack_require__(62),
   /* template */
-  __webpack_require__(132),
+  __webpack_require__(124),
   /* scopeId */
   null,
   /* cssModules */
@@ -5476,13 +5612,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(102)
+__webpack_require__(92)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(60),
+  __webpack_require__(63),
   /* template */
-  __webpack_require__(133),
+  __webpack_require__(121),
   /* scopeId */
   null,
   /* cssModules */
@@ -5498,13 +5634,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(96)
+__webpack_require__(90)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(61),
+  __webpack_require__(64),
   /* template */
-  __webpack_require__(127),
+  __webpack_require__(119),
   /* scopeId */
   null,
   /* cssModules */
@@ -5520,13 +5656,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(97)
+__webpack_require__(93)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(62),
+  __webpack_require__(65),
   /* template */
-  __webpack_require__(128),
+  __webpack_require__(122),
   /* scopeId */
   null,
   /* cssModules */
@@ -5542,13 +5678,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(94)
+__webpack_require__(88)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(63),
+  __webpack_require__(66),
   /* template */
-  __webpack_require__(125),
+  __webpack_require__(117),
   /* scopeId */
   null,
   /* cssModules */
@@ -5564,33 +5700,11 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(92)
+__webpack_require__(97)
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(64),
-  /* template */
-  __webpack_require__(123),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 115 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(95)
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(65),
+  __webpack_require__(67),
   /* template */
   __webpack_require__(126),
   /* scopeId */
@@ -5603,51 +5717,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 116 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(89)
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(66),
-  /* template */
-  __webpack_require__(120),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 117 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(99)
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(67),
-  /* template */
-  __webpack_require__(130),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 118 */
+/* 115 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5754,7 +5824,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 119 */
+/* 116 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5819,7 +5889,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 120 */
+/* 117 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5907,36 +5977,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 121 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "homediv"
-  }, [_c('h1', [_vm._v("Welcome111 to Smart Supply Management")]), _vm._v(" "), _c('el-select', {
-    attrs: {
-      "placeholder": "请选择"
-    },
-    model: {
-      value: (_vm.value),
-      callback: function($$v) {
-        _vm.value = $$v
-      },
-      expression: "value"
-    }
-  }, _vm._l((_vm.options), function(item) {
-    return _c('el-option', {
-      key: item.id,
-      attrs: {
-        "label": item.label,
-        "value": item.value
-      }
-    })
-  }))], 1)
-},staticRenderFns: []}
-
-/***/ }),
-/* 122 */
+/* 118 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6052,7 +6093,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 123 */
+/* 119 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6522,7 +6563,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 124 */
+/* 120 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -6651,7 +6692,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 125 */
+/* 121 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -7140,7 +7181,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 126 */
+/* 122 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -7197,7 +7238,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               _vm.handleEdit(scope.$index, scope.row)
             }
           }
-        }, [_vm._v("\n            编辑")]), _vm._v(" "), _c('el-button', {
+        }, [_vm._v("\n                                编辑")]), _vm._v(" "), _c('el-button', {
           attrs: {
             "size": "small",
             "type": "danger"
@@ -7243,45 +7284,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-form-item', {
     attrs: {
-      "label": "用户ID",
-      "label-width": _vm.formLabelWidth
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off",
-      "disabled": _vm.isEditModel
-    },
-    model: {
-      value: (_vm.user.username),
-      callback: function($$v) {
-        _vm.user.username = $$v
-      },
-      expression: "user.username"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "用户全称",
-      "label-width": _vm.formLabelWidth
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off"
-    },
-    model: {
-      value: (_vm.user.fullname),
-      callback: function($$v) {
-        _vm.user.fullname = $$v
-      },
-      expression: "user.fullname"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
       "label": "所属公司",
       "label-width": _vm.formLabelWidth
     }
   }, [_c('el-select', {
     attrs: {
-      "placeholder": "请选择用户角色"
+      "placeholder": "请选择用户所属公司"
+    },
+    on: {
+      "change": _vm.handleCompanyChange
     },
     model: {
       value: (_vm.user.company),
@@ -7299,6 +7310,51 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })
   }))], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "用户全称",
+      "label-width": _vm.formLabelWidth
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "请选择用户全名"
+    },
+    model: {
+      value: (_vm.user.fullname),
+      callback: function($$v) {
+        _vm.user.fullname = $$v
+      },
+      expression: "user.fullname"
+    }
+  }, _vm._l((_vm.employeeSource), function(employee) {
+    return _c('el-option', {
+      key: employee.name,
+      attrs: {
+        "label": employee.name,
+        "value": employee.name
+      }
+    })
+  }))], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "用户ID",
+      "label-width": _vm.formLabelWidth
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "只能输入英文字符和数字",
+      "auto-complete": "off",
+      "disabled": _vm.isEditModel
+    },
+    on: {
+      "change": _vm.handleUserIDChange
+    },
+    model: {
+      value: (_vm.user.username),
+      callback: function($$v) {
+        _vm.user.username = $$v
+      },
+      expression: "user.username"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "用户\b角色",
       "label-width": _vm.formLabelWidth
@@ -7326,8 +7382,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('el-option', {
     attrs: {
-      "label": "县局用户",
+      "label": "县局管理员",
       "value": "AdminOffice"
+    }
+  }), _vm._v(" "), _c('el-option', {
+    attrs: {
+      "label": "单位管理员",
+      "value": "CompanyAdmin"
     }
   })], 1)], 1), _vm._v(" "), _c('el-form-item', {
     directives: [{
@@ -7407,7 +7468,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 127 */
+/* 123 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -7758,7 +7819,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 128 */
+/* 124 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -8109,7 +8170,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 129 */
+/* 125 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -8744,7 +8805,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 130 */
+/* 126 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -8861,7 +8922,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "request.data.creationtime"
     }
-  })], 1)]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workers))]), _vm._v(" "), _c('td', {
+  })], 1)]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.chargerName))]), _vm._v(" "), _c('td', {
+    staticStyle: {
+      "text-align": "left"
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "disabled": _vm.isEdithModel && !_vm.isHistoryRecord,
+      "filterable": ""
+    },
+    model: {
+      value: (_vm.request.data.chargerName),
+      callback: function($$v) {
+        _vm.request.data.chargerName = $$v
+      },
+      expression: "request.data.chargerName"
+    }
+  }, _vm._l((_vm.request.datasource.companyEmployee), function(workers) {
+    return _c('el-option', {
+      key: workers.name,
+      attrs: {
+        "label": workers.name,
+        "value": workers.name
+      }
+    })
+  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workers))]), _vm._v(" "), _c('td', {
     staticStyle: {
       "text-align": "left"
     }
@@ -8889,40 +8974,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": workers.name
       }
     })
-  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workhour))]), _vm._v(" "), _c('td', [_c('el-input', {
-    staticStyle: {
-      "width": "80%"
-    },
-    attrs: {
-      "disabled": _vm.isCreateModel || _vm.isWorkFormClosed,
-      "placeholder": "请输入工作小时数"
-    },
-    on: {
-      "change": _vm.handleWorkhourInput
-    },
-    model: {
-      value: (_vm.request.data.workhour),
-      callback: function($$v) {
-        _vm.request.data.workhour = $$v
-      },
-      expression: "request.data.workhour"
-    }
-  })], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.planreturntime))]), _vm._v(" "), _c('td', [_c('el-date-picker', {
-    attrs: {
-      "disabled": _vm.isEdithModel,
-      "format": "yyyy-MM-dd HH:mm:ss",
-      "align": "right",
-      "type": "datetime",
-      "placeholder": "选择实际返回时间"
-    },
-    model: {
-      value: (_vm.request.data.planreturntime),
-      callback: function($$v) {
-        _vm.request.data.planreturntime = $$v
-      },
-      expression: "request.data.planreturntime"
-    }
-  })], 1)]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workCategory))]), _vm._v(" "), _c('td', [_c('el-select', {
+  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workersnumber))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.workersnumber))])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workCategory))]), _vm._v(" "), _c('td', [_c('el-select', {
     attrs: {
       "disabled": _vm.isEdithModel
     },
@@ -8963,7 +9015,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": workitem.name
       }
     })
-  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workersnumber))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.workersnumber))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.isSecurityTools))]), _vm._v(" "), _c('td', [
+  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workhour))]), _vm._v(" "), _c('td', [_c('el-input', {
+    staticStyle: {
+      "width": "80%"
+    },
+    attrs: {
+      "disabled": _vm.isCreateModel || _vm.isWorkFormClosed || (_vm.isEdithModel && !_vm.isChargePerson),
+      "placeholder": "请输入工作小时数"
+    },
+    on: {
+      "change": _vm.handleWorkhourInput
+    },
+    model: {
+      value: (_vm.request.data.workhour),
+      callback: function($$v) {
+        _vm.request.data.workhour = $$v
+      },
+      expression: "request.data.workhour"
+    }
+  })], 1)]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.isSecurityTools))]), _vm._v(" "), _c('td', [
     [_c('el-radio-group', {
       on: {
         "change": _vm.handleSecurityToolsChange
@@ -9035,7 +9105,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "label": "No"
       }
     }, [_vm._v("否")])], 1)]
-  ], 2), _vm._v(" "), _c('tr'), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.securityTools))]), _vm._v(" "), _c('td', [_c('el-select', {
+  ], 2)]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.securityTools))]), _vm._v(" "), _c('td', [_c('el-select', {
     staticStyle: {
       "width": "100%"
     },
@@ -9059,11 +9129,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": tool.name
       }
     })
-  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.spareParts))]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "3"
-    }
-  }, [_c('el-select', {
+  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.spareParts))]), _vm._v(" "), _c('td', [_c('el-select', {
     staticStyle: {
       "width": "100%"
     },
@@ -9087,13 +9153,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": part.name
       }
     })
-  }))], 1)]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.worklocation))]), _vm._v(" "), _c('td', {
+  }))], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.planreturntime))]), _vm._v(" "), _c('td', [_c('el-date-picker', {
+    attrs: {
+      "disabled": _vm.isEdithModel,
+      "format": "yyyy-MM-dd HH:mm:ss",
+      "align": "right",
+      "type": "datetime",
+      "placeholder": "选择计划返回时间"
+    },
+    model: {
+      value: (_vm.request.data.planreturntime),
+      callback: function($$v) {
+        _vm.request.data.planreturntime = $$v
+      },
+      expression: "request.data.planreturntime"
+    }
+  })], 1)]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.worklocation))]), _vm._v(" "), _c('td', {
     attrs: {
       "colspan": "3"
     }
   }, [_c('el-input', {
     attrs: {
-      "disabled": _vm.isWorkFormClosed,
+      "disabled": _vm.isWorkFormClosed || (_vm.isEdithModel && !_vm.isChargePerson),
       "placeholder": "请输入工作地点"
     },
     model: {
@@ -9105,7 +9186,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.returntime))]), _vm._v(" "), _c('td', [_c('el-date-picker', {
     attrs: {
-      "disabled": _vm.isWorkFormClosed || !_vm.isEdithModel,
+      "disabled": _vm.isWorkFormClosed || !_vm.isEdithModel || (_vm.isEdithModel && !_vm.isChargePerson),
       "format": "yyyy-MM-dd HH:mm:ss",
       "align": "right",
       "type": "datetime",
@@ -9128,7 +9209,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('el-input', {
     attrs: {
       "type": "textarea",
-      "disabled": _vm.isWorkFormClosed,
+      "disabled": _vm.isWorkFormClosed || (_vm.isEdithModel && !_vm.isChargePerson),
       "rows": 2,
       "placeholder": "工作主要内容"
     },
@@ -9173,8 +9254,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.isEdithModel && !_vm.isWorkFormClosed),
-      expression: "isEdithModel && !isWorkFormClosed"
+      value: (_vm.isEdithModel && !_vm.isWorkFormClosed && _vm.isChargePerson),
+      expression: "isEdithModel && !isWorkFormClosed && isChargePerson"
     }],
     attrs: {
       "type": "primary"
@@ -9188,8 +9269,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.isCreateModel || (_vm.isEdithModel && !_vm.isWorkFormClosed)),
-      expression: "isCreateModel || (isEdithModel && !isWorkFormClosed)"
+      value: (_vm.isCreateModel || (_vm.isEdithModel && !_vm.isWorkFormClosed && _vm.isChargePerson)),
+      expression: "isCreateModel || (isEdithModel && !isWorkFormClosed && isChargePerson)"
     }],
     attrs: {
       "type": "primary"
@@ -9203,8 +9284,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.isEdithModel && !_vm.isWorkFormClosed),
-      expression: "isEdithModel && !isWorkFormClosed"
+      value: (_vm.isEdithModel && !_vm.isWorkFormClosed && _vm.isChargePerson),
+      expression: "isEdithModel && !isWorkFormClosed && isChargePerson"
     }],
     attrs: {
       "type": "primary"
@@ -9218,8 +9299,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: (_vm.isCreateModel || (_vm.isEdithModel && !_vm.isWorkFormClosed)),
-      expression: "isCreateModel || (isEdithModel && !isWorkFormClosed)"
+      value: (_vm.isCreateModel || (_vm.isEdithModel && !_vm.isWorkFormClosed && _vm.isChargePerson)),
+      expression: "isCreateModel || (isEdithModel && !isWorkFormClosed && isChargePerson)"
     }],
     attrs: {
       "type": "warning"
@@ -9360,7 +9441,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 131 */
+/* 127 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9380,7 +9461,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 132 */
+/* 128 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9445,7 +9526,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 133 */
+/* 129 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -9530,14 +9611,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 134 */,
-/* 135 */,
-/* 136 */,
-/* 137 */
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ })
-]),[69]);
-//# sourceMappingURL=app.101a46487fbdc66ef5bf.js.map
+],[68]);
+//# sourceMappingURL=app.eca895e936becf573326.js.map

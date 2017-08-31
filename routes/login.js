@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var logger = require('pomelo-logger');
+var JPush = require('../services/jpushservices');
+var Logger = require("log4js").getLogger('LoginController');
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.redirect("/")
@@ -23,6 +26,25 @@ router.get('/isAuthenticated', function (req, res, next) {
     });
     res.end();
   }
+
+});
+
+router.get('/notifications', function (req, res, next) {
+  var user = req.user;
+  if (!user || !user.username || user.username === "") {
+    Logger.error("User is not logged in");
+    return;
+  }
+
+  Logger.info("To Send offline notifications for :" + user.username);
+  JPush.sentOfflineMsgForAlias(user.username).then((pushres) => {
+    res.json(pushres);
+    res.end()
+  }).catch((err) => {
+    Logger.error(err);
+    res.json(err);
+    res.end();
+  })
 
 });
 

@@ -1,4 +1,15 @@
 {
+    "offlineMessage": {
+        "username": {
+            "type": "String",
+            "required": true,
+            "index": true
+        },
+        "message": {
+            "type": "Mixed",
+            "required": true
+        }
+    },
     "users": {
         "username": {
             "type": "String",
@@ -203,12 +214,12 @@
             "required": false,
             "index": false
         },
-        "chargerName":{
+        "chargerName": {
             "type": "String",
             "required": true,
             "index": false
         },
-        "chargerID":{
+        "chargerID": {
             "type": "String",
             "required": true,
             "index": false

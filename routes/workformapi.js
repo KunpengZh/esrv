@@ -12,6 +12,8 @@ var log4js_config = require("../log4js.json");
 log4js.configure(log4js_config);
 var Logger = log4js.getLogger('log_file');
 
+var JPush = require('../services/jpushservices');
+
 var tablename = "workform";
 
 router.get('/getr', function (req, res, next) {
@@ -168,6 +170,10 @@ router.post("/save", function (req, res, next) {
                     return;
                 } else {
                     Logger.info("Request Playload: " + JSON.stringify(reqDoc));
+                    Logger.info("To sending notifictions.....");
+                    JPush.pushNotification(moment().format("YYYY-MM-DD HH:mm") + " , " + reqDoc.chargerName + " 新派工单:" + reqDoc.requestId, reqDoc.chargerID).then((pushres)=>{
+                        Logger.info(JSON.stringify(pushres));
+                    });
                     res.json(saveres);
                     res.end();
                     return;

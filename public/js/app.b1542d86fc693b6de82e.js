@@ -354,6 +354,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'ConfigDocument',
@@ -367,12 +381,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             col2label: "所属公司",
             col3label: "定额工资",
             col4label: "所属类别",
+            isChangerLabel: "可否工单负责人",
             showlevel2: false,
             showlevel3: false,
             showlevel4: false,
             showExcelUpload: false,
             showSecurityTools: false,
             showSpareParts: false,
+            showIsCharger: false,
             companySource: true,
             companyAdmin: false,
             companyEmployee: false,
@@ -385,13 +401,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             ConfigDataSource: this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']),
             companyDataSource: this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']),
             workCategoryDataSource: this.buildConfigDataSource(this.$store.state.configdoc['workCategory']['data']),
+            basicSelectionSource: [{ name: '是', value: 'Yes', id: 'charger1' }, { name: '否', value: 'No', id: 'charger2' }],
             newTextInput: '',
             attr: '',
             workCategory: '',
             newTextInputList: [],
             originalText: '',
             originalworkCategory: '',
-            originalAttr: ''
+            originalAttr: '',
+            isCharger: 'No'
         };
     },
     mounted: function () {
@@ -418,6 +436,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.originalText = '';
             this.originalworkCategory = '';
             this.originalAttr = '';
+            this.isCharger = 'No';
             // this.showlevel2 = false;
             // this.showlevel3 = false;
         },
@@ -450,6 +469,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
                 return;
             }
+            if (this.showIsCharger && this.isCharger === "") {
+                this.$notify.error({
+                    title: 'Error',
+                    message: this.isChangerLabel + "不能为空"
+                });
+                return;
+            }
+
             var obj = {
                 "name": this.newTextInput,
                 "attr": this.attr
@@ -457,6 +484,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.showlevel4) {
                 obj["workCategory"] = this.workCategory;
             }
+            if (this.showIsCharger) {
+                obj["isCharger"] = this.isCharger;
+            }
+
             this.newTextInputList.push(obj);
             this.newTextInput = "";
             this.attr = "";
@@ -471,9 +502,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (this.showlevel4) {
                     obj["workCategory"] = this.workCategory;
                 }
+                if (this.showIsCharger) {
+                    obj["isCharger"] = this.isCharger;
+                }
                 this.newTextInputList.push(obj);
                 this.newTextInput = "";
                 this.attr = "";
+                this.isCharger = "No";
             }
             if (this.newTextInputList.length === 0) {
                 this.$notify.error({
@@ -506,6 +541,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (this.showlevel4) {
                     newobj.workCategory = obj[i]["workCategory"] ? obj[i]["workCategory"] : "";
                 }
+                if (this.showIsCharger) {
+                    newobj.isCharger = obj[i]["isCharger"] ? obj[i]["isCharger"] : "No";
+                }
+
                 datasource.push(newobj);
             }
             return datasource;
@@ -527,6 +566,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.showlevel2 = false;
                     this.showlevel3 = false;
                     this.showlevel4 = false;
+                    this.showIsCharger = false;
                     this.ConfigDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
@@ -545,6 +585,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.showlevel2 = true;
                     this.showlevel3 = false;
                     this.showlevel4 = false;
+                    this.showIsCharger = false;
                     this.ConfigDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companyAdmin']['data']);
                     this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
@@ -563,6 +604,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.showlevel2 = true;
                     this.showlevel3 = false;
                     this.showlevel4 = false;
+                    this.showIsCharger = true;
                     this.ConfigDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companyEmployee']['data']);
                     this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
@@ -581,6 +623,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.showlevel2 = false;
                     this.showlevel3 = true;
                     this.showlevel4 = true;
+                    this.showIsCharger = false;
                     this.ConfigDataSource = this.buildConfigDataSource(this.$store.state.configdoc['workItem']['data']);
                     //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     this.workCategoryDataSource = this.buildConfigDataSource(this.$store.state.configdoc['workCategory']['data']);
@@ -600,6 +643,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.showlevel2 = false;
                     this.showlevel3 = false;
                     this.showlevel4 = false;
+                    this.showIsCharger = false;
                     this.ConfigDataSource = this.buildConfigDataSource(this.$store.state.configdoc['workCategory']['data']);
                     //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
@@ -618,6 +662,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.showlevel2 = false;
                     this.showlevel3 = false;
                     this.showlevel4 = false;
+                    this.showIsCharger = false;
                     this.ConfigDataSource = this.buildConfigDataSource(this.$store.state.configdoc['securityTools']['data']);
                     //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
@@ -636,6 +681,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.showlevel2 = false;
                     this.showlevel3 = false;
                     this.showlevel4 = false;
+                    this.showIsCharger = false;
                     this.ConfigDataSource = this.buildConfigDataSource(this.$store.state.configdoc['spareParts']['data']);
                     //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                     break;
@@ -654,6 +700,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.showlevel2 = false;
                     this.showlevel3 = false;
                     this.showlevel4 = false;
+                    this.showIsCharger = false;
                     this.ConfigDataSource = this.buildConfigDataSource();
                     this.handleImport();
                     //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
@@ -673,6 +720,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.showlevel2 = false;
                     this.showlevel3 = false;
                     this.showlevel4 = false;
+                    this.showIsCharger = false;
                     this.ConfigDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
                 //this.companyDataSource = this.buildConfigDataSource(this.$store.state.configdoc['companySource']['data']);
             }
@@ -732,6 +780,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
                 return;
             }
+            if (this.showIsCharger && this.isCharger === "") {
+                this.$notify.error({
+                    title: 'Error',
+                    message: this.isChangerLabel + "不能为空"
+                });
+                return;
+            }
             var curSource = this.$store.state.configdoc[this.currentCategory]['data'];
             var needupdate = false;
             for (let i = 0; i < curSource.length; i++) {
@@ -749,9 +804,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     if (curSource[i]["name"] === this.originalText && curSource[i]["attr"] === this.originalAttr) {
                         curSource[i]['name'] = this.newTextInput;
                         curSource[i]['attr'] = this.attr;
-                        if (this.showlevel4) {
-                            curSource[i]['workCategory'] = this.workCategory;
-                        }
+                        curSource[i]["isCharger"] = this.isCharger;
+                        // if (this.showlevel4) {
+                        //     curSource[i]['workCategory'] = this.workCategory;
+                        // }
+                        // if (this.showIsCharger) {
+                        //     curSource["isCharger"] = this.isCharger;
+                        // }
                         needupdate = true;
                         break;
                     }
@@ -767,6 +826,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 }
             }
+
             if (!needupdate) {
                 this.$notify.info({
                     title: '无需更新',
@@ -774,6 +834,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
                 return;
             }
+            console.log(curSource);
             this.updateConfigDoc(curSource);
             this.handleCancelNew();
         },
@@ -808,8 +869,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.newCreateDialogTitle = "编辑" + this.collabel;
             this.newTextInput = row.name;
             this.originalText = row.name;
-            this.originalworkCategory = row.workCategory;
             this.originalAttr = row.attr;
+            this.originalIsCharger = row.isCharger;
+            this.isCharger = row.isCharger;
             this.attr = row.attr;
             this.workCategory = row.workCategory;
             this.isCreateModel = false;
@@ -817,17 +879,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.createFormVisible = true;
         },
         handleDelete: function (index, row) {
+            console.log(row);
             var curSource = this.$store.state.configdoc[this.currentCategory]['data'];
             var needupdate = false;
             for (let i = 0; i < curSource.length; i++) {
                 if (this.currentCategory === "workItem") {
-                    if (curSource[i]["name"] === this.originalText && curSource[i]["workCategory"] === this.originalworkCategory) {
+                    if (curSource[i]["name"] === row.name && curSource[i]["workCategory"] === row.workCategory) {
                         curSource.splice(i, 1);
                         needupdate = true;
                         break;
                     }
                 } else if (this.currentCategory === "companyEmployee") {
-                    if (curSource[i]["name"] === this.originalText && curSource[i]["attr"] === this.originalAttr) {
+                    if (curSource[i]["name"] === row.name && curSource[i]["attr"] === row.attr) {
                         curSource.splice(i, 1);
                         needupdate = true;
                         break;
@@ -1533,6 +1596,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'WorkFormPrint',
@@ -1563,7 +1630,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         securityTools: "安全工具",
                         spareParts: "备品备件",
                         sanPiaoZhiXing: "三票执行",
-                        workcomments: "工作内容"
+                        workcomments: "工作内容",
+                        chargerName: '负责人'
                     },
                     data: this.options.data,
                     datasource: {
@@ -4623,6 +4691,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     companySource: [],
                     companyAdmin: [],
                     companyEmployee: [],
+                    companyChargePerson: [],
                     workItem: [],
                     workCategory: [],
                     securityTools: [],
@@ -4786,10 +4855,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var self = this;
             if (value !== this.request.previousValue.company) {
                 //this.request.data.requester = "";
-                self.request.data.requester = self.$store.state.curUser.fullname;
-                self.request.data.workers = [];
+                //self.request.data.requester = self.$store.state.curUser.fullname;
+                self.$set(self.request.data, "requester", self.$store.state.curUser.fullname);
+                //self.request.data.workers = [];
+                self.$set(self.request.data, "workers", []);
+                //self.request.data.chargerName = '';
+                self.$set(self.request.data, "chargerName", '');
                 self.updateCompanyAdmin(value);
                 self.updateCompanyEmployee(value);
+                self.updateCompanyChargePerson(value);
                 self.request.previousValue.company = value;
             }
         },
@@ -4812,6 +4886,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }
             this.$set(this.request.datasource, "companyEmployee", companyEmployeeSource);
+        },
+        updateCompanyChargePerson: function (value) {
+            var source = this.$store.state.configdoc["companyEmployee"]["data"];
+            var companyChargePersonSource = [];
+            for (var i = 0; i < source.length; i++) {
+                if (source[i].attr === value && source[i].isCharger === "Yes") {
+                    companyChargePersonSource.push(source[i]);
+                }
+            }
+            this.$set(this.request.datasource, "companyChargePerson", companyChargePersonSource);
         },
         handleWorkCategoryChange: function (value) {
             if (value !== this.request.previousValue.workCategory) {
@@ -8451,6 +8535,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": _vm.col4label,
       "label-class-name": "forcastHeader"
     }
+  }) : _vm._e(), _vm._v(" "), (_vm.showIsCharger) ? _c('el-table-column', {
+    attrs: {
+      "sortable": "",
+      "prop": "isCharger",
+      "label": _vm.isChangerLabel,
+      "label-class-name": "forcastHeader"
+    }
   }) : _vm._e(), _vm._v(" "), _c('el-table-column', {
     attrs: {
       "label": "操作"
@@ -8567,6 +8658,40 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "label": company.name,
         "value": company.name
+      }
+    })
+  }))], 1)], 1), _vm._v(" "), _c('el-col', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.showIsCharger),
+      expression: "showIsCharger"
+    }],
+    attrs: {
+      "span": 7,
+      "offset": 1
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": _vm.isChangerLabel
+    }
+  }, [_c('el-select', {
+    attrs: {
+      "placeholder": "可否工单负责人"
+    },
+    model: {
+      value: (_vm.isCharger),
+      callback: function($$v) {
+        _vm.isCharger = $$v
+      },
+      expression: "isCharger"
+    }
+  }, _vm._l((_vm.basicSelectionSource), function(item) {
+    return _c('el-option', {
+      key: item.id,
+      attrs: {
+        "label": item.name,
+        "value": item.value
       }
     })
   }))], 1)], 1), _vm._v(" "), _c('el-col', {
@@ -8735,6 +8860,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": _vm.col4label,
       "label-class-name": "forcastHeader"
     }
+  }) : _vm._e(), _vm._v(" "), (_vm.showIsCharger) ? _c('el-table-column', {
+    attrs: {
+      "prop": "isCharger",
+      "label": _vm.isChangerLabel,
+      "label-class-name": "forcastHeader"
+    }
   }) : _vm._e()], 1)], 1)], 1)], 1)])]), _vm._v(" "), _c('div', [_c('div', {
     directives: [{
       name: "show",
@@ -8789,7 +8920,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "el-icon-upload"
   }), _vm._v(" "), _c('div', {
     staticClass: "el-upload__text"
-  }, [_vm._v("Drag files here，or "), _c('em', [_vm._v("Click to Select files for upload")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Drag files here，or\n                                "), _c('em', [_vm._v("Click to Select files for upload")])]), _vm._v(" "), _c('div', {
     staticClass: "el-upload__tip",
     slot: "tip"
   }, [_vm._v("Only txt file allowed")])])], 1)], 1), _vm._v(" "), _c('div', {
@@ -8938,7 +9069,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "request.data.chargerName"
     }
-  }, _vm._l((_vm.request.datasource.companyEmployee), function(workers) {
+  }, _vm._l((_vm.request.datasource.companyChargePerson), function(workers) {
     return _c('el-option', {
       key: workers.name,
       attrs: {
@@ -9587,19 +9718,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "width": "25%"
     }
-  }, [_vm._v(_vm._s(_vm.request.data.creationtime))])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workers))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.workers))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workhour))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.workhour))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.planreturntime))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.planreturntime))])])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workCategory))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.workCategory))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workitem))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.workitem))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workersnumber))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.data.workersnumber))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.isSecurityTools))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.isSecurityTools))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.isSpareParts))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.isSpareParts))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.sanPiaoZhiXing))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.sanPiaoZhiXing))])]), _vm._v(" "), _c('tr'), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.securityTools))]), _vm._v(" "), _c('td', _vm._l((_vm.request.data.securityTools), function(tool) {
+  }, [_vm._v(_vm._s(_vm.request.data.creationtime))])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.chargerName))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.chargerName))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workers))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.workers))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workhour))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.workhour))])])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.workCategory))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.workCategory))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workitem))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.workitem))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.workersnumber))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.data.workersnumber))])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.isSecurityTools))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.isSecurityTools))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.isSpareParts))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.isSpareParts))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.sanPiaoZhiXing))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.sanPiaoZhiXing))])])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.securityTools))]), _vm._v(" "), _c('td', _vm._l((_vm.request.data.securityTools), function(tool) {
     return _c('p', {
       key: tool
     }, [_vm._v(_vm._s(tool))])
-  })), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.spareParts))]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "3"
-    }
-  }, _vm._l((_vm.request.data.spareParts), function(part) {
+  })), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.spareParts))]), _vm._v(" "), _c('td', _vm._l((_vm.request.data.spareParts), function(part) {
     return _c('p', {
       key: part
     }, [_vm._v(_vm._s(part))])
-  }))]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.worklocation))]), _vm._v(" "), _c('td', {
+  })), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.request.label.planreturntime))]), _vm._v(" "), _c('td', [_c('span', [_vm._v(_vm._s(_vm.request.data.planreturntime))])])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.request.label.worklocation))]), _vm._v(" "), _c('td', {
     attrs: {
       "colspan": "3"
     }
@@ -9621,4 +9748,4 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ })
 ],[68]);
-//# sourceMappingURL=app.eca895e936becf573326.js.map
+//# sourceMappingURL=app.b1542d86fc693b6de82e.js.map

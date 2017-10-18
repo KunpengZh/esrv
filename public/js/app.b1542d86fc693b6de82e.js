@@ -1612,7 +1612,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 requestData = {
                     label: {
-                        formTitle: "献县供服公司工作派工单",
+                        formTitle: "肃宁供服公司工作派工单",
                         requestId: "编号:",
                         company: "派工单位",
                         requester: "派工人员",
@@ -4666,7 +4666,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             lockSpareParts: true,
             request: {
                 label: {
-                    formTitle: "献县供服公司工作派工单",
+                    formTitle: "肃宁供服公司工作派工单",
                     requestId: "编号:",
                     company: "派工单位",
                     requester: "派工人员",
@@ -6687,7 +6687,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: "appTitle"
-  }, [_c('span', [_vm._v("\b献县供电派工单系统")])])]), _vm._v(" "), _c('el-col', {
+  }, [_c('span', [_vm._v("\b肃宁供电派工单系统")])])]), _vm._v(" "), _c('el-col', {
     staticStyle: {
       "height": "60px"
     },
